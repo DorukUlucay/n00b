@@ -1,0 +1,9 @@
+table {
+  border: 1px solid black;
+  margin: 25px;
+}
+
+table caption {
+  text-decoration-style: double;
+  text-align: left;
+}
