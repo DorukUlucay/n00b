@@ -38,6 +38,9 @@ $(function () {
         },
         boughtFreelanceSubscr: {
           done: false
+        },
+        at_300: {
+          done: false
         }
       },
       freelance: [
@@ -84,6 +87,10 @@ $(function () {
             game.achievements.at_100.done = true;
           }
 
+          if (!game.achievements.at_300.done && game.LoC >= 60) {
+            game.achievements.at_300.done = true;
+          }
+
 
           if (!game.achievements.at_200.done && game.LoC >= 40) {
             game.log("some friend talked about a freelance site. you may want to look at it")
@@ -121,6 +128,17 @@ $(function () {
                 expires: 10
               })
             }
+
+            if (randInt < 85 && randInt > 70 && game.achievements.at_300.done) {
+              game.freelance.push({
+                title: "make me a landing page",
+                price: 25,
+                LoC: 35,
+                deadline: 30,
+                id: guid(),
+                expires: 15
+              })
+            }
           }
 
 
@@ -146,9 +164,9 @@ $(function () {
         this.descendLoC()
       },
       log: function (message) {
-        $("#messages").prepend("<p>" + this.printTime() + ": " + message + "</p>")
+        $("#messages").prepend("<p>" + this.prettyTime() + ": " + message + "</p>")
       },
-      printTime: function () {
+      prettyTime: function () {
         return "Day " + this.day + " Hour " + this.hour;
       },
       descendLoC: function () {
@@ -156,7 +174,7 @@ $(function () {
         if (this.activeFreelance.length != 0) {
 
           this.activeFreelance[0].LoC -= this.locPerTick;
-          if (0 >= this.activeFreelance[0].LoC  ) {
+          if (0 >= this.activeFreelance[0].LoC) {
             this.log("completed a freelance project and got paid " + this.activeFreelance[0].price)
             this.money += this.activeFreelance[0].price
             this.activeFreelance.splice(0, 1)
@@ -208,7 +226,7 @@ $(function () {
 
     computed: {
       printTime: function () {
-        return this.printTime();
+        return this.prettyTime();
       }
     }
   });

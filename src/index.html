@@ -12,52 +12,51 @@
 
     <div style="width: 100%; display: block;">
       <div class="container1">
-        <p>Day {{ day }} Hour {{ hour }} </p>
+        <p>{{ printTime }}</p>
         <p>Money : {{money}} $</p>
         <p>Lines Of Code Written: {{ LoC.toFixed(2) }}</p>
       </div>
 
-      <!-- <div class="container1">
-
-      <form action="">
-        <input type="radio" name="lang" value="csharp">C#<br>
-        <input type="radio" name="lang" value="javascript">Javascript<br>
-        <input type="radio" name="lang" value="sql">SQL
-      </form>
-
-    </div> -->
-
       <div class="container1">
-
         <button v-for="item in shop" v-if="!item.bought" v-bind:id="item.id"
           v-on:click="buy">{{ item.name }}({{item.price}} $)</button>
-
-
-
       </div>
 
       <div class="container1">
         <button v-for="item in freelance" v-bind:id="item.id" v-on:click="getJob">{{ item.title }}({{item.price}} $,
-          {{item.LoC}})</button>
-
+          {{item.LoC}} LoC)</button>
       </div>
+
       <div class="container1">
-
-        <p v-for="item in activeFreelance">{{item.title}} - {{item.LoC}} - {{item.deadline}}</p>
-
-
+        <table v-if="activeFreelance.length >=1">
+          <thead>
+            <tr>
+              <th>
+                Job
+              </th>
+              <th>
+                LoC to finish
+              </th>
+              <th>
+                Deadline(Hours)
+              </th>
+            </tr>
+          </thead>
+          <tr v-for="item in activeFreelance">
+            <td>{{item.title}}</td>
+            <td>{{item.LoC}}</td>
+            <td>{{item.deadline}}</td>
+          </tr>
+        </table>
       </div>
-
     </div>
 
-    <button v-on:click="writeCode">Write Code(1 Click {{locPerTick}} Line Of Code)</button>
+    <button v-on:click="writeCode">Write Code(1 Click {{locPerTick.toFixed(2)}} Line Of Code)</button>
 
     <hr>
     <div id="messages">
 
     </div>
-
   </div>
 </body>
-
 </html>
