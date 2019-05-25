@@ -1,26 +1,63 @@
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="main.css" />
-    <script src="vendor/jquery-3.3.1.slim.min.js"></script>
-    <script src="vendor/vue.js"></script>
-    <script src="main.js"></script>
-  </head>
-  <body>
-    <div id="app">
-      <span> Day {{ day }} Hour {{ turn }} </span>
 
-      <table>
-        <tr>
-          <td>Stock</td>
-          <td>{{ stock }}</td>
-        </tr>
-        <tr>
-          <td>Material</td>
-          <td>{{ material }}</td>
-        </tr>
-      </table>
+<head>
+  <link rel="stylesheet" type="text/css" href="main.css" />
+  <script src="vendor/jquery-3.3.1.slim.min.js"></script>
+  <script src="vendor/vue.js"></script>
+  <script src="main.js"></script>
+</head>
 
-      <button v-on:click="make" :disabled="material<1">Make</button>
+<body>
+  <div id="app">
+
+    <div style="width: 100%; display: block;">
+      <div class="container1">
+        <p>Day {{ day }} Hour {{ hour }} </p>
+        <p>Money : {{money}} $</p>
+        <p>Lines Of Code Written: {{ LoC.toFixed(2) }}</p>
+      </div>
+
+      <!-- <div class="container1">
+
+      <form action="">
+        <input type="radio" name="lang" value="csharp">C#<br>
+        <input type="radio" name="lang" value="javascript">Javascript<br>
+        <input type="radio" name="lang" value="sql">SQL
+      </form>
+
+    </div> -->
+
+      <div class="container1">
+
+        <button v-for="item in shop" v-if="!item.bought" v-bind:id="item.id"
+          v-on:click="buy">{{ item.name }}({{item.price}} $)</button>
+
+
+
+      </div>
+
+      <div class="container1">
+        <button v-for="item in freelance" v-bind:id="item.id" v-on:click="getJob">{{ item.title }}({{item.price}} $,
+          {{item.LoC}})</button>
+
+      </div>
+      <div class="container1">
+
+        <p v-for="item in activeFreelance">{{item.title}} - {{item.LoC}} - {{item.deadline}}</p>
+
+
+      </div>
+
     </div>
-  </body>
+
+    <button v-on:click="writeCode">Write Code(1 Click {{locPerTick}} Line Of Code)</button>
+
+    <hr>
+    <div id="messages">
+
+    </div>
+
+  </div>
+</body>
+
 </html>
