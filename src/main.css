@@ -8,13 +8,21 @@ table caption {
   text-align: left;
 }
 
-div {}
+
+.container2 {
+  float: left;
+  width: 49%;
+  height: 150px;
+  border: 1px solid black;
+}
 
 .container1 {
   float: left;
-
   width: 24%;
   height: 150px;
   border: 1px solid black;
+}
 
+body{
+  font-family: 'Courier New', Courier, monospace;
 }

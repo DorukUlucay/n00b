@@ -22,12 +22,15 @@
           v-on:click="buy">{{ item.name }}({{item.price}} $)</button>
       </div>
 
+      <div class="container1"></div>
+      <div class="container1">
+      </div>
       <div class="container1">
         <button v-for="item in freelance" v-bind:id="item.id" v-on:click="getJob">{{ item.title }}({{item.price}} $,
           {{item.LoC}} LoC)</button>
       </div>
 
-      <div class="container1">
+      <div class="container2">
         <table v-if="activeFreelance.length >=1">
           <thead>
             <tr>
@@ -44,11 +47,14 @@
           </thead>
           <tr v-for="item in activeFreelance">
             <td>{{item.title}}</td>
-            <td>{{item.LoC}}</td>
+            <td>{{item.LoC.toFixed(2)}}</td>
             <td>{{item.deadline}}</td>
           </tr>
         </table>
+      
       </div>
+
+      <div class="container1"></div>
     </div>
 
     <button v-on:click="writeCode">Write Code(1 Click {{locPerTick.toFixed(2)}} Line Of Code)</button>

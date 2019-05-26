@@ -175,7 +175,7 @@ $(function () {
 
           this.activeFreelance[0].LoC -= this.locPerTick;
           if (0 >= this.activeFreelance[0].LoC) {
-            this.log("completed a freelance project and got paid " + this.activeFreelance[0].price)
+            this.log("completed a freelance project and got paid " + this.activeFreelance[0].price + "$")
             this.money += this.activeFreelance[0].price
             this.activeFreelance.splice(0, 1)
           }
