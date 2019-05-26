@@ -5,33 +5,35 @@
   <script src="vendor/jquery-3.3.1.slim.min.js"></script>
   <script src="vendor/vue.js"></script>
   <script src="main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 </head>
 
 <body>
   <div id="app">
 
+
     <div style="width: 100%; display: block;">
-      <div class="container1">
-        <p>{{ printTime }}</p>
-        <p>Money : {{money}} $</p>
-        <p>Lines Of Code Written: {{ LoC.toFixed(2) }}</p>
-      </div>
 
-      <div class="container1">
-        <button v-for="item in shop" v-if="!item.bought" v-bind:id="item.id"
-          v-on:click="buy">{{ item.name }}({{item.price}} $)</button>
-      </div>
+      <p>
+        <span style="font-size: 18px;">Lines-Of-Code Written: {{ LoC.toFixed(2) }}</span>
+        <span>Time: {{ printTime }}</span>
+        <span>Money: {{money}} $</span>
+      </p>
 
-      <div class="container1"></div>
-      <div class="container1">
-      </div>
-      <div class="container1">
-        <button v-for="item in freelance" v-bind:id="item.id" v-on:click="getJob">{{ item.title }}({{item.price}} $,
-          {{item.LoC}} LoC)</button>
-      </div>
 
-      <div class="container2">
-        <table v-if="activeFreelance.length >=1">
+      <p>
+        <p><a href="#ex1" rel="modal:open">Browse online store</a></p>
+      </p>
+
+      <p>
+        <p><a href="#ex2" rel="modal:open">Browse freelance board</a></p>
+      </p>
+
+
+
+      <div class="container3">
+        <table v-if="achievements.boughtFreelanceSubscr.done">
           <thead>
             <tr>
               <th>
@@ -45,16 +47,21 @@
               </th>
             </tr>
           </thead>
-          <tr v-for="item in activeFreelance">
-            <td>{{item.title}}</td>
-            <td>{{item.LoC.toFixed(2)}}</td>
-            <td>{{item.deadline}}</td>
-          </tr>
+          <tbody v-if="activeFreelance.length >=1">
+            <tr v-for="item in activeFreelance">
+              <td>{{item.title}}</td>
+              <td>{{item.LoC.toFixed(2)}}</td>
+              <td>{{item.deadline}}</td>
+            </tr>
+          </tbody>
+          <tbody v-if="activeFreelance.length ==0">
+            <tr>
+              <td colspan="3">no active jobs</td>
+            </tr>
         </table>
-      
+
       </div>
 
-      <div class="container1"></div>
     </div>
 
     <button v-on:click="writeCode">Write Code(1 Click {{locPerTick.toFixed(2)}} Line Of Code)</button>
@@ -63,6 +70,52 @@
     <div id="messages">
 
     </div>
+
+
+    <div id="ex1" class="modal">
+      <p v-for="item in shop">
+        <button v-if="!item.bought" v-bind:id="item.id" v-on:click="buy">{{ item.name }}({{item.price}} $)</button>
+      </p>
+
+    </div>
+
+
+    <div id="ex2" class="modal">
+      <table v-if="achievements.boughtFreelanceSubscr.done">
+        <thead>
+          <tr>
+            <th>
+              Job
+            </th>
+            <th>
+              LoC to finish
+            </th>
+            <th>
+              Price
+            </th>
+          </tr>
+        </thead>
+        <tbody v-if="freelance.length >=1">
+          <tr v-for="item in freelance">
+            <td>{{item.title}}</td>
+            <td>{{item.LoC.toFixed(2)}}</td>
+            <td>{{item.price}}</td>
+            <td><button v-bind:id="item.id" v-on:click="getJob">Take Job</button></td>
+          </tr>
+        </tbody>
+        <tbody v-if="freelance.length ==0">
+          <tr>
+            <td colspan="3">no active jobs</td>
+          </tr>
+      </table>
+
+
+    </div>
+
+    <!-- Link to open the modal -->
+
+
   </div>
 </body>
+
 </html>

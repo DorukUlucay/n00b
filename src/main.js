@@ -83,6 +83,18 @@ $(function () {
               bought: false
             })
 
+            //3 is freelance subscription
+
+            game.shop.push({
+              id: 4,
+              name: "coffee machine",
+              price: 45,
+              boost: 0.2,
+              bought: false
+            })
+
+
+
             game.money += 100
             game.achievements.at_100.done = true;
           }

@@ -8,6 +8,12 @@ table caption {
   text-align: left;
 }
 
+.container3 {
+  float: left;
+  width: 99%;
+  height: 150px;
+  border: 1px solid black;
+}
 
 .container2 {
   float: left;
