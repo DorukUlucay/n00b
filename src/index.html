@@ -11,8 +11,6 @@
 
 <body>
   <div id="app">
-
-
     <div style="width: 100%; display: block;">
 
       <p>
@@ -21,18 +19,17 @@
         <span>Money: {{money}} $</span>
       </p>
 
-
       <p>
-        <p><a href="#ex1" rel="modal:open">Browse online store</a></p>
+        <button v-on:click="writeCode">Write Code(1 Click {{locPerTick.toFixed(2)}} Line Of Code)</button>
       </p>
 
       <p>
-        <p><a href="#ex2" rel="modal:open">Browse freelance board</a></p>
+        <a v-if="achievements.at_100.done" href="#ex1" rel="modal:open">Browse online store</a>
+        &nbsp;&nbsp;&nbsp;
+        <a v-if="achievements.boughtFreelanceSubscr.done" href="#ex2" rel="modal:open">Browse freelance board ({{freelance.length}} jobs available now)</a></p>
       </p>
 
-
-
-      <div class="container3">
+      <div class="container3" v-if="achievements.boughtFreelanceSubscr.done">
         <table v-if="achievements.boughtFreelanceSubscr.done">
           <thead>
             <tr>
@@ -64,9 +61,8 @@
 
     </div>
 
-    <button v-on:click="writeCode">Write Code(1 Click {{locPerTick.toFixed(2)}} Line Of Code)</button>
 
-    <hr>
+    <hr />
     <div id="messages">
 
     </div>
