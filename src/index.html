@@ -26,7 +26,8 @@
       <p>
         <a v-if="achievements.at_100.done" href="#ex1" rel="modal:open">Browse online store</a>
         &nbsp;&nbsp;&nbsp;
-        <a v-if="achievements.boughtFreelanceSubscr.done" href="#ex2" rel="modal:open">Browse freelance board ({{freelance.length}} jobs available now)</a></p>
+        <a v-if="achievements.at_200.done" href="#ex2" rel="modal:open">Browse freelance board
+          ({{freelance.length}} jobs available now)</a></p>
       </p>
 
       <div class="container3" v-if="achievements.boughtFreelanceSubscr.done">
@@ -77,6 +78,11 @@
 
 
     <div id="ex2" class="modal">
+
+      <div v-if="!achievements.boughtFreelanceSubscr.done && achievements.at_200.done">
+        <button v-on:click="subscribe">Subscribe for 10$</button>
+      </div>
+
       <table v-if="achievements.boughtFreelanceSubscr.done">
         <thead>
           <tr>

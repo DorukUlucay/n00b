@@ -93,6 +93,13 @@ $(function () {
               bought: false
             })
 
+            game.shop.push({
+              id: 5,
+              name: "27' lcd monitor",
+              price: 200,
+              boost: 0.4,
+              bought: false
+            })
 
 
             game.money += 100
@@ -106,14 +113,6 @@ $(function () {
 
           if (!game.achievements.at_200.done && game.LoC >= 40) {
             game.log("some friend talked about a freelance site. you may want to look at it")
-            game.shop.push({
-              id: 3,
-              name: "subscription to freelance board",
-              price: 10,
-              boost: 0,
-              bought: false
-            })
-
             game.achievements.at_200.done = true;
           }
 
@@ -194,6 +193,9 @@ $(function () {
         }
 
       },
+      subscribe: function () {
+        this.achievements.boughtFreelanceSubscr.done = true;
+      },
       buy: function () {
 
         var elementId = event.toElement.id;
@@ -211,7 +213,7 @@ $(function () {
           this.log("bought a " + item.name)
 
           if (item.id == 3) {
-            game.achievements.boughtFreelanceSubscr.done = true;
+            this.achievements.boughtFreelanceSubscr.done = true;
           }
         }
       },
