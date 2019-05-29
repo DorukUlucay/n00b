@@ -1,6 +1,7 @@
 table {
   border: 1px solid black;
-  margin: 25px;
+  margin: 5px;
+  width: 800px;
 }
 
 table caption {

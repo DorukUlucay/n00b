@@ -1,27 +1,108 @@
-function getRandomInt(min, max) {
-  if (min == undefined || min == null) min = 0;
-  if (max == undefined || max == null) max = 1000000;
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
+var Messages = {
+  GameName: "Code For You Life",
+  welcome:
+    "you just got your cs degree. you may as well write some code while waiting for a job.",
+  family_fund:
+    "since you look interested, your family gives you some money to get some wares",
+  freelance_board:
+    "some friend talked about a freelance site. you may want to look at it",
+  completed_job: "completed a freelance project and got paid {0}$",
+  get_books:
+    "you may need to learn a few things more before taking complex jobs. buy a few books from store."
+};
 
-
-function guid() {
-  function S4() {
-    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+var Items = {
+  mechanic_keyboard: {
+    id: 1,
+    name: "mechanic keyboard",
+    price: 20,
+    boost: 0.1,
+    bought: false
+  },
+  lcd_22: {
+    id: 2,
+    name: "22' lcd monitor",
+    price: 100,
+    boost: 0.3,
+    bought: false
+  },
+  coffee: {
+    id: 4,
+    name: "coffee machine",
+    price: 45,
+    boost: 0.2,
+    bought: false
+  },
+  lcd_27: {
+    id: 5,
+    name: "27' lcd monitor",
+    price: 200,
+    boost: 0.4,
+    bought: false
+  },
+  sql_01: {
+    id: 6,
+    name: "SQL 101",
+    price: 15,
+    bought: false,
+    skills: {
+      SQL: 1
+    }
+  },
+  data_and_alg: {
+    id: 7,
+    name: "Data Structures and Algorithms",
+    price: 20,
+    bought: false,
+    skills: {
+      Programming: 1
+    }
+  },
+  web_development: {
+    id: 8,
+    name: "Web Design & Development",
+    price: 20,
+    bought: false,
+    skills: {
+      WebDevelopment: 1
+    }
+  },
+  csharp: {
+    id: 9,
+    name: "C# & .NET",
+    price: 20,
+    bought: false,
+    skills: {
+      Programming: 1
+    }
   }
+};
 
-  // then to call it, plus stitch in '4' in the third group
-  guidx = (S4() + S4() + "-" + S4() + "-4" + S4().substr(0, 3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
-  return guidx;
-}
+var Jobs = {
+  Script: {
+    title: "write me a script",
+    price: 15,
+    LoC: 25,
+    deadline: 20,
+    id: Guid.NewGuidWithoutDash(),
+    expires: 10
+  },
+  LandingPage: {
+    title: "make me a landing page",
+    price: 25,
+    LoC: 35,
+    deadline: 30,
+    id: Guid.NewGuidWithoutDash(),
+    expires: 15
+  }
+};
 
-
-$(function () {
+$(function() {
   var app = new Vue({
     el: "#app",
 
     data: {
-      title: "Game",
+      title: Messages.GameName,
       turn: 1,
       hour: 1,
       day: 1,
@@ -41,17 +122,18 @@ $(function () {
         },
         at_300: {
           done: false
+        },
+        at_400: {
+          done: false
         }
       },
-      freelance: [
-
-      ],
+      freelance: [],
       activeFreelance: []
     },
 
     methods: {
-      print: function () {},
-      events: function () {
+      print: function() {},
+      events: function() {
         this.turn++;
         this.hour++;
         if (this.turn % 24 == 0) {
@@ -59,187 +141,140 @@ $(function () {
           this.hour = 1;
         }
       },
-      next: function () {
+      next: function() {
         game = this;
-        setTimeout(function () {
+        setTimeout(function() {
           game.events();
 
-
           if (!game.achievements.at_100.done && game.LoC >= 20) {
-            game.log("since you look interested, your family gives you some money to get some wares")
-            game.shop.push({
-              id: 1,
-              name: "mechanic keyboard",
-              price: 20,
-              boost: 0.1,
-              bought: false
-            })
-
-            game.shop.push({
-              id: 2,
-              name: "22' lcd monitor",
-              price: 100,
-              boost: 0.3,
-              bought: false
-            })
-
-            //3 is freelance subscription
-
-            game.shop.push({
-              id: 4,
-              name: "coffee machine",
-              price: 45,
-              boost: 0.2,
-              bought: false
-            })
-
-            game.shop.push({
-              id: 5,
-              name: "27' lcd monitor",
-              price: 200,
-              boost: 0.4,
-              bought: false
-            })
-
-
-            game.money += 100
+            game.log(Messages.family_fund);
+            game.shop.push(Items.mechanic_keyboard);
+            game.shop.push(Items.lcd_22);
+            game.shop.push(Items.lcd_27);
+            game.shop.push(Items.coffee);
+            game.money += 100;
             game.achievements.at_100.done = true;
+          }
+
+          if (!game.achievements.at_400.done && game.LoC >= 80) {
+            game.log(Messages.get_books);
+            game.shop.push(Items.sql_01);
+            game.shop.push(Items.csharp);
+            game.shop.push(Items.web_development);
+            game.shop.push(Items.data_and_alg);
+            game.achievements.at_400.done = true;
           }
 
           if (!game.achievements.at_300.done && game.LoC >= 60) {
             game.achievements.at_300.done = true;
           }
 
-
           if (!game.achievements.at_200.done && game.LoC >= 40) {
-            game.log("some friend talked about a freelance site. you may want to look at it")
+            game.log(Messages.freelance_board);
             game.achievements.at_200.done = true;
-          }
-
-          for (let index = 0; index < game.freelance.length; index++) {
-            const element = game.freelance[index];
-
-            if (element.expires == 0) {
-              game.freelance.splice(index, 1)
-            } else {
-              element.expires--;
-            }
-
           }
 
           if (game.achievements.boughtFreelanceSubscr.done) {
             var randInt = getRandomInt(1, 100);
             if (randInt > 85) {
-              game.freelance.push({
-                title: "write me a script",
-                price: 15,
-                LoC: 25,
-                deadline: 20,
-                id: guid(),
-                expires: 10
-              })
+              game.freelance.push(Jobs.Script);
             }
 
             if (randInt < 85 && randInt > 70 && game.achievements.at_300.done) {
-              game.freelance.push({
-                title: "make me a landing page",
-                price: 25,
-                LoC: 35,
-                deadline: 30,
-                id: guid(),
-                expires: 15
-              })
+              game.freelance.push(Jobs.LandingPage);
             }
           }
 
-
+          //failing projects
           for (let index = 0; index < game.activeFreelance.length; index++) {
             const element = game.activeFreelance[index];
 
             element.deadline--;
             if (element.deadline == 0) {
-              game.activeFreelance.splice(index, 1)
-              game.log("failed a project")
+              game.activeFreelance.splice(index, 1);
+              game.log("failed a project");
             }
-
           }
 
+          //board post expiration
+          for (let index = 0; index < game.freelance.length; index++) {
+            const element = game.freelance[index];
+
+            if (element.expires == 0) {
+              game.freelance.splice(index, 1);
+            } else {
+              element.expires--;
+            }
+          }
 
           game.print();
           game.next();
         }, 1000);
       },
-      writeCode: function () {
+      writeCode: function() {
         this.LoC += this.locPerTick;
-
-        this.descendLoC()
+        this.descendLoC();
       },
-      log: function (message) {
-        $("#messages").prepend("<p>" + this.prettyTime() + ": " + message + "</p>")
+      log: function(message) {
+        $("#messages").prepend(
+          "<p>" + this.prettyTime() + ": " + message + "</p>"
+        );
       },
-      prettyTime: function () {
+      prettyTime: function() {
         return "Day " + this.day + " Hour " + this.hour;
       },
-      descendLoC: function () {
-
+      descendLoC: function() {
         if (this.activeFreelance.length != 0) {
-
           this.activeFreelance[0].LoC -= this.locPerTick;
           if (0 >= this.activeFreelance[0].LoC) {
-            this.log("completed a freelance project and got paid " + this.activeFreelance[0].price + "$")
-            this.money += this.activeFreelance[0].price
-            this.activeFreelance.splice(0, 1)
+            this.log(
+              Messages.completed_job.format(this.activeFreelance[0].price)
+            );
+            this.money += this.activeFreelance[0].price;
+            this.activeFreelance.splice(0, 1);
           }
         }
-
       },
-      subscribe: function () {
+      subscribe: function() {
         this.achievements.boughtFreelanceSubscr.done = true;
       },
-      buy: function () {
-
+      buy: function() {
         var elementId = event.toElement.id;
-        var items = jQuery.grep(this.shop, function (a) {
-          return a.id == elementId
+        var items = jQuery.grep(this.shop, function(a) {
+          return a.id == elementId;
         });
-
-        var item = items[0]
-
+        var item = items[0];
         if (this.money >= item.price) {
-
-          this.locPerTick += item.boost;
-          item.bought = true
-          this.money -= item.price
-          this.log("bought a " + item.name)
-
+          if (item.boost !== undefined) {
+            this.locPerTick += item.boost;
+          }
+          item.bought = true;
+          this.money -= item.price;
+          this.log("bought a " + item.name);
           if (item.id == 3) {
             this.achievements.boughtFreelanceSubscr.done = true;
           }
         }
       },
-      getJob: function () {
-
+      getJob: function() {
         var elementId = event.toElement.id;
-        var items = jQuery.grep(this.freelance, function (a) {
-          return a.id == elementId
+        var items = jQuery.grep(this.freelance, function(a) {
+          return a.id == elementId;
         });
-
-        var item = items[0]
-
-        this.activeFreelance.push(item)
-
+        var item = items[0];
+        this.activeFreelance.push(item);
         item.expires = 0;
       }
     },
 
-    mounted: function () {
+    mounted: function() {
       document.title = this.title;
       this.next();
-      this.log("you just got your cs degree. you may as well write some code while waiting for a job.")
+      this.log(Messages.welcome);
     },
 
     computed: {
-      printTime: function () {
+      printTime: function() {
         return this.prettyTime();
       }
     }
