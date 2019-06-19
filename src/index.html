@@ -28,7 +28,11 @@
         <a v-if="achievements.at_100.done" href="#ex1" rel="modal:open">Browse online store</a>
         &nbsp;&nbsp;&nbsp;
         <a v-if="achievements.at_200.done" href="#ex2" rel="modal:open">Browse freelance board
-          ({{freelance.length}} jobs available now)</a></p>
+          ({{freelance.length}} jobs available now)</a>
+        <a v-if="achievements.at_500.done" href="#ex3" rel="modal:open">Browse careers</a>
+
+        <a v-if="achievements.at_400.done" href="#ex4" rel="modal:open">Bookshelf</a>
+        </p>
       </p>
 
       <div class="container3" v-if="achievements.boughtFreelanceSubscr.done">
@@ -114,6 +118,31 @@
 
 
     </div>
+
+
+    <div id="ex3" class="modal">
+      <p v-for="item in availableFullTimeJobs">
+        <button v-bind:id="item.id" v-on:click="interview">{{ item.name }}</button>
+      </p>
+
+    </div>
+
+
+    <div id="ex4" class="modal">
+      <h4>Your read list</h4>
+      <p v-for="item in books.unread">
+        <button v-bind:id="item.id" v-on:click="read">{{ item.name }}</button>
+      </p>
+      <p v-if="books.unread.length == 0">(none)</p>
+
+      <h4>Books you read</h4>
+      <p v-for="item in books.read">
+          <button disabled v-bind:id="item.id" v-on:click="read">{{ item.name }}</button>
+        </p>
+<p v-if="books.read.length == 0">(none)</p>
+
+    </div>
+
 
     <!-- Link to open the modal -->
 
