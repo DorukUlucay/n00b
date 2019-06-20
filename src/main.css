@@ -33,3 +33,7 @@ table caption {
 body{
   font-family: 'Courier New', Courier, monospace;
 }
+
+.modal{
+  width: 800px;
+}

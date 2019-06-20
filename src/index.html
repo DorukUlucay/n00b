@@ -28,7 +28,10 @@
         <a v-if="achievements.at_100.done" href="#ex1" rel="modal:open">Browse online store</a>
         &nbsp;&nbsp;&nbsp;
         <a v-if="achievements.at_200.done" href="#ex2" rel="modal:open">Browse freelance board
-          ({{freelance.length}} jobs available now)</a></p>
+          ({{freelance.length}} jobs available now)</a>
+        &nbsp;&nbsp;&nbsp;
+        <a v-if="achievements.at_500.done" href="#ex3" rel="modal:open">Browse GotHub.com</a>
+      </p>
       </p>
 
       <div class="container3" v-if="achievements.boughtFreelanceSubscr.done">
@@ -115,6 +118,9 @@
 
     </div>
 
+    <div id="ex3" class="modal">
+      <h4>GotHub.com</h4>
+    </div>
     <!-- Link to open the modal -->
 
 

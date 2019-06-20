@@ -1,14 +1,11 @@
 var Messages = {
   GameName: "Code For You Life",
-  welcome:
-    "you just got your cs degree. you may as well write some code while waiting for a job.",
-  family_fund:
-    "since you look interested, your family gives you some money to get some wares",
-  freelance_board:
-    "some friend talked about a freelance site. you may want to look at it",
+  welcome: "you just got your cs degree. you may as well write some code while waiting for a job.",
+  family_fund: "since you look interested, your family gives you some money to get some wares",
+  freelance_board: "some friend talked about a freelance site. you may want to look at it",
   completed_job: "completed a freelance project and got paid {0}$",
-  get_books:
-    "you may need to learn a few things more before taking complex jobs. buy a few books from store."
+  get_books: "you may need to learn a few things more before taking complex jobs. buy a few books from store.",
+  open_source: "a friend talked about an open source project. it will be more practice and maybe some networking."
 };
 
 var Items = {
@@ -97,7 +94,7 @@ var Jobs = {
   }
 };
 
-$(function() {
+$(function () {
   var app = new Vue({
     el: "#app",
 
@@ -125,6 +122,9 @@ $(function() {
         },
         at_400: {
           done: false
+        },
+        at_500: {
+          done: false
         }
       },
       freelance: [],
@@ -132,8 +132,8 @@ $(function() {
     },
 
     methods: {
-      print: function() {},
-      events: function() {
+      print: function () {},
+      events: function () {
         this.turn++;
         this.hour++;
         if (this.turn % 24 == 0) {
@@ -141,9 +141,9 @@ $(function() {
           this.hour = 1;
         }
       },
-      next: function() {
+      next: function () {
         game = this;
-        setTimeout(function() {
+        setTimeout(function () {
           game.events();
 
           if (!game.achievements.at_100.done && game.LoC >= 20) {
@@ -165,6 +165,11 @@ $(function() {
             game.achievements.at_400.done = true;
           }
 
+          if (!game.achievements.at_500.done && game.LoC >= 100) {
+            game.log(Messages.open_source);
+            game.achievements.at_500.done = true;
+          }
+
           if (!game.achievements.at_300.done && game.LoC >= 60) {
             game.achievements.at_300.done = true;
           }
@@ -183,6 +188,11 @@ $(function() {
             if (randInt < 85 && randInt > 70 && game.achievements.at_300.done) {
               game.freelance.push(Jobs.LandingPage);
             }
+          }
+
+
+          if (game.achievements.at_500.done) {
+            
           }
 
           //failing projects
@@ -211,19 +221,19 @@ $(function() {
           game.next();
         }, 1000);
       },
-      writeCode: function() {
+      writeCode: function () {
         this.LoC += this.locPerTick;
         this.descendLoC();
       },
-      log: function(message) {
+      log: function (message) {
         $("#messages").prepend(
           "<p>" + this.prettyTime() + ": " + message + "</p>"
         );
       },
-      prettyTime: function() {
+      prettyTime: function () {
         return "Day " + this.day + " Hour " + this.hour;
       },
-      descendLoC: function() {
+      descendLoC: function () {
         if (this.activeFreelance.length != 0) {
           this.activeFreelance[0].LoC -= this.locPerTick;
           if (0 >= this.activeFreelance[0].LoC) {
@@ -235,12 +245,12 @@ $(function() {
           }
         }
       },
-      subscribe: function() {
+      subscribe: function () {
         this.achievements.boughtFreelanceSubscr.done = true;
       },
-      buy: function() {
+      buy: function () {
         var elementId = event.toElement.id;
-        var items = jQuery.grep(this.shop, function(a) {
+        var items = jQuery.grep(this.shop, function (a) {
           return a.id == elementId;
         });
         var item = items[0];
@@ -256,9 +266,9 @@ $(function() {
           }
         }
       },
-      getJob: function() {
+      getJob: function () {
         var elementId = event.toElement.id;
-        var items = jQuery.grep(this.freelance, function(a) {
+        var items = jQuery.grep(this.freelance, function (a) {
           return a.id == elementId;
         });
         var item = items[0];
@@ -267,14 +277,14 @@ $(function() {
       }
     },
 
-    mounted: function() {
+    mounted: function () {
       document.title = this.title;
       this.next();
       this.log(Messages.welcome);
     },
 
     computed: {
-      printTime: function() {
+      printTime: function () {
         return this.prettyTime();
       }
     }
