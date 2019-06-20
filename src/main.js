@@ -5,12 +5,14 @@ var Messages = {
   freelance_board: "some friend talked about a freelance site. you may want to look at it",
   completed_job: "completed a freelance project and got paid {0}$",
   get_books: "you may need to learn a few things more before taking complex jobs. buy a few books from store.",
-  open_source: "a friend talked about an open source project. it will be more practice and maybe some networking."
+  open_source: "a friend talked about an open source project. it will be more practice and maybe some networking.",
+  get_fulltime: "a friend found an internship. may be you can put your cv on that career site."
 };
 
 var Items = {
   mechanic_keyboard: {
     id: 1,
+    type: "Hardware",
     name: "mechanic keyboard",
     price: 20,
     boost: 0.1,
@@ -18,6 +20,7 @@ var Items = {
   },
   lcd_22: {
     id: 2,
+    type: "Hardware",
     name: "22' lcd monitor",
     price: 100,
     boost: 0.3,
@@ -25,6 +28,7 @@ var Items = {
   },
   coffee: {
     id: 4,
+    type: "Hardware",
     name: "coffee machine",
     price: 45,
     boost: 0.2,
@@ -32,6 +36,7 @@ var Items = {
   },
   lcd_27: {
     id: 5,
+    type: "Hardware",
     name: "27' lcd monitor",
     price: 200,
     boost: 0.4,
@@ -39,6 +44,7 @@ var Items = {
   },
   sql_01: {
     id: 6,
+    type: "Book",
     name: "SQL 101",
     price: 15,
     bought: false,
@@ -48,6 +54,7 @@ var Items = {
   },
   data_and_alg: {
     id: 7,
+    type: "Book",
     name: "Data Structures and Algorithms",
     price: 20,
     bought: false,
@@ -57,6 +64,7 @@ var Items = {
   },
   web_development: {
     id: 8,
+    type: "Book",
     name: "Web Design & Development",
     price: 20,
     bought: false,
@@ -66,6 +74,7 @@ var Items = {
   },
   csharp: {
     id: 9,
+    type: "Book",
     name: "C# & .NET",
     price: 20,
     bought: false,
@@ -105,7 +114,7 @@ $(function () {
       day: 1,
       LoC: 0,
       money: 0,
-      locPerTick: 1,
+      locPerTick: 10,
       shop: [],
       achievements: {
         at_100: {
@@ -128,7 +137,24 @@ $(function () {
         }
       },
       freelance: [],
-      activeFreelance: []
+      activeFreelance: [],
+      availableFullTimeJobs: [{
+          id: 1,
+          name: "Junior Developer @ Boogle"
+        },
+        {
+          id: 2,
+          name: "Junior Developer @ isMyFaceGood"
+        },
+        {
+          id: 3,
+          name: "Junior Developer @ InstantStuff"
+        }
+      ],
+      books: {
+        read: [],
+        unread: []
+      }
     },
 
     methods: {
@@ -154,6 +180,12 @@ $(function () {
             game.shop.push(Items.coffee);
             game.money += 100;
             game.achievements.at_100.done = true;
+          }
+
+          if (!game.achievements.at_500.done && game.LoC >= 100) {
+            game.log(Messages.get_fulltime);
+
+            game.achievements.at_500.done = true;
           }
 
           if (!game.achievements.at_400.done && game.LoC >= 80) {
@@ -192,7 +224,7 @@ $(function () {
 
 
           if (game.achievements.at_500.done) {
-            
+
           }
 
           //failing projects
@@ -259,6 +291,10 @@ $(function () {
             this.locPerTick += item.boost;
           }
           item.bought = true;
+
+          if (item.type == "Book") {
+            this.books.unread.push(item);
+          }
           this.money -= item.price;
           this.log("bought a " + item.name);
           if (item.id == 3) {
@@ -274,6 +310,13 @@ $(function () {
         var item = items[0];
         this.activeFreelance.push(item);
         item.expires = 0;
+      },
+      interview: function () {
+        //TODO:
+        alert("you totally blowed it. you need to work more");
+      },
+      read: function () {
+
       }
     },
 
