@@ -25,15 +25,20 @@
       </p>
 
       <p>
+        <!-- <h3>Bookmarks</h3> -->
         <a v-if="achievements.at_100.done" href="#ex1" rel="modal:open">Browse online store</a>
         &nbsp;&nbsp;&nbsp;
         <a v-if="achievements.at_200.done" href="#ex2" rel="modal:open">Browse freelance board
           ({{freelance.length}} jobs available now)</a>
         <a v-if="achievements.at_500.done" href="#ex3" rel="modal:open">Browse careers</a>
 
-        <a v-if="achievements.at_400.done" href="#ex4" rel="modal:open">Bookshelf</a>
-        </p>
+        <a v-if="achievements.at_600.done" href="#ex5" rel="modal:open">GotCode.com</a>
       </p>
+
+      <p>
+        <a v-if="achievements.at_400.done" href="#ex4" rel="modal:open">Bookshelf</a>
+      </p>
+
 
       <div class="container3" v-if="achievements.boughtFreelanceSubscr.done">
         <table v-if="achievements.boughtFreelanceSubscr.done">
@@ -102,7 +107,7 @@
             </th>
           </tr>
         </thead>
-        <tbody v-if="freelance.length >=1">
+        <tbody v-if="freelance.length >= 1">
           <tr v-for="item in freelance">
             <td>{{item.title}}</td>
             <td>{{item.LoC.toFixed(2)}}</td>
@@ -117,10 +122,6 @@
       </table>
 
 
-    </div>
-
-    <div id="ex5" class="modal">
-      <h4>GotHub.com</h4>
     </div>
 
     <div id="ex3" class="modal">
@@ -140,14 +141,15 @@
 
       <h4>Books you read</h4>
       <p v-for="item in books.read">
-          <button disabled v-bind:id="item.id" v-on:click="read">{{ item.name }}</button>
-        </p>
-<p v-if="books.read.length == 0">(none)</p>
+        <button disabled v-bind:id="item.id" v-on:click="read">{{ item.name }}</button>
+      </p>
+      <p v-if="books.read.length == 0">(none)</p>
 
     </div>
 
-
-
+    <div id="ex5" class="modal">
+      <h4>GotHub.com</h4>
+    </div>
 
   </div>
 </body>

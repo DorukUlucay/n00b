@@ -134,6 +134,9 @@ $(function () {
         },
         at_500: {
           done: false
+        },
+        at_600: {
+          done: false
         }
       },
       freelance: [],
@@ -197,9 +200,9 @@ $(function () {
             game.achievements.at_400.done = true;
           }
 
-          if (!game.achievements.at_500.done && game.LoC >= 100) {
+          if (!game.achievements.at_600.done && game.LoC >= 100) {
             game.log(Messages.open_source);
-            game.achievements.at_500.done = true;
+            game.achievements.at_600.done = true;
           }
 
           if (!game.achievements.at_300.done && game.LoC >= 60) {
@@ -214,18 +217,14 @@ $(function () {
           if (game.achievements.boughtFreelanceSubscr.done) {
             var randInt = getRandomInt(1, 100);
             if (randInt > 85) {
-              game.freelance.push(Jobs.Script);
+              game.freelance.push(JSON.parse(JSON.stringify(Jobs.Script)));
             }
 
             if (randInt < 85 && randInt > 70 && game.achievements.at_300.done) {
-              game.freelance.push(Jobs.LandingPage);
+              game.freelance.push(JSON.parse(JSON.stringify(Jobs.LandingPage)));
             }
           }
 
-
-          if (game.achievements.at_500.done) {
-
-          }
 
           //failing projects
           for (let index = 0; index < game.activeFreelance.length; index++) {
@@ -248,6 +247,7 @@ $(function () {
               element.expires--;
             }
           }
+
 
           game.print();
           game.next();
