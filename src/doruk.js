@@ -12,6 +12,10 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+function Randomize(args) {
+  return args[Math.floor(Math.random() * args.length)];
+}
+
 var Guid = {
   Random: function() {
     var seconds = new Date().getTime() / 1000;

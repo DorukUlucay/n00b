@@ -1,12 +1,22 @@
 var Messages = {
   GameName: "Code For You Life",
-  welcome: "you just got your cs degree. you may as well write some code while waiting for a job.",
-  family_fund: "since you look interested, your family gives you some money to get some wares",
-  freelance_board: "some friend talked about a freelance site. you may want to look at it",
+  welcome:
+    "you just got your cs degree. you may as well write some code while waiting for a job.",
+  family_fund:
+    "since you look interested, your family gives you some money to get some wares",
+  freelance_board:
+    "some friend talked about a freelance site. you may want to look at it",
   completed_job: "completed a freelance project and got paid {0}$",
-  get_books: "you may need to learn a few things more before taking complex jobs. buy a few books from store.",
-  open_source: "a friend talked about an open source project. it will be more practice and maybe some networking.",
-  get_fulltime: "a friend found an internship. may be you can put your cv on that career site."
+  get_books:
+    "you may need to learn a few things more before taking complex jobs. buy a few books from store.",
+  open_source:
+    "a friend talked about an open source project. it will be more practice and maybe some networking.",
+  get_fulltime:
+    "a friend found an internship. may be you can put your cv on that career site.",
+  not_enough_money: `not enough money. your ${Randomize([
+    "father",
+    "mother"
+  ])} throws in some. but you need to pay back.`
 };
 
 var Items = {
@@ -103,11 +113,27 @@ var Jobs = {
   }
 };
 
-$(function () {
+var Careers = {
+  junior_dev: {
+    id: 1,
+    title: "Junior Developer"
+  },
+  junior_front_dev: {
+    id: 2,
+    title: "Junior Front-End Developer"
+  },
+  junior_back_dev: {
+    id: 3,
+    title: "Junior Back-End Developer"
+  }
+};
+
+$(function() {
   var app = new Vue({
     el: "#app",
 
     data: {
+      boardSubscriptionPrice: 10,
       title: Messages.GameName,
       turn: 1,
       hour: 1,
@@ -141,19 +167,7 @@ $(function () {
       },
       freelance: [],
       activeFreelance: [],
-      availableFullTimeJobs: [{
-          id: 1,
-          name: "Junior Developer @ Boogle"
-        },
-        {
-          id: 2,
-          name: "Junior Developer @ isMyFaceGood"
-        },
-        {
-          id: 3,
-          name: "Junior Developer @ InstantStuff"
-        }
-      ],
+      availableCareers: [],
       books: {
         read: [],
         unread: []
@@ -161,111 +175,40 @@ $(function () {
     },
 
     methods: {
-      print: function () {},
-      events: function () {
+      print: function() {},
+      events: function() {
         this.turn++;
         this.hour++;
         if (this.turn % 24 == 0) {
           this.day++;
           this.hour = 1;
         }
+
+        game.boardPostExpiration();
+        game.failingProjects();
+        game.achievementCheck();
       },
-      next: function () {
+      next: function() {
         game = this;
-        setTimeout(function () {
+        setTimeout(function() {
           game.events();
-
-          if (!game.achievements.at_100.done && game.LoC >= 20) {
-            game.log(Messages.family_fund);
-            game.shop.push(Items.mechanic_keyboard);
-            game.shop.push(Items.lcd_22);
-            game.shop.push(Items.lcd_27);
-            game.shop.push(Items.coffee);
-            game.money += 100;
-            game.achievements.at_100.done = true;
-          }
-
-          if (!game.achievements.at_500.done && game.LoC >= 100) {
-            game.log(Messages.get_fulltime);
-
-            game.achievements.at_500.done = true;
-          }
-
-          if (!game.achievements.at_400.done && game.LoC >= 80) {
-            game.log(Messages.get_books);
-            game.shop.push(Items.sql_01);
-            game.shop.push(Items.csharp);
-            game.shop.push(Items.web_development);
-            game.shop.push(Items.data_and_alg);
-            game.achievements.at_400.done = true;
-          }
-
-          if (!game.achievements.at_600.done && game.LoC >= 100) {
-            game.log(Messages.open_source);
-            game.achievements.at_600.done = true;
-          }
-
-          if (!game.achievements.at_300.done && game.LoC >= 60) {
-            game.achievements.at_300.done = true;
-          }
-
-          if (!game.achievements.at_200.done && game.LoC >= 40) {
-            game.log(Messages.freelance_board);
-            game.achievements.at_200.done = true;
-          }
-
-          if (game.achievements.boughtFreelanceSubscr.done) {
-            var randInt = getRandomInt(1, 100);
-            if (randInt > 85) {
-              game.freelance.push(JSON.parse(JSON.stringify(Jobs.Script)));
-            }
-
-            if (randInt < 85 && randInt > 70 && game.achievements.at_300.done) {
-              game.freelance.push(JSON.parse(JSON.stringify(Jobs.LandingPage)));
-            }
-          }
-
-
-          //failing projects
-          for (let index = 0; index < game.activeFreelance.length; index++) {
-            const element = game.activeFreelance[index];
-
-            element.deadline--;
-            if (element.deadline == 0) {
-              game.activeFreelance.splice(index, 1);
-              game.log("failed a project");
-            }
-          }
-
-          //board post expiration
-          for (let index = 0; index < game.freelance.length; index++) {
-            const element = game.freelance[index];
-
-            if (element.expires == 0) {
-              game.freelance.splice(index, 1);
-            } else {
-              element.expires--;
-            }
-          }
-
-
           game.print();
           game.next();
         }, 1000);
       },
-      writeCode: function () {
+      writeCode: function() {
         this.LoC += this.locPerTick;
         this.descendLoC();
       },
-      log: function (message) {
+      log: function(message) {
         $("#messages").prepend(
           "<p>" + this.prettyTime() + ": " + message + "</p>"
         );
       },
-      prettyTime: function () {
+      prettyTime: function() {
         return "Day " + this.day + " Hour " + this.hour;
       },
-      descendLoC: function () {
+      descendLoC: function() {
         if (this.activeFreelance.length != 0) {
           this.activeFreelance[0].LoC -= this.locPerTick;
           if (0 >= this.activeFreelance[0].LoC) {
@@ -277,12 +220,16 @@ $(function () {
           }
         }
       },
-      subscribe: function () {
+      subscribe: function() {
+        if (this.money < this.boardSubscriptionPrice) {
+          this.log(Messages.not_enough_money);
+        }
         this.achievements.boughtFreelanceSubscr.done = true;
+        this.money -= this.boardSubscriptionPrice;
       },
-      buy: function () {
+      buy: function() {
         var elementId = event.toElement.id;
-        var items = jQuery.grep(this.shop, function (a) {
+        var items = jQuery.grep(this.shop, function(a) {
           return a.id == elementId;
         });
         var item = items[0];
@@ -297,37 +244,108 @@ $(function () {
           }
           this.money -= item.price;
           this.log("bought a " + item.name);
-          if (item.id == 3) {
-            this.achievements.boughtFreelanceSubscr.done = true;
-          }
         }
       },
-      getJob: function () {
+      getJob: function() {
         var elementId = event.toElement.id;
-        var items = jQuery.grep(this.freelance, function (a) {
+        var items = jQuery.grep(this.freelance, function(a) {
           return a.id == elementId;
         });
         var item = items[0];
         this.activeFreelance.push(item);
         item.expires = 0;
       },
-      interview: function () {
+      interview: function() {
         //TODO:
         alert("you totally blowed it. you need to work more");
       },
-      read: function () {
+      read: function() {},
+      boardPostExpiration: function() {
+        for (let index = 0; index < game.freelance.length; index++) {
+          const element = game.freelance[index];
 
+          if (element.expires == 0) {
+            game.freelance.splice(index, 1);
+          } else {
+            element.expires--;
+          }
+        }
+      },
+      failingProjects: function() {
+        for (let index = 0; index < game.activeFreelance.length; index++) {
+          const element = game.activeFreelance[index];
+
+          element.deadline--;
+          if (element.deadline == 0) {
+            game.activeFreelance.splice(index, 1);
+            game.log("failed a project");
+          }
+        }
+      },
+      achievementCheck: function() {
+        if (!game.achievements.at_100.done && game.LoC >= 20) {
+          game.log(Messages.family_fund);
+          game.shop.push(Items.mechanic_keyboard);
+          game.shop.push(Items.lcd_22);
+          game.shop.push(Items.lcd_27);
+          game.shop.push(Items.coffee);
+          game.money += 100;
+          game.achievements.at_100.done = true;
+        }
+
+        if (!game.achievements.at_500.done && game.LoC >= 100) {
+          game.log(Messages.get_fulltime);
+          game.availableCareers.push(Careers.junior_dev);
+          game.availableCareers.push(Careers.junior_front_dev);
+          game.availableCareers.push(Careers.junior_back_dev);
+
+          game.achievements.at_500.done = true;
+        }
+
+        if (!game.achievements.at_400.done && game.LoC >= 80) {
+          game.log(Messages.get_books);
+          game.shop.push(Items.sql_01);
+          game.shop.push(Items.csharp);
+          game.shop.push(Items.web_development);
+          game.shop.push(Items.data_and_alg);
+          game.achievements.at_400.done = true;
+        }
+
+        if (!game.achievements.at_600.done && game.LoC >= 100) {
+          game.log(Messages.open_source);
+          game.achievements.at_600.done = true;
+        }
+
+        if (!game.achievements.at_300.done && game.LoC >= 60) {
+          game.achievements.at_300.done = true;
+        }
+
+        if (!game.achievements.at_200.done && game.LoC >= 40) {
+          game.log(Messages.freelance_board);
+          game.achievements.at_200.done = true;
+        }
+
+        if (game.achievements.boughtFreelanceSubscr.done) {
+          var randInt = getRandomInt(1, 100);
+          if (randInt > 85) {
+            game.freelance.push(JSON.parse(JSON.stringify(Jobs.Script)));
+          }
+
+          if (randInt < 85 && randInt > 70 && game.achievements.at_300.done) {
+            game.freelance.push(JSON.parse(JSON.stringify(Jobs.LandingPage)));
+          }
+        }
       }
     },
 
-    mounted: function () {
+    mounted: function() {
       document.title = this.title;
-      this.next();
+      this.next(); // game loop starts here
       this.log(Messages.welcome);
     },
 
     computed: {
-      printTime: function () {
+      printTime: function() {
         return this.prettyTime();
       }
     }

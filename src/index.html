@@ -1,46 +1,107 @@
 <html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <script src="vendor/jquery-3.3.1.slim.min.js"></script>
+    <script src="vendor/vue.js"></script>
+    <script src="doruk.js"></script>
+    <script src="main.js"></script>
+    <script src="vendor/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="vendor/jquery.modal.min.css" />
+  </head>
 
-<head>
-  <link rel="stylesheet" type="text/css" href="main.css" />
-  <script src="vendor/jquery-3.3.1.slim.min.js"></script>
-  <script src="vendor/vue.js"></script>
-  <script src="doruk.js"></script>
-  <script src="main.js"></script>
-  <script src="vendor/jquery.modal.min.js"></script>
-  <link rel="stylesheet" href="vendor/jquery.modal.min.css" />
-</head>
+  <body>
+    <div id="app">
+      <div style="width: 100%; display: block;">
+        <p>
+          <span style="font-size: 18px;"
+            >Lines-Of-Code Written: {{ LoC.toFixed(2) }}</span
+          >
+          <span>Time: {{ printTime }}</span>
+          <span>Money: {{ money }} $</span>
+        </p>
 
-<body>
-  <div id="app">
-    <div style="width: 100%; display: block;">
+        <p>
+          <button v-on:click="writeCode">
+            Write Code(1 Click {{ locPerTick.toFixed(2) }} Line Of Code)
+          </button>
+        </p>
 
-      <p>
-        <span style="font-size: 18px;">Lines-Of-Code Written: {{ LoC.toFixed(2) }}</span>
-        <span>Time: {{ printTime }}</span>
-        <span>Money: {{money}} $</span>
-      </p>
+        <p>
+          <!-- <h3>Bookmarks</h3> -->
+          <a v-if="achievements.at_100.done" href="#ex1" rel="modal:open"
+            >Browse online store</a
+          >
+          &nbsp;&nbsp;&nbsp;
+          <a v-if="achievements.at_200.done" href="#ex2" rel="modal:open"
+            >Browse freelance board ({{ freelance.length }} jobs available
+            now)</a
+          >
+          <a v-if="achievements.at_500.done" href="#ex3" rel="modal:open"
+            >Browse careers</a
+          >
 
-      <p>
-        <button v-on:click="writeCode">Write Code(1 Click {{locPerTick.toFixed(2)}} Line Of Code)</button>
-      </p>
+          <a v-if="achievements.at_600.done" href="#ex5" rel="modal:open"
+            >GotCode.com</a
+          >
+        </p>
 
-      <p>
-        <!-- <h3>Bookmarks</h3> -->
-        <a v-if="achievements.at_100.done" href="#ex1" rel="modal:open">Browse online store</a>
-        &nbsp;&nbsp;&nbsp;
-        <a v-if="achievements.at_200.done" href="#ex2" rel="modal:open">Browse freelance board
-          ({{freelance.length}} jobs available now)</a>
-        <a v-if="achievements.at_500.done" href="#ex3" rel="modal:open">Browse careers</a>
+        <p>
+          <a v-if="achievements.at_400.done" href="#ex4" rel="modal:open"
+            >Bookshelf</a
+          >
+        </p>
 
-        <a v-if="achievements.at_600.done" href="#ex5" rel="modal:open">GotCode.com</a>
-      </p>
+        <div class="container3" v-if="achievements.boughtFreelanceSubscr.done">
+          <table v-if="achievements.boughtFreelanceSubscr.done">
+            <thead>
+              <tr>
+                <th>
+                  Job
+                </th>
+                <th>
+                  LoC to finish
+                </th>
+                <th>
+                  Deadline(Hours)
+                </th>
+              </tr>
+            </thead>
+            <tbody v-if="activeFreelance.length >=1">
+              <tr v-for="item in activeFreelance">
+                <td>{{ item.title }}</td>
+                <td>{{ item.LoC.toFixed(2) }}</td>
+                <td>{{ item.deadline }}</td>
+              </tr>
+            </tbody>
+            <tbody v-if="activeFreelance.length ==0">
+              <tr>
+                <td colspan="3">no active jobs</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-      <p>
-        <a v-if="achievements.at_400.done" href="#ex4" rel="modal:open">Bookshelf</a>
-      </p>
+      <hr />
+      <div id="messages"></div>
 
+      <div id="ex1" class="modal">
+        <p v-for="item in shop">
+          <button v-if="!item.bought" v-bind:id="item.id" v-on:click="buy">
+            {{ item.name }}({{ item.price }} $)
+          </button>
+        </p>
+      </div>
 
-      <div class="container3" v-if="achievements.boughtFreelanceSubscr.done">
+      <div id="ex2" class="modal">
+        <div
+          v-if="!achievements.boughtFreelanceSubscr.done && achievements.at_200.done"
+        >
+          <button v-on:click="subscribe">
+            Subscribe for {{ boardSubscriptionPrice }}$
+          </button>
+        </div>
+
         <table v-if="achievements.boughtFreelanceSubscr.done">
           <thead>
             <tr>
@@ -51,107 +112,57 @@
                 LoC to finish
               </th>
               <th>
-                Deadline(Hours)
+                Price
               </th>
             </tr>
           </thead>
-          <tbody v-if="activeFreelance.length >=1">
-            <tr v-for="item in activeFreelance">
-              <td>{{item.title}}</td>
-              <td>{{item.LoC.toFixed(2)}}</td>
-              <td>{{item.deadline}}</td>
+          <tbody v-if="freelance.length >= 1">
+            <tr v-for="item in freelance">
+              <td>{{ item.title }}</td>
+              <td>{{ item.LoC.toFixed(2) }}</td>
+              <td>{{ item.price }}</td>
+              <td>
+                <button v-bind:id="item.id" v-on:click="getJob">
+                  Take Job
+                </button>
+              </td>
             </tr>
           </tbody>
-          <tbody v-if="activeFreelance.length ==0">
+          <tbody v-if="freelance.length ==0">
             <tr>
               <td colspan="3">no active jobs</td>
             </tr>
+          </tbody>
         </table>
-
       </div>
 
-    </div>
-
-
-    <hr />
-    <div id="messages">
-
-    </div>
-
-
-    <div id="ex1" class="modal">
-      <p v-for="item in shop">
-        <button v-if="!item.bought" v-bind:id="item.id" v-on:click="buy">{{ item.name }}({{item.price}} $)</button>
-      </p>
-
-    </div>
-
-
-    <div id="ex2" class="modal">
-
-      <div v-if="!achievements.boughtFreelanceSubscr.done && achievements.at_200.done">
-        <button v-on:click="subscribe">Subscribe for 10$</button>
+      <div id="ex3" class="modal">
+        <p v-for="item in availableCareers">
+          <button v-bind:id="item.id" v-on:click="interview">
+            {{ item.title }}
+          </button>
+        </p>
       </div>
 
-      <table v-if="achievements.boughtFreelanceSubscr.done">
-        <thead>
-          <tr>
-            <th>
-              Job
-            </th>
-            <th>
-              LoC to finish
-            </th>
-            <th>
-              Price
-            </th>
-          </tr>
-        </thead>
-        <tbody v-if="freelance.length >= 1">
-          <tr v-for="item in freelance">
-            <td>{{item.title}}</td>
-            <td>{{item.LoC.toFixed(2)}}</td>
-            <td>{{item.price}}</td>
-            <td><button v-bind:id="item.id" v-on:click="getJob">Take Job</button></td>
-          </tr>
-        </tbody>
-        <tbody v-if="freelance.length ==0">
-          <tr>
-            <td colspan="3">no active jobs</td>
-          </tr>
-      </table>
+      <div id="ex4" class="modal">
+        <h4>Your read list</h4>
+        <p v-for="item in books.unread">
+          <button v-bind:id="item.id" v-on:click="read">{{ item.name }}</button>
+        </p>
+        <p v-if="books.unread.length == 0">(none)</p>
 
+        <h4>Books you read</h4>
+        <p v-for="item in books.read">
+          <button disabled v-bind:id="item.id" v-on:click="read">
+            {{ item.name }}
+          </button>
+        </p>
+        <p v-if="books.read.length == 0">(none)</p>
+      </div>
 
+      <div id="ex5" class="modal">
+        <h4>GotHub.com</h4>
+      </div>
     </div>
-
-    <div id="ex3" class="modal">
-      <p v-for="item in availableFullTimeJobs">
-        <button v-bind:id="item.id" v-on:click="interview">{{ item.name }}</button>
-      </p>
-
-    </div>
-
-
-    <div id="ex4" class="modal">
-      <h4>Your read list</h4>
-      <p v-for="item in books.unread">
-        <button v-bind:id="item.id" v-on:click="read">{{ item.name }}</button>
-      </p>
-      <p v-if="books.unread.length == 0">(none)</p>
-
-      <h4>Books you read</h4>
-      <p v-for="item in books.read">
-        <button disabled v-bind:id="item.id" v-on:click="read">{{ item.name }}</button>
-      </p>
-      <p v-if="books.read.length == 0">(none)</p>
-
-    </div>
-
-    <div id="ex5" class="modal">
-      <h4>GotHub.com</h4>
-    </div>
-
-  </div>
-</body>
-
+  </body>
 </html>
