@@ -23,6 +23,11 @@ $(function () {
       books: {
         read: [],
         unread: []
+      },
+      skills: {
+        SQL: 1,
+        Programming: 1,
+        WebDevelopment: 1
       }
     },
 
@@ -141,19 +146,14 @@ $(function () {
           if (Achievements.hasOwnProperty(key)) {
             const element = Achievements[key];
             if (!element.done) {
-              if (element.hasOwnProperty('LoC')) {
-                if (game.LoC >= element.LoC) {
-                  element.done = true;
-                  if (element.hasOwnProperty('Do')) {
-                    element.Do(game);
-                  }
-                }
+              if (element.hasOwnProperty('LoC') && game.LoC >= element.LoC) {
+                element.Do(game);
               }
             }
           }
         }
       },
-      freelanceJobMarket : function(){
+      freelanceJobMarket: function () {
         if (game.achievements.boughtFreelanceSubscr.done) {
           var randInt = getRandomInt(1, 100);
           if (randInt > 85) {

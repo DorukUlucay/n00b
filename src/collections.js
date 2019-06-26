@@ -153,7 +153,8 @@ var Achievements = {
         }
     },
     boughtFreelanceSubscr: {
-        done: false
+        done: false,
+        Do: function (game) { }
     },
     at_300: {
         done: false,
