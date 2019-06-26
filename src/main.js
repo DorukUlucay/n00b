@@ -39,6 +39,7 @@ $(function () {
         game.boardPostExpiration();
         game.failingProjects();
         game.achievementCheck();
+        game.freelanceJobMarket();
       },
       next: function () {
         game = this;
@@ -136,48 +137,23 @@ $(function () {
         }
       },
       achievementCheck: function () {
-        if (!game.achievements.at_100.done && game.LoC >= 20) {
-          game.log(Messages.family_fund);
-          game.shop.push(Items.mechanic_keyboard);
-          game.shop.push(Items.lcd_22);
-          game.shop.push(Items.lcd_27);
-          game.shop.push(Items.coffee);
-          game.money += 100;
-          game.achievements.at_100.done = true;
+        for (const key in Achievements) {
+          if (Achievements.hasOwnProperty(key)) {
+            const element = Achievements[key];
+            if (!element.done) {
+              if (element.hasOwnProperty('LoC')) {
+                if (game.LoC >= element.LoC) {
+                  element.done = true;
+                  if (element.hasOwnProperty('Do')) {
+                    element.Do(game);
+                  }
+                }
+              }
+            }
+          }
         }
-
-        if (!game.achievements.at_500.done && game.LoC >= 100) {
-          game.log(Messages.get_fulltime);
-          game.availableCareers.push(Careers.junior_dev);
-          game.availableCareers.push(Careers.junior_front_dev);
-          game.availableCareers.push(Careers.junior_back_dev);
-
-          game.achievements.at_500.done = true;
-        }
-
-        if (!game.achievements.at_400.done && game.LoC >= 80) {
-          game.log(Messages.get_books);
-          game.shop.push(Items.sql_01);
-          game.shop.push(Items.csharp);
-          game.shop.push(Items.web_development);
-          game.shop.push(Items.data_and_alg);
-          game.achievements.at_400.done = true;
-        }
-
-        if (!game.achievements.at_600.done && game.LoC >= 100) {
-          game.log(Messages.open_source);
-          game.achievements.at_600.done = true;
-        }
-
-        if (!game.achievements.at_300.done && game.LoC >= 60) {
-          game.achievements.at_300.done = true;
-        }
-
-        if (!game.achievements.at_200.done && game.LoC >= 40) {
-          game.log(Messages.freelance_board);
-          game.achievements.at_200.done = true;
-        }
-
+      },
+      freelanceJobMarket : function(){
         if (game.achievements.boughtFreelanceSubscr.done) {
           var randInt = getRandomInt(1, 100);
           if (randInt > 85) {

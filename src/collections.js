@@ -132,24 +132,65 @@ var Careers = {
 
 var Achievements = {
     at_100: {
-        done: false
+        done: false,
+        LoC: 10,
+        Do: function (game) {
+            game.log(Messages.family_fund);
+            game.shop.push(Items.mechanic_keyboard);
+            game.shop.push(Items.lcd_22);
+            game.shop.push(Items.lcd_27);
+            game.shop.push(Items.coffee);
+            game.money += 100;
+            game.achievements.at_100.done = true;
+        }
     },
     at_200: {
-        done: false
+        done: false,
+        LoC: 20,
+        Do: function (game) {
+            game.log(Messages.freelance_board);
+            game.achievements.at_200.done = true;
+        }
     },
     boughtFreelanceSubscr: {
         done: false
     },
     at_300: {
-        done: false
+        done: false,
+        LoC: 30,
+        Do: function (game) {
+            game.achievements.at_300.done = true;
+        }
     },
     at_400: {
-        done: false
+        done: false,
+        LoC: 40,
+        Do: function (game) {
+            game.log(Messages.get_books);
+            game.shop.push(Items.sql_01);
+            game.shop.push(Items.csharp);
+            game.shop.push(Items.web_development);
+            game.shop.push(Items.data_and_alg);
+            game.achievements.at_400.done = true;
+        }
     },
     at_500: {
-        done: false
+        done: false,
+        LoC: 50,
+        Do: function (game) {
+            game.log(Messages.get_fulltime);
+            game.availableCareers.push(Careers.junior_dev);
+            game.availableCareers.push(Careers.junior_front_dev);
+            game.availableCareers.push(Careers.junior_back_dev);
+            game.achievements.at_500.done = true;
+        }
     },
     at_600: {
-        done: false
+        done: false,
+        LoC: 60,
+        Do: function (game) {
+            game.log(Messages.open_source);
+            game.achievements.at_600.done = true;
+        }
     }
 }
