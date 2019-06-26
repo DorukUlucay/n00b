@@ -118,6 +118,7 @@ $(function () {
         alert("you totally blowed it. you need to work more");
       },
       read: function () {
+        
       },
       boardPostExpiration: function () {
         for (let index = 0; index < game.freelance.length; index++) {

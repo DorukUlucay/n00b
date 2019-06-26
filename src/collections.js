@@ -60,6 +60,7 @@ var Items = {
         name: "SQL 101",
         price: 15,
         bought: false,
+        pages:25,
         skills: {
             SQL: 1
         }
@@ -70,6 +71,8 @@ var Items = {
         name: "Data Structures and Algorithms",
         price: 20,
         bought: false,
+        pages:25,
+        unreadPages:0,
         skills: {
             Programming: 1
         }
@@ -80,6 +83,8 @@ var Items = {
         name: "Web Design & Development",
         price: 20,
         bought: false,
+        pages:25,
+        unreadPages:0,
         skills: {
             WebDevelopment: 1
         }
@@ -90,6 +95,8 @@ var Items = {
         name: "C# & .NET",
         price: 20,
         bought: false,
+        pages:25,
+        unreadPages:0,
         skills: {
             Programming: 1
         }

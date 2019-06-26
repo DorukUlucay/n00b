@@ -151,7 +151,7 @@
       <div id="ex4" class="modal">
         <h4>Your read list</h4>
         <p v-for="item in books.unread">
-          <button v-bind:id="item.id" v-on:click="read">{{ item.name }}</button>
+          <button v-bind:id="item.id" v-on:click="read">{{ item.name }} {{item.readPages}}/{{item.totalPages}}</button>
         </p>
         <p v-if="books.unread.length == 0">(none)</p>
 
