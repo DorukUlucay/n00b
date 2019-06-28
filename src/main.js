@@ -118,7 +118,20 @@ $(function () {
         alert("you totally blowed it. you need to work more");
       },
       read: function () {
-        
+        var elementId = event.toElement.id;
+        var items = jQuery.grep(this.books.unread, function (a) {
+          return a.id == elementId;
+        });
+        var book = items[0];
+
+        book.readPages += 1;
+
+        if (book.readPages == book.pages) {
+          var index = this.books.unread.indexOf(book);
+          this.books.read.push(book);
+          this.books.unread.splice(index, 1);
+        }
+
       },
       boardPostExpiration: function () {
         for (let index = 0; index < game.freelance.length; index++) {

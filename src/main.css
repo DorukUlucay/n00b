@@ -1,7 +1,7 @@
 table {
   border: 1px solid black;
   margin: 5px;
-  width: 800px;
+  width: 760px;
 }
 
 table caption {
@@ -35,5 +35,6 @@ body{
 }
 
 .modal{
-  width: 800px;
+  width: 800px !important;
+  max-width:800px !important;
 }
