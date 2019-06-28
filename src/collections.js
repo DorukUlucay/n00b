@@ -109,17 +109,40 @@ var Jobs = {
         title: "write me a script",
         price: 15,
         LoC: 25,
-        deadline: 20,
+        deadline: 48,
         id: Guid.NewGuidWithoutDash(),
-        expires: 10
+        expires: 10,
+        difficulty :1,
+        chances:{
+            min:85,
+            max:100
+        }
     },
     LandingPage: {
         title: "make me a landing page",
         price: 25,
         LoC: 35,
-        deadline: 30,
+        deadline: 36,
         id: Guid.NewGuidWithoutDash(),
-        expires: 15
+        expires: 15,
+        difficulty :2,
+        chances:{
+            min:70,
+            max:85
+        }
+    },
+    PaymentGateway: {
+        title: "integrate payment gateway",
+        price: 45,
+        LoC: 50,
+        deadline: 72,
+        id: Guid.NewGuidWithoutDash(),
+        expires: 15,
+        difficulty :3,
+        chances:{
+            min:60,
+            max:70
+        }
     }
 };
 

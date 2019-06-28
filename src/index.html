@@ -1,4 +1,5 @@
 <html>
+
 <head>
   <link rel="stylesheet" type="text/css" href="main.css" />
 
@@ -17,9 +18,7 @@
   <div id="app">
     <div style="width: 100%; display: block;">
       <p>
-        <span style="font-size: 18px;"
-        >Lines-Of-Code Written: {{ LoC.toFixed(2) }}</span
-        >
+        <span style="font-size: 18px;">Lines-Of-Code Written: {{ LoC.toFixed(2) }}</span>
         <span>Time: {{ printTime }}</span>
         <span>Money: {{ money }} $</span>
       </p>
@@ -32,31 +31,24 @@
 
       <p>
         <!-- <h3>Bookmarks</h3> -->
-        <a v-if="achievements.at_100.done" href="#ex1" rel="modal:open"
-        >Browse online store</a
-      >
-      &nbsp;&nbsp;&nbsp;
-      <a v-if="achievements.at_200.done" href="#ex2" rel="modal:open"
-        >Browse freelance board ({{ freelance.length }} jobs available
-        now)</a
-      >
-      <a v-if="achievements.at_500.done" href="#ex3" rel="modal:open"
-        >Browse careers</a
-      >
+        <a v-if="achievements.at_100.done" href="#ex1" rel="modal:open">Browse online store</a>
+        &nbsp;&nbsp;&nbsp;
+        <a v-if="achievements.at_200.done" href="#ex2" rel="modal:open">Browse freelance board ({{ freelance.length }}
+          jobs available
+          now)</a>
+        <a v-if="achievements.at_500.done" href="#ex3" rel="modal:open">Browse careers</a>
 
-      <a v-if="achievements.at_600.done" href="#ex5" rel="modal:open"
-        >GotCode.com</a
-      >
-    </p>
+        <a v-if="achievements.at_600.done" href="#ex5" rel="modal:open">GotCode.com</a>
+      </p>
 
       <p>
-          <a v-if="achievements.at_400.done" href="#ex4" rel="modal:open"
-            >Bookshelf</a
-          >
-        </p>
+        <a v-if="achievements.at_400.done" href="#ex4" rel="modal:open">Bookshelf</a>
+      </p>
 
-      <div class="container3" v-if="achievements.boughtFreelanceSubscr.done">
-        <table v-if="achievements.boughtFreelanceSubscr.done">
+
+      <button onclick="togle('freelanceJobs')"v-if="achievements.boughtFreelanceSubscr.done">Toggle Freelance Window</button>
+      <div class="container3borderless" id="freelanceJobs" v-if="achievements.boughtFreelanceSubscr.done">
+        <table v-if="achievements.boughtFreelanceSubscr.done" class="freelanceJobs">
           <thead>
             <tr>
               <th>
@@ -86,8 +78,13 @@
       </div>
     </div>
 
-    <hr />
-    <div id="messages"></div>
+
+
+    <div class="footer">
+      <hr>
+      <div id="messages"></div>
+    </div>
+
 
     <div id="ex1" class="modal">
       <p v-for="item in shop">
@@ -98,15 +95,13 @@
     </div>
 
     <div id="ex2" class="modal">
-        <div
-          v-if="!achievements.boughtFreelanceSubscr.done && achievements.at_200.done"
-        >
+      <div v-if="!achievements.boughtFreelanceSubscr.done && achievements.at_200.done">
         <button v-on:click="subscribe">
           Subscribe for {{ boardSubscriptionPrice }}$
         </button>
       </div>
 
-      <table v-if="achievements.boughtFreelanceSubscr.done">
+      <table class="freelanceBoard" v-if="achievements.boughtFreelanceSubscr.done">
         <thead>
           <tr>
             <th>

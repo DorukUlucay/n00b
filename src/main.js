@@ -170,12 +170,20 @@ $(function () {
       freelanceJobMarket: function () {
         if (game.achievements.boughtFreelanceSubscr.done) {
           var randInt = getRandomInt(1, 100);
-          if (randInt > 85) {
-            game.freelance.push(JSON.parse(JSON.stringify(Jobs.Script)));
+
+          var job = null;
+          for (const key in Jobs) {
+            if (Jobs.hasOwnProperty(key)) {
+              const jobx = Jobs[key];
+              if (jobx.chances.min < randInt && jobx.chances.max > randInt) {
+                job = jobx;
+              }
+            }
           }
 
-          if (randInt < 85 && randInt > 70 && game.achievements.at_300.done) {
-            game.freelance.push(JSON.parse(JSON.stringify(Jobs.LandingPage)));
+          if(job!==null)
+          {
+            game.freelance.push(JSON.parse(JSON.stringify(job)));
           }
         }
       }
