@@ -28,7 +28,8 @@ $(function () {
         SQL: 1,
         Programming: 1,
         WebDevelopment: 1
-      }
+      },
+      completedAchievements: []
     },
 
     methods: {
@@ -52,6 +53,7 @@ $(function () {
           game.events();
           game.print();
           game.next();
+          game.saveGame();
         }, 1000);
       },
       writeCode: function () {
@@ -159,8 +161,9 @@ $(function () {
         for (const key in Achievements) {
           if (Achievements.hasOwnProperty(key)) {
             const element = Achievements[key];
-            if (!element.done) {
+            if (!element.done && game.completedAchievements.indexOf(key) == -1) {
               if (element.hasOwnProperty('LoC') && game.LoC >= element.LoC) {
+                game.completedAchievements.push(key);
                 element.Do(game);
               }
             }
@@ -181,16 +184,28 @@ $(function () {
             }
           }
 
-          if(job!==null)
-          {
+          if (job !== null) {
             game.freelance.push(JSON.parse(JSON.stringify(job)));
           }
+        }
+      },
+      saveGame: function () {
+        localStorage.setItem("gameData", JSON.stringify(this.$data));
+      },
+      loadGamex: function () {
+        game = this;
+        var datax = localStorage.getItem("gameData");
+        if (datax != null) {
+          datax = JSON.parse(datax);
+          Object.keys(this.$data).forEach(key => this.$data[key] = null);
+          Object.entries(datax).forEach(entry => Vue.set(this.$data, entry[0], entry[1]));
         }
       }
     },
 
     mounted: function () {
       document.title = this.title;
+      this.loadGamex();
       this.next(); // game loop starts here
       this.log(Messages.welcome);
     },
