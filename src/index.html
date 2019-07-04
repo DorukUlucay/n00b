@@ -33,9 +33,9 @@
         <!-- <h3>Bookmarks</h3> -->
         <a v-if="achievements.at_100.done" href="#ex1" rel="modal:open">Browse online store</a>
         &nbsp;&nbsp;&nbsp;
-        <a v-if="achievements.at_200.done" href="#ex2" rel="modal:open">Browse freelance board ({{ freelance.length }}
+        <!-- <a v-if="achievements.at_200.done" href="#ex2" rel="modal:open">Browse freelance board ({{ freelance.length }}
           jobs available
-          now)</a>
+          now)</a> -->
         <a v-if="achievements.at_500.done" href="#ex3" rel="modal:open">Browse careers</a>
 
         <a v-if="achievements.at_600.done" href="#ex5" rel="modal:open">GotCode.com</a>
@@ -45,46 +45,93 @@
         <a v-if="achievements.at_400.done" href="#ex4" rel="modal:open">Bookshelf</a>
       </p>
 
+      <p>
+        <button onclick="$('#freelanceJobs').toggle()" v-if="achievements.boughtFreelanceSubscr.done">Toggle Freelance
+          Window</button>
+        <div class="container3borderless" id="freelanceJobs" v-if="achievements.boughtFreelanceSubscr.done">
 
-      <button onclick="$('#freelanceJobs').toggle()"v-if="achievements.boughtFreelanceSubscr.done">Toggle Freelance Window</button>
-      <div class="container3borderless" id="freelanceJobs" v-if="achievements.boughtFreelanceSubscr.done">
-        <table v-if="achievements.boughtFreelanceSubscr.done" class="freelanceJobs">
-          <thead>
-            <tr>
-              <th>
-                Job
-              </th>
-              <th>
-                LoC to finish
-              </th>
-              <th>
-                Deadline(Hours)
-              </th>
-            </tr>
-          </thead>
-          <tbody v-if="activeFreelance.length >=1">
-            <tr v-for="item in activeFreelance">
-              <td>{{ item.title }}</td>
-              <td>{{ item.LoC.toFixed(2) }}</td>
-              <td>{{ item.deadline }}</td>
-            </tr>
-          </tbody>
-          <tbody v-if="activeFreelance.length ==0">
-            <tr>
-              <td colspan="3">no active jobs</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+          <div v-if="!achievements.boughtFreelanceSubscr.done && achievements.at_200.done">
+            <button v-on:click="subscribe">
+              Subscribe for {{ boardSubscriptionPrice }}$
+            </button>
+          </div>
+
+          <br>
+
+          <h2>Active Jobs</h2>
+          <table v-if="achievements.boughtFreelanceSubscr.done" class="freelanceJobs">
+            <thead>
+              <tr>
+                <th>
+                  Job
+                </th>
+                <th>
+                  LoC to finish
+                </th>
+                <th>
+                  Deadline(Hours)
+                </th>
+              </tr>
+            </thead>
+            <tbody v-if="activeFreelance.length >=1">
+              <tr v-for="item in activeFreelance">
+                <td>{{ item.title }}</td>
+                <td>{{ item.LoC.toFixed(2) }}</td>
+                <td>{{ item.deadline }}</td>
+              </tr>
+            </tbody>
+            <tbody v-if="activeFreelance.length ==0">
+              <tr>
+                <td colspan="3">no active jobs</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <br>
+
+          <h2>Available Jobs</h2>
+
+          <table class="freelanceBoard" v-if="achievements.boughtFreelanceSubscr.done">
+            <thead>
+              <tr>
+                <th>
+                  Job
+                </th>
+                <th>
+                  LoC to finish
+                </th>
+                <th>
+                  Price
+                </th>
+              </tr>
+            </thead>
+            <tbody v-if="freelance.length >= 1">
+              <tr v-for="item in freelance">
+                <td>{{ item.title }}</td>
+                <td>{{ item.LoC.toFixed(2) }}</td>
+                <td>{{ item.price }}</td>
+                <td>
+                  <button v-bind:id="item.id" v-on:click="getJob">
+                    Take Job
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+            <tbody v-if="freelance.length ==0">
+              <tr>
+                <td colspan="3">no active jobs</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </p>
+
+      <p>
+        <div class="container3borderless messages" id="messages"></div>
+      </p>
+
     </div>
-
-
-
-    <div class="footer">
-      <hr>
-      <div id="messages"></div>
-    </div>
-
 
     <div id="ex1" class="modal">
       <p v-for="item in shop">
@@ -96,44 +143,7 @@
     </div>
 
     <div id="ex2" class="modal">
-      <div v-if="!achievements.boughtFreelanceSubscr.done && achievements.at_200.done">
-        <button v-on:click="subscribe">
-          Subscribe for {{ boardSubscriptionPrice }}$
-        </button>
-      </div>
 
-      <table class="freelanceBoard" v-if="achievements.boughtFreelanceSubscr.done">
-        <thead>
-          <tr>
-            <th>
-              Job
-            </th>
-            <th>
-              LoC to finish
-            </th>
-            <th>
-              Price
-            </th>
-          </tr>
-        </thead>
-        <tbody v-if="freelance.length >= 1">
-          <tr v-for="item in freelance">
-            <td>{{ item.title }}</td>
-            <td>{{ item.LoC.toFixed(2) }}</td>
-            <td>{{ item.price }}</td>
-            <td>
-              <button v-bind:id="item.id" v-on:click="getJob">
-                Take Job
-              </button>
-            </td>
-          </tr>
-        </tbody>
-        <tbody v-if="freelance.length ==0">
-          <tr>
-            <td colspan="3">no active jobs</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
 
     <div id="ex3" class="modal">
