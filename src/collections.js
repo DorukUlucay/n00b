@@ -1,7 +1,7 @@
 export { Messages, Items, Jobs, Careers, Achievements }
 
 var Messages = {
-    GameName: "Code For You Life",
+    GameName: "Code Clicker V 0.1",
     welcome:
         "you just got your cs degree. you may as well write some code while waiting for a job.",
     family_fund:
@@ -101,6 +101,15 @@ var Items = {
         skills: {
             Programming: 1
         }
+    },
+    xfactor :{
+        id: 10,
+        type: "Software",
+        name: "XFactor License",
+        description: "Code better, code faster",
+        price: 500,
+        boost: 1,
+        bought: false
     }
 };
 
@@ -224,5 +233,14 @@ var Achievements = {
             game.log(Messages.open_source);
             game.achievements.at_600.done = true;
         }
+    },
+    at_700: {
+        done: false,
+        LoC: 70,
+        Do: function (game) {
+            game.shop.push(Items.xfactor);            
+            game.achievements.at_700.done = true;
+        }
     }
+
 }

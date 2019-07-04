@@ -14,7 +14,7 @@ $(function () {
       day: 1,
       LoC: 0,
       money: 0,
-      locPerTick: 10,
+      locPerTick: 1,
       shop: [],
       achievements: Achievements,
       freelance: [],
