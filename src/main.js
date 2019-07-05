@@ -1,4 +1,4 @@
-import { Messages, Items, Jobs, Careers, Achievements } from '/collections.js'
+import { Messages, Items, Jobs, Careers, Achievements, Assignments } from '/collections.js'
 
 var game = null;
 
@@ -14,7 +14,7 @@ $(function () {
       day: 1,
       LoC: 0,
       money: 0,
-      locPerTick: 1,
+      locPerTick: 1000,
       shop: [],
       achievements: Achievements,
       freelance: [],
@@ -29,7 +29,9 @@ $(function () {
         Programming: 1,
         WebDevelopment: 1
       },
-      completedAchievements: []
+      completedAchievements: [],
+      career: null,
+      careerAsignments: []
     },
 
     methods: {
@@ -46,6 +48,8 @@ $(function () {
         game.failingProjects();
         game.achievementCheck();
         game.freelanceJobMarket();
+        game.sendCareerAsignments();
+        game.failingAsignments();
       },
       next: function () {
         game = this;
@@ -69,7 +73,15 @@ $(function () {
         return "Day " + this.day + " Hour " + this.hour;
       },
       descendLoC: function () {
-        if (this.activeFreelance.length != 0) {
+
+        if (this.careerAsignments.length != 0) {
+          this.careerAsignments[0].LoC -= this.locPerTick;
+          if (0 >= this.careerAsignments[0].LoC) {
+            this.log(Messages.completedAssignment);
+            this.careerAsignments.splice(0, 1);
+          }
+        }
+        else if (this.activeFreelance.length != 0) {
           this.activeFreelance[0].LoC -= this.locPerTick;
           if (0 >= this.activeFreelance[0].LoC) {
             this.log(
@@ -113,11 +125,23 @@ $(function () {
         });
         var item = items[0];
         this.activeFreelance.push(item);
-        item.expires = 0;
+
+        this.freelance.splice(this.freelance.indexOf(item), 1);
       },
       interview: function () {
-        //TODO:
-        alert("you totally blowed it. you need to work more");
+        var elementId = event.toElement.id;
+        var items = jQuery.grep(this.availableCareers, function (a) {
+          return a.id == elementId;
+        });
+        var career = items[0];
+
+        if (this.LoC >= career.LoC) {
+          this.career = career;
+          this.log("you're hired!")
+        }
+        else {
+          this.log("you're turned down. you need to write more code.")
+        }
       },
       read: function () {
         var elementId = event.toElement.id;
@@ -200,14 +224,46 @@ $(function () {
           Object.keys(this.$data).forEach(key => this.$data[key] = null);
           Object.entries(datax).forEach(entry => Vue.set(this.$data, entry[0], entry[1]));
         }
-      }
+        else {
+          this.log(Messages.welcome);
+        }
+      },
+      sendCareerAsignments: function () {
+        if (game.career != null) {
+          var randInt = getRandomInt(1, 100);
+
+          var job = null;
+          for (const key in Assignments) {
+            if (Assignments.hasOwnProperty(key)) {
+              const jobx = Assignments[key];
+              if (jobx.chances.min < randInt && jobx.chances.max > randInt) {
+                job = jobx;
+              }
+            }
+          }
+
+          if (job !== null) {
+            game.careerAsignments.push(JSON.parse(JSON.stringify(job)));
+          }
+        }
+      },
+      failingAsignments: function () {
+        for (let index = 0; index < game.careerAsignments.length; index++) {
+          const element = game.careerAsignments[index];
+
+          element.deadline--;
+          if (element.deadline == 0) {
+            game.careerAsignments.splice(index, 1);
+            game.log("failed an assignment. watch out.");
+          }
+        }
+      },
     },
 
     mounted: function () {
       document.title = this.title;
       this.loadGamex();
       this.next(); // game loop starts here
-      this.log(Messages.welcome);
     },
 
     computed: {

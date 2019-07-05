@@ -1,4 +1,4 @@
-export { Messages, Items, Jobs, Careers, Achievements }
+export { Messages, Items, Jobs, Careers, Achievements, Assignments }
 
 var Messages = {
     GameName: "Code Clicker V 0.1",
@@ -18,7 +18,8 @@ var Messages = {
     not_enough_money: `not enough money. your ${Randomize([
         "father",
         "mother"
-    ])} throws in some. but you need to pay back.`
+    ])} throws in some. but you need to pay back.`,
+    completedAssignment : `you completed an assignment`
 };
 
 var Items = {
@@ -102,7 +103,7 @@ var Items = {
             Programming: 1
         }
     },
-    xfactor :{
+    xfactor: {
         id: 10,
         type: "Software",
         name: "XFactor License",
@@ -121,10 +122,10 @@ var Jobs = {
         deadline: 48,
         id: Guid.NewGuidWithoutDash(),
         expires: 10,
-        difficulty :1,
-        chances:{
-            min:85,
-            max:100
+        difficulty: 1,
+        chances: {
+            min: 85,
+            max: 100
         }
     },
     LandingPage: {
@@ -134,10 +135,10 @@ var Jobs = {
         deadline: 36,
         id: Guid.NewGuidWithoutDash(),
         expires: 15,
-        difficulty :2,
-        chances:{
-            min:70,
-            max:85
+        difficulty: 2,
+        chances: {
+            min: 70,
+            max: 85
         }
     },
     PaymentGateway: {
@@ -147,10 +148,10 @@ var Jobs = {
         deadline: 72,
         id: Guid.NewGuidWithoutDash(),
         expires: 15,
-        difficulty :3,
-        chances:{
-            min:60,
-            max:70
+        difficulty: 3,
+        chances: {
+            min: 60,
+            max: 70
         }
     }
 };
@@ -158,15 +159,8 @@ var Jobs = {
 var Careers = {
     junior_dev: {
         id: 1,
-        title: "Junior Developer"
-    },
-    junior_front_dev: {
-        id: 2,
-        title: "Junior Front-End Developer"
-    },
-    junior_back_dev: {
-        id: 3,
-        title: "Junior Back-End Developer"
+        title: "Junior Developer",
+        LoC: 1000
     }
 };
 
@@ -221,8 +215,6 @@ var Achievements = {
         Do: function (game) {
             game.log(Messages.get_fulltime);
             game.availableCareers.push(Careers.junior_dev);
-            game.availableCareers.push(Careers.junior_front_dev);
-            game.availableCareers.push(Careers.junior_back_dev);
             game.achievements.at_500.done = true;
         }
     },
@@ -238,9 +230,32 @@ var Achievements = {
         done: false,
         LoC: 70,
         Do: function (game) {
-            game.shop.push(Items.xfactor);            
+            game.shop.push(Items.xfactor);
             game.achievements.at_700.done = true;
         }
     }
 
 }
+
+var Assignments  = {
+    FixTheBug: {
+        title: "fix the bug",
+        LoC: 25,
+        deadline: 24,
+        id: Guid.NewGuidWithoutDash(),
+        chances: {
+            min: 85,
+            max: 100
+        }
+    },
+    UnitTest: {
+        title: "Write Unit Test",
+        LoC: 25,
+        deadline: 24,
+        id: Guid.NewGuidWithoutDash(),
+        chances: {
+            min: 65,
+            max: 85
+        }
+    },
+};

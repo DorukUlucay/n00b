@@ -12,7 +12,7 @@ table.freelanceBoard caption {
 table.freelanceJobs {
   border: 1px solid black;
   margin: 5px;
-  width: 400px;
+  width: 100%;
 }
 
 table.freelanceJobs caption {
@@ -48,7 +48,10 @@ table.freelanceJobs caption {
 
 body {
   font-family: "Courier New", Courier, monospace;
-  min-height:100%; padding:15px; margin:15px; position:relative;
+  min-height: 100%;
+  padding: 15px;
+  margin: 15px;
+  position: relative;
 }
 
 .modal {
@@ -56,23 +59,31 @@ body {
   max-width: 800px !important;
 }
 
-
-.messages{
+.messages {
   border: 1px solid black;
-width: 100%;
-
+  width: 100%;
 }
 
+html {
+  height: 100%;
+}
 
-html{ height:100%; }
+body::after {
+  content: "";
+  display: block;
+  height: 100px;
+}
 
-body::after{ content:''; display:block; height:100px; }
-
-.footer{ 
+.footer {
   /* position:absolute; 
   bottom:0; 
   width:100%; 
   height:200px;  */
 }
 
-
+.container {
+  margin: 5px;
+  background-color: lightgray;
+  /* height: 150px; */
+  overflow-y: scroll;
+}
