@@ -53,6 +53,11 @@
 
       <div class=" container3borderless container" v-if="career != null">
         <table>
+          <thead>
+            <th style="width:200px;">Description</th>
+            <th style="width:50px;">LoC</th>
+            <th style="width:50px;">Deadline(Hours)</th>
+          </thead>
           <tbody v-if="careerAsignments.length > 0">
             <tr v-for="item in careerAsignments">
               <td>{{ item.title }}</td>
@@ -141,7 +146,7 @@
 
       </div>
 
-        <div class=" container container3borderless messages" id="messages"></div>
+      <div class=" container container3borderless messages" id="messages"></div>
 
     </div>
 

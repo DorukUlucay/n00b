@@ -1,4 +1,11 @@
-import { Messages, Items, Jobs, Careers, Achievements, Assignments } from '/collections.js'
+import {
+  Messages,
+  Items,
+  Jobs,
+  Careers,
+  Achievements,
+  Assignments
+} from '/collections.js'
 
 var game = null;
 
@@ -35,7 +42,7 @@ $(function () {
     },
 
     methods: {
-      print: function () { },
+      print: function () {},
       events: function () {
         this.turn++;
         this.hour++;
@@ -80,8 +87,7 @@ $(function () {
             this.log(Messages.completedAssignment);
             this.careerAsignments.splice(0, 1);
           }
-        }
-        else if (this.activeFreelance.length != 0) {
+        } else if (this.activeFreelance.length != 0) {
           this.activeFreelance[0].LoC -= this.locPerTick;
           if (0 >= this.activeFreelance[0].LoC) {
             this.log(
@@ -138,8 +144,7 @@ $(function () {
         if (this.LoC >= career.LoC) {
           this.career = career;
           this.log("you're hired!")
-        }
-        else {
+        } else {
           this.log("you're turned down. you need to write more code.")
         }
       },
@@ -223,13 +228,12 @@ $(function () {
           datax = JSON.parse(datax);
           Object.keys(this.$data).forEach(key => this.$data[key] = null);
           Object.entries(datax).forEach(entry => Vue.set(this.$data, entry[0], entry[1]));
-        }
-        else {
+        } else {
           this.log(Messages.welcome);
         }
       },
       sendCareerAsignments: function () {
-        if (game.career != null) {
+        if ((this.hour == 8 || this.hour == 13 )&& game.career != null) {
           var randInt = getRandomInt(1, 100);
 
           var job = null;

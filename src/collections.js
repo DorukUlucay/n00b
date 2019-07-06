@@ -244,7 +244,7 @@ var Assignments  = {
         deadline: 24,
         id: Guid.NewGuidWithoutDash(),
         chances: {
-            min: 85,
+            min: 50,
             max: 100
         }
     },
@@ -254,8 +254,8 @@ var Assignments  = {
         deadline: 24,
         id: Guid.NewGuidWithoutDash(),
         chances: {
-            min: 65,
-            max: 85
+            min: 1,
+            max: 50
         }
     },
 };
