@@ -28,7 +28,7 @@ var Items = {
         type: "Hardware",
         name: "mechanic keyboard",
         price: 20,
-        boost: 0.1,
+        boost: 0.5,
         bought: false
     },
     lcd_22: {
@@ -36,7 +36,7 @@ var Items = {
         type: "Hardware",
         name: "22' lcd monitor",
         price: 100,
-        boost: 0.3,
+        boost: 1,
         bought: false
     },
     coffee: {
@@ -44,7 +44,7 @@ var Items = {
         type: "Hardware",
         name: "coffee machine",
         price: 45,
-        boost: 0.2,
+        boost: 0.5,
         bought: false
     },
     lcd_27: {
@@ -52,7 +52,7 @@ var Items = {
         type: "Hardware",
         name: "27' lcd monitor",
         price: 200,
-        boost: 0.4,
+        boost: 1.5,
         bought: false
     },
     sql_01: {
@@ -108,8 +108,17 @@ var Items = {
         type: "Software",
         name: "XFactor License",
         description: "Code better, code faster",
-        price: 500,
-        boost: 1,
+        price: 300,
+        boost: 5,
+        bought: false
+    },
+    code_studio:{
+        id: 11,
+        type: "Software",
+        name: "ZCode Studio",
+        description: "IDE",
+        price: 400,
+        boost: 6,
         bought: false
     }
 };
@@ -231,6 +240,7 @@ var Achievements = {
         LoC: 70,
         Do: function (game) {
             game.shop.push(Items.xfactor);
+            game.shop.push(Item.code_studio);
             game.achievements.at_700.done = true;
         }
     }
