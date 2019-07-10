@@ -1,0 +1,28 @@
+{
+  "name": "code-clicker",
+  "description": "A clicker game where you are a programmer",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "webpack",
+    "vscode:prepublish": "webpack --mode production",
+    "compile": "webpack --mode none",
+    "watch": "webpack --mode none --watch",
+    "test-compile": "tsc -p ./"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DorukUlucay/n00b.git"
+  },
+  "author": "DorukUlucay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DorukUlucay/n00b/issues"
+  },
+  "homepage": "https://github.com/DorukUlucay/n00b#readme"
+}

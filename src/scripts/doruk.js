@@ -6,6 +6,13 @@ sources:
 https://stackoverflow.com/a/4673436/1397858
 */
 
+export {
+  getRandomInt,
+  Guid,
+  Randomize
+}
+
+
 function getRandomInt(min, max) {
   if (min == undefined || min == null) min = 0;
   if (max == undefined || max == null) max = 1000000;
@@ -17,11 +24,11 @@ function Randomize(args) {
 }
 
 var Guid = {
-  Random: function() {
+  Random: function () {
     var seconds = new Date().getTime() / 1000;
     return (((1 + Math.random()) * seconds) | 0).toString(16).substring(1);
   },
-  NewGuid: function() {
+  NewGuid: function () {
     var s1 =
       (Guid.Random() + Guid.Random()).slice(0, 8) +
       "-" +
@@ -32,13 +39,13 @@ var Guid = {
     var guid = (s1 + s2 + "-" + s3 + "-" + s4).toLowerCase();
     return guid;
   },
-  NewGuidWithoutDash: function() {
+  NewGuidWithoutDash: function () {
     var guid = Guid.NewGuid();
     return guid.split("-").join("");
   }
 };
 
-String.prototype.contains = function(substr) {
+String.prototype.contains = function (substr) {
   return contains(this, substr);
 };
 
@@ -50,9 +57,9 @@ function contains(str, substr) {
   }
 }
 
-String.prototype.format = function() {
+String.prototype.format = function () {
   var args = arguments;
-  return this.replace(/{(\d+)}/g, function(match, number) {
+  return this.replace(/{(\d+)}/g, function (match, number) {
     return typeof args[number] != "undefined" ? args[number] : match;
   });
 };

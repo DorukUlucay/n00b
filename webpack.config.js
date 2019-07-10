@@ -1,43 +1,28 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+
 module.exports = {
-  mode: 'development',
-  entry: path.join(__dirname, 'src', 'index'),
-  watch: true,
-  output: {
-    path: __dirname + 'dist',
-    publicPath: '/dist/',
-    filename: "bundle.js",
-    chunkFilename: '[name].js'
+  entry: {
+    mainjs: path.resolve(__dirname, "src/scripts/main.js"),
+    maincss: path.resolve(__dirname, "src/style/main.css"),
   },
-  module: {
-    rules: [{
-      test: /.jsx?$/,
-      include: [
-        path.resolve(__dirname, 'src')
-      ],
-      exclude: [
-        path.resolve(__dirname, 'node_modules')
-      ],
-      loader: 'babel-loader',
-      query: {
-        presets: [
-          ["@babel/env", {
-            "targets": {
-              "browsers": "last 2 chrome versions"
-            }
-          }]
-        ]
-      }
-    }]
-  },
-  resolve: {
-    extensions: ['.json', '.js', '.jsx']
-  },
-  devtool: 'source-map',
-  devServer: {
-    contentBase: path.join('/dist/'),
-    inline: true,
-    host: '0.0.0.0',
-    port: 8080,
-  }
-};
+
+  //   output: {
+  //     path: path.resolve(__dirname, "dist"), // string
+  //     filename: "bundle.js", // string
+  //     publicPath: "/assets/", // string
+  //     library: "MyLibrary", // string,
+  //     libraryTarget: "umd"
+  //   },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      inject: true,
+      chunks: ['mainjs', 'maincss'],
+      filename: 'index.html'
+    })
+  ]
+
+}

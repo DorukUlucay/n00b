@@ -1,3 +1,10 @@
+
+import {
+  Guid,
+  getRandomInt,
+  Randomize
+} from './doruk.js'
+
 import {
   Messages,
   Items,
@@ -5,7 +12,8 @@ import {
   Careers,
   Achievements,
   Assignments
-} from '/collections.js'
+} from './collections.js'
+
 
 var game = null;
 
@@ -233,7 +241,7 @@ $(function () {
         }
       },
       sendCareerAsignments: function () {
-        if ((this.hour == 8 || this.hour == 13 )&& game.career != null) {
+        if ((this.hour == 8 || this.hour == 13) && game.career != null) {
           var randInt = getRandomInt(1, 100);
 
           var job = null;

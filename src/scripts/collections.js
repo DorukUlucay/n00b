@@ -1,3 +1,9 @@
+
+import {
+    Randomize,
+    Guid
+  } from './doruk.js'
+
 export { Messages, Items, Jobs, Careers, Achievements, Assignments }
 
 var Messages = {
