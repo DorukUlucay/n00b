@@ -126,6 +126,24 @@ var Items = {
         price: 400,
         boost: 6,
         bought: false
+    },
+    geralt_figure:{
+        id: 12,
+        type: "Decorative",
+        name: "Geralt Of Rivia Figurine",
+        description: null,
+        price: 100,
+        boost: 0.1,
+        bought: false
+    },
+    vader_bust:{
+        id: 13,
+        type: "Decorative",
+        name: "Darth Vader Bust",
+        description: null,
+        price: 250,
+        boost: 0.3,
+        bought: false
     }
 };
 
@@ -181,6 +199,8 @@ var Careers = {
 
 var Achievements = {
     at_100: {
+        Title: "100 Lines Of Code",
+        Description:"Written 100 lines of code",
         done: false,
         LoC: 10,
         Do: function (game) {
@@ -194,6 +214,8 @@ var Achievements = {
         }
     },
     at_200: {
+        Title: "200 Lines Of Code",
+        Description:"Written 200 lines of code",
         done: false,
         LoC: 20,
         Do: function (game) {
@@ -202,10 +224,14 @@ var Achievements = {
         }
     },
     boughtFreelanceSubscr: {
+        Title: "Freelancer",
+        Description:"Subscribed to freelance board",
         done: false,
         Do: function (game) { }
     },
     at_300: {
+        Title: "300 Lines Of Code",
+        Description:"Written 300 lines of code",
         done: false,
         LoC: 30,
         Do: function (game) {
@@ -213,6 +239,8 @@ var Achievements = {
         }
     },
     at_400: {
+        Title: "400 Lines Of Code",
+        Description:"Written 400 lines of code",
         done: false,
         LoC: 40,
         Do: function (game) {
@@ -225,6 +253,8 @@ var Achievements = {
         }
     },
     at_500: {
+        Title: "500 Lines Of Code",
+        Description:"Written 500 lines of code",
         done: false,
         LoC: 50,
         Do: function (game) {
@@ -234,6 +264,8 @@ var Achievements = {
         }
     },
     at_600: {
+        Title: "600 Lines Of Code",
+        Description:"Written 600 lines of code",
         done: false,
         LoC: 60,
         Do: function (game) {
@@ -242,15 +274,18 @@ var Achievements = {
         }
     },
     at_700: {
+        Title: "700 Lines Of Code",
+        Description:"Written 700 lines of code",
         done: false,
         LoC: 70,
         Do: function (game) {
             game.shop.push(Items.xfactor);
-            game.shop.push(Item.code_studio);
+            game.shop.push(Items.code_studio);
+            game.shop.push(Items.geralt_figure);
+            game.shop.push(Items.vader_bust);
             game.achievements.at_700.done = true;
         }
     }
-
 }
 
 var Assignments  = {

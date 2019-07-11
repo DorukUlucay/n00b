@@ -1,4 +1,3 @@
-
 import {
   Guid,
   getRandomInt,
@@ -22,6 +21,7 @@ $(function () {
     el: "#app",
 
     data: {
+      stats: {},
       boardSubscriptionPrice: 10,
       title: Messages.GameName,
       turn: 1,
@@ -202,6 +202,7 @@ $(function () {
               if (element.hasOwnProperty('LoC') && game.LoC >= element.LoC) {
                 game.completedAchievements.push(key);
                 element.Do(game);
+                game.log("Achievement : "+element.Title);
               }
             }
           }
