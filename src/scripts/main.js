@@ -35,6 +35,7 @@ $(function () {
       freelance: [],
       activeFreelance: [],
       availableCareers: [],
+      workedDays: 0,
       books: {
         read: [],
         unread: []
@@ -57,6 +58,10 @@ $(function () {
         if (this.turn % 24 == 0) {
           this.day++;
           this.hour = 1;
+          if (this.career != null) {
+            this.workedDays++;
+          }
+          this.salary();
         }
 
         game.boardPostExpiration();
@@ -151,7 +156,7 @@ $(function () {
 
         if (this.LoC >= career.LoC) {
           this.career = career;
-          this.log("you're hired!")
+          this.log("you're hired! everyday, you'll be assigned with tasks. complete them before they're due.")
         } else {
           this.log("you're turned down. you need to write more code.")
         }
@@ -202,7 +207,7 @@ $(function () {
               if (element.hasOwnProperty('LoC') && game.LoC >= element.LoC) {
                 game.completedAchievements.push(key);
                 element.Do(game);
-                game.log("Achievement : "+element.Title);
+                game.log("Achievement : " + element.Title);
               }
             }
           }
@@ -271,7 +276,16 @@ $(function () {
           }
         }
       },
+      salary: function () {
+        if (this.career != null) {
+          if (this.workedDays>29 && this.workedDays % 30 == 0) {
+            this.money += this.career.annualSalary / 12;
+            this.log("you receive months paycheck");
+          }
+        }
+      },
     },
+
 
     mounted: function () {
       document.title = this.title;

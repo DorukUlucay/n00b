@@ -165,7 +165,7 @@
       <h3>Under construction</h3>
       <p v-for="item in availableCareers">
         <button v-bind:id="item.id" v-on:click="interview">
-          {{ item.title }}
+          {{ item.title }} - {{ item.annualSalary }}$ / year
         </button>
       </p>
     </div>

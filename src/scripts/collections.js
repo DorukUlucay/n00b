@@ -193,7 +193,8 @@ var Careers = {
     junior_dev: {
         id: 1,
         title: "Junior Developer",
-        LoC: 1000
+        LoC: 1000,
+        annualSalary :  15000
     }
 };
 
@@ -202,7 +203,7 @@ var Achievements = {
         Title: "100 Lines Of Code",
         Description:"Written 100 lines of code",
         done: false,
-        LoC: 10,
+        LoC: 100,
         Do: function (game) {
             game.log(Messages.family_fund);
             game.shop.push(Items.mechanic_keyboard);
@@ -217,7 +218,7 @@ var Achievements = {
         Title: "200 Lines Of Code",
         Description:"Written 200 lines of code",
         done: false,
-        LoC: 20,
+        LoC: 200,
         Do: function (game) {
             game.log(Messages.freelance_board);
             game.achievements.at_200.done = true;
@@ -233,7 +234,7 @@ var Achievements = {
         Title: "300 Lines Of Code",
         Description:"Written 300 lines of code",
         done: false,
-        LoC: 30,
+        LoC: 300,
         Do: function (game) {
             game.achievements.at_300.done = true;
         }
@@ -242,7 +243,7 @@ var Achievements = {
         Title: "400 Lines Of Code",
         Description:"Written 400 lines of code",
         done: false,
-        LoC: 40,
+        LoC: 400,
         Do: function (game) {
             game.log(Messages.get_books);
             game.shop.push(Items.sql_01);
@@ -256,7 +257,7 @@ var Achievements = {
         Title: "500 Lines Of Code",
         Description:"Written 500 lines of code",
         done: false,
-        LoC: 50,
+        LoC: 500,
         Do: function (game) {
             game.log(Messages.get_fulltime);
             game.availableCareers.push(Careers.junior_dev);
@@ -267,7 +268,7 @@ var Achievements = {
         Title: "600 Lines Of Code",
         Description:"Written 600 lines of code",
         done: false,
-        LoC: 60,
+        LoC: 600,
         Do: function (game) {
             game.log(Messages.open_source);
             game.achievements.at_600.done = true;
@@ -277,7 +278,7 @@ var Achievements = {
         Title: "700 Lines Of Code",
         Description:"Written 700 lines of code",
         done: false,
-        LoC: 70,
+        LoC: 700,
         Do: function (game) {
             game.shop.push(Items.xfactor);
             game.shop.push(Items.code_studio);
