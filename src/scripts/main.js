@@ -18,7 +18,8 @@ var game = null;
 
 var options = {
   interval: 100,
-  locPerTick: 10
+  locPerTick: 10,
+  verbose: true
 }
 
 $(function () {
@@ -52,7 +53,8 @@ $(function () {
       },
       completedAchievements: [],
       career: null,
-      careerAsignments: []
+      careerAsignments: [],
+      verbose: options.verbose
     },
 
     methods: {
@@ -87,12 +89,13 @@ $(function () {
           this.workedDays++;
         }
         this.salary();
+        this.log("a new day", true);
       },
       weeklyEvents: function () {
-
+        this.log("a new week", true);
       },
       monthlyEvents: function () {
-
+        this.log("a new month", true);
       },
       next: function () {
         game = this;
@@ -107,10 +110,16 @@ $(function () {
         this.LoC += this.locPerTick;
         this.descendLoC();
       },
-      log: function (message) {
-        $("#messages").prepend(
-          "<p>" + this.prettyTime() + ": " + message + "</p>"
-        );
+      log: function (message, isVerbose = null) {
+        if (isVerbose && this.verbose) {
+          $("#messages").prepend(
+            "<p>" + this.prettyTime() + ": " + message + "</p>"
+          );
+        } else if (isVerbose == null) {
+          $("#messages").prepend(
+            "<p>" + this.prettyTime() + ": " + message + "</p>"
+          );
+        }
       },
       prettyTime: function () {
         return "Day " + this.day + " Hour " + this.hour;
