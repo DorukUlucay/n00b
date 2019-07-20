@@ -16,6 +16,11 @@ import {
 
 var game = null;
 
+var options = {
+  interval: 100,
+  locPerTick: 10
+}
+
 $(function () {
   var app = new Vue({
     el: "#app",
@@ -29,7 +34,7 @@ $(function () {
       day: 1,
       LoC: 0,
       money: 0,
-      locPerTick: 1,
+      locPerTick: options.locPerTick,
       shop: [],
       achievements: Achievements,
       freelance: [],
@@ -55,21 +60,39 @@ $(function () {
       events: function () {
         this.turn++;
         this.hour++;
+        this.hourlyEvents();
+
         if (this.turn % 24 == 0) {
           this.day++;
           this.hour = 1;
-          if (this.career != null) {
-            this.workedDays++;
+          this.dailyEvents();
+          if (this.day % 7 == 0) {
+            this.weeklyEvents();
           }
-          this.salary();
+          if (this.day % 30 == 0) {
+            this.monthlyEvents();
+          }
         }
-
+      },
+      hourlyEvents: function () {
         game.boardPostExpiration();
         game.failingProjects();
         game.achievementCheck();
         game.freelanceJobMarket();
         game.sendCareerAsignments();
         game.failingAsignments();
+      },
+      dailyEvents: function () {
+        if (this.career != null) {
+          this.workedDays++;
+        }
+        this.salary();
+      },
+      weeklyEvents: function () {
+
+      },
+      monthlyEvents: function () {
+
       },
       next: function () {
         game = this;
@@ -78,7 +101,7 @@ $(function () {
           game.print();
           game.next();
           game.saveGame();
-        }, 1000);
+        }, options.interval);
       },
       writeCode: function () {
         this.LoC += this.locPerTick;
@@ -278,7 +301,7 @@ $(function () {
       },
       salary: function () {
         if (this.career != null) {
-          if (this.workedDays>29 && this.workedDays % 30 == 0) {
+          if (this.workedDays > 29 && this.workedDays % 30 == 0) {
             this.money += this.career.annualSalary / 12;
             this.log("you receive months paycheck");
           }
