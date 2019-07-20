@@ -17,8 +17,8 @@ import {
 var game = null;
 
 var options = {
-  interval: 100,
-  locPerTick: 10,
+  interval: 1000,
+  locPerTick: 1,
   verbose: true
 }
 

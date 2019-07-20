@@ -144,6 +144,15 @@ var Items = {
         price: 250,
         boost: 0.3,
         bought: false
+    },
+    bluetoothHeadphones:{
+        id: 14,
+        type: "Hardware",
+        name: "Bluetooth Headphones",
+        description: null,
+        price: 150,
+        boost: 0.4,
+        bought: false
     }
 };
 
@@ -237,6 +246,7 @@ var Achievements = {
         LoC: 300,
         Do: function (game) {
             game.achievements.at_300.done = true;
+            game.shop.push(Items.bluetoothHeadphones);
         }
     },
     at_400: {
@@ -292,7 +302,7 @@ var Achievements = {
 var Assignments  = {
     FixTheBug: {
         title: "fix the bug",
-        LoC: 25,
+        LoC: 50,
         deadline: 24,
         id: Guid.NewGuidWithoutDash(),
         chances: {
@@ -302,7 +312,7 @@ var Assignments  = {
     },
     UnitTest: {
         title: "Write Unit Test",
-        LoC: 25,
+        LoC: 50,
         deadline: 24,
         id: Guid.NewGuidWithoutDash(),
         chances: {
