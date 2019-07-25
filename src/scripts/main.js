@@ -18,7 +18,7 @@ var game = null;
 
 var options = {
   interval: 1000,
-  locPerTick: 1,
+  locPerTick: 1000,
   verbose: true
 }
 
