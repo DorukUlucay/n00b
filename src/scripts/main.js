@@ -5,7 +5,6 @@ import {
 } from './doruk.js'
 
 import {
-  Messages,
   Items,
   Jobs,
   Careers,
@@ -13,14 +12,15 @@ import {
   Assignments
 } from './collections.js'
 
+import {
+  Messages
+} from './Messages.js'
+
+import {
+  Options as options
+} from './Options.js'
 
 var game = null;
-
-var options = {
-  interval: 1000,
-  locPerTick: 1000,
-  verbose: true
-}
 
 $(function () {
   var app = new Vue({
@@ -166,7 +166,7 @@ $(function () {
             this.books.unread.push(item);
           }
           this.money -= item.price;
-          this.log("bought a " + item.name);
+          this.log(Messages.BoughtA + item.name);
         }
       },
       getJob: function () {
@@ -188,9 +188,9 @@ $(function () {
 
         if (this.LoC >= career.LoC) {
           this.career = career;
-          this.log("you're hired! everyday, you'll be assigned with tasks. complete them before they're due.")
+          this.log(Messages.YouAreHired)
         } else {
-          this.log("you're turned down. you need to write more code.")
+          this.log(Messages.YouAreNotHired)
         }
       },
       read: function () {
@@ -227,7 +227,7 @@ $(function () {
           element.deadline--;
           if (element.deadline == 0) {
             game.activeFreelance.splice(index, 1);
-            game.log("failed a project");
+            game.log(Messages.FailedProject);
           }
         }
       },
@@ -239,7 +239,7 @@ $(function () {
               if (element.hasOwnProperty('LoC') && game.LoC >= element.LoC) {
                 game.completedAchievements.push(key);
                 element.Do(game);
-                game.log("Achievement : " + element.Title);
+                game.log(Messages.Achievement + " : " + element.Title);
               }
             }
           }
@@ -304,7 +304,7 @@ $(function () {
           element.deadline--;
           if (element.deadline == 0) {
             game.careerAsignments.splice(index, 1);
-            game.log("failed an assignment. watch out.");
+            game.log(Messages.FailedAssignment);
           }
         }
       },
@@ -312,7 +312,7 @@ $(function () {
         if (this.career != null) {
           if (this.workedDays > 29 && this.workedDays % 30 == 0) {
             this.money += this.career.annualSalary / 12;
-            this.log("you receive months paycheck");
+            this.log(Messages.ReceivedPaycheck);
           }
         }
       },
