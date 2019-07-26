@@ -43,15 +43,15 @@ const Messages_TR = {
     GameName: "Code Clicker V 0.1",
     welcome: "bilgisayar mühendisliği diplomanı aldın. iş bulmayı beklerken biraz kod yazsan iyi olur.",
     family_fund: "ailen ilginden memnun olduğu için sana biraz para verdi. bazı eşyalar satın alabilirsin.",
-    freelance_board: "some friend talked about a freelance site. you may want to look at it",
-    completed_job: "completed a freelance project and got paid {0}$",
-    get_books: "you may need to learn a few things more before taking complex jobs. buy a few books from store.",
-    open_source: "a friend talked about an open source project. it will be more practice and maybe some networking.",
-    get_fulltime: "a friend found an internship. may be you can put your cv on that career site.",
-    not_enough_money: `not enough money. your ${Randomize([
-        "father",
-        "mother"
-    ])} throws in some. but you need to pay back.`,
+    freelance_board: "bir arkadaşın freelance işler bulabileceğin bir mesaj panosundan bahsetti. bir baksan iyi olur.",
+    completed_job: "freelance bir projeyi tamamladın ve {0}$ kazandın",
+    get_books: "daha ciddi işlere girişmeden önce bazı kitaplar okusan iyi olur. internet mağazasına bak.",
+    open_source: "bir arkadaşın open source projeler bulabileceğin bir siteden bahsetti. biraz daha pratik ve biraz da network yapmış olursun.",
+    get_fulltime: "bir arkadaşın staj hakkında konuşuyordu. şu kariyer sitesine girme vaktin gelmedi mi ?",
+    not_enough_money: `yeterli paran yok. ${Randomize([
+        "baban",
+        "annen"
+    ])} biraz verdi ama geri ödemen gerek.`,
     completedAssignment: `you completed an assignment`,
     FixTheBug: `Fix The Bug`,
     WriteUnitTest: `Write a Unit Test`,
