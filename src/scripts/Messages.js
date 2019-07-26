@@ -36,7 +36,8 @@ const Messages_EN = {
     JuniorDeveloper: "Junior Developer",
     WriteMeAScript: "write me a script",
     MakeMeALandingPage: "make me a landing page",
-    IntegratePaymentGateway: "integrate payment gateway"
+    IntegratePaymentGateway: "integrate payment gateway",
+    BrowseOnlineStore : "Browse Online Store"
 };
 
 const Messages_TR = {
@@ -52,22 +53,23 @@ const Messages_TR = {
         "baban",
         "annen"
     ])} biraz verdi ama geri ödemen gerek.`,
-    completedAssignment: `you completed an assignment`,
-    FixTheBug: `Fix The Bug`,
-    WriteUnitTest: `Write a Unit Test`,
+    completedAssignment: `bir madde tamamladın`,
+    FixTheBug: `Bug'ı düzelt`,
+    WriteUnitTest: `Unit test yaz`,
     MechanicKeyboard: `Mekanik Klavye`,
     LCD_22: `22' LCD Monitör`,
-    CoffeMachine: `Coffe Machine`,
-    LCD_27: `27' LCD Monitor`,
-    ReceivedPaycheck: "you receive months paycheck",
-    FailedAssignment: "failed an assignment. watch out.",
+    CoffeMachine: `Filtre Kahve Makinası`,
+    LCD_27: `27' LCD Monitör`,
+    ReceivedPaycheck: "maaş yattı",
+    FailedAssignment: "teslim etmen gereken bir maddenin süresi doldu. dikkat et.",
     Achievement: "Achievement",
-    FailedProject: "failed a project",
+    FailedProject: "bir proje başarısız oldu",
     YouAreHired: "you're hired! everyday, you'll be assigned with tasks. complete them before they're due.",
     YouAreNotHired: "you're turned down. you need to write more code.",
     BoughtA: "bought a ",
     JuniorDeveloper: "Junior Developer",
-    WriteMeAScript: "write me a script",
-    MakeMeALandingPage: "make me a landing page",
-    IntegratePaymentGateway: "integrate payment gateway"
+    WriteMeAScript: "siteme script yaz",
+    MakeMeALandingPage: "landing sayfası yap",
+    IntegratePaymentGateway: "paypal entegrasyonu yap",
+    BrowseOnlineStore : "İnternet Mağazası"
 };

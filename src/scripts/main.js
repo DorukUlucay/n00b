@@ -54,7 +54,8 @@ $(function () {
       completedAchievements: [],
       career: null,
       careerAsignments: [],
-      verbose: options.verbose
+      verbose: options.verbose,
+      M : Messages //TODO: fix repetition
     },
 
     methods: {
