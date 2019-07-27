@@ -37,13 +37,17 @@ const Messages_EN = {
     WriteMeAScript: "write me a script",
     MakeMeALandingPage: "make me a landing page",
     IntegratePaymentGateway: "integrate payment gateway",
-    BrowseOnlineStore : "Browse Online Store"
+    BrowseOnlineStore : "Browse Online Store",
+    BluetoothHeadphones:"Bluetooth Headphones",
+    LoCWritten :"Lines-Of-Code Written",
+    Time : "Time",
+    Money:"Money"
 };
 
 const Messages_TR = {
     GameName: "Code Clicker V 0.1",
     welcome: "bilgisayar mühendisliği diplomanı aldın. iş bulmayı beklerken biraz kod yazsan iyi olur.",
-    family_fund: "ailen ilginden memnun olduğu için sana biraz para verdi. bazı eşyalar satın alabilirsin.",
+    family_fund: "ailen ilginden memnun. bu yüzden sana biraz para verdiler. bazı eşyalar satın alabilirsin.",
     freelance_board: "bir arkadaşın freelance işler bulabileceğin bir mesaj panosundan bahsetti. bir baksan iyi olur.",
     completed_job: "freelance bir projeyi tamamladın ve {0}$ kazandın",
     get_books: "daha ciddi işlere girişmeden önce bazı kitaplar okusan iyi olur. internet mağazasına bak.",
@@ -64,12 +68,16 @@ const Messages_TR = {
     FailedAssignment: "teslim etmen gereken bir maddenin süresi doldu. dikkat et.",
     Achievement: "Achievement",
     FailedProject: "bir proje başarısız oldu",
-    YouAreHired: "you're hired! everyday, you'll be assigned with tasks. complete them before they're due.",
-    YouAreNotHired: "you're turned down. you need to write more code.",
+    YouAreHired: "işe alındın! her gün sana bazı görevler gelecek. bu görevleri süreleri dolmadan önce tamamlamalısın.",
+    YouAreNotHired: "reddedildin. daha fazla kod yazmalısın.",
     BoughtA: "bought a ",
     JuniorDeveloper: "Junior Developer",
     WriteMeAScript: "siteme script yaz",
     MakeMeALandingPage: "landing sayfası yap",
     IntegratePaymentGateway: "paypal entegrasyonu yap",
-    BrowseOnlineStore : "İnternet Mağazası"
+    BrowseOnlineStore : "İnternet Mağazası",
+    BluetoothHeadphones:"Bluetooth Kulaklık",
+    LoCWritten :"Yazılan Kod Satırı Sayısı",
+    Time : "Zaman",
+    Money:"Para"
 };

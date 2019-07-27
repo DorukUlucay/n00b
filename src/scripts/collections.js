@@ -138,7 +138,7 @@ var Items = {
   bluetoothHeadphones: {
     id: 14,
     type: "Hardware",
-    name: "Bluetooth Headphones",
+    name: Messages.BluetoothHeadphones,
     description: null,
     price: 150,
     boost: 0.4,
