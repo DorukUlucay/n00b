@@ -41,7 +41,11 @@ const Messages_EN = {
     BluetoothHeadphones:"Bluetooth Headphones",
     LoCWritten :"Lines-Of-Code Written",
     Time : "Time",
-    Money:"Money"
+    Money:"Money",
+    BrowseCareers:"Browse Careers",
+    Kindle:"E-Book Reader",
+    ToggleFreelance : "Toggle Freelance Window",
+    WriteCodeButtonLabel : `Write Code(1 Click [0] Line Of Code)`
 };
 
 const Messages_TR = {
@@ -79,5 +83,9 @@ const Messages_TR = {
     BluetoothHeadphones:"Bluetooth Kulaklık",
     LoCWritten :"Yazılan Kod Satırı Sayısı",
     Time : "Zaman",
-    Money:"Para"
+    Money:"Para",
+    BrowseCareers:"İş İlanlarına Bak",
+    Kindle:"E-Kitap Okuyucusu",
+    ToggleFreelance : "Freelance Penceresini Aç/Kapa",
+    WriteCodeButtonLabel : `Kod Yaz(1 Tık = [0] satır kod)`
 };

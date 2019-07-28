@@ -329,6 +329,9 @@ $(function () {
     computed: {
       printTime: function () {
         return this.prettyTime();
+      },
+      writeCodeLabel : function(){
+        return this.M.WriteCodeButtonLabel.replace('[0]', this.locPerTick.toFixed(2));
       }
     }
   });
