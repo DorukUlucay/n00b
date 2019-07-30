@@ -123,7 +123,7 @@ $(function () {
         }
       },
       prettyTime: function () {
-        return "Day " + this.day + " Hour " + this.hour;
+        return this.M.PrettyTime.replace("[0]",this.day).replace("[1]",this.hour);
       },
       descendLoC: function () {
 
@@ -332,6 +332,9 @@ $(function () {
       },
       writeCodeLabel : function(){
         return this.M.WriteCodeButtonLabel.replace('[0]', this.locPerTick.toFixed(2));
+      },
+      boardSubscriptionPriceLabel : function(){
+        return this.M.SubscribeToBoard.replace('[0]', this.boardSubscriptionPrice.toFixed(2));
       }
     }
   });

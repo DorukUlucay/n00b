@@ -45,7 +45,24 @@ const Messages_EN = {
     BrowseCareers:"Browse Careers",
     Kindle:"E-Book Reader",
     ToggleFreelance : "Toggle Freelance Window",
-    WriteCodeButtonLabel : `Write Code(1 Click [0] Line Of Code)`
+    WriteCodeButtonLabel : `Write Code(1 Click [0] Line Of Code)`,
+    SubscribeToBoard: "Subscribe for [0]$ to Jobs board",
+    Description: "Description",
+    LoC: "Lines Of Code",
+    Deadline : "Deadline(Hours)",
+    NoActiveJobs: "No Active Jobs",
+    PrettyTime :"Day: [0] Hour: [1]",
+    NoActiveAssignments: "No Active Assignments",
+    CareersBoard : "Careers Board",
+    AvailableCareers : "Available Careers based on your profile",
+    ActiveJobs : "Active Jobs",
+    Job: "Job",
+    Pay:"Pay",
+    Year: "Year",
+    AvailableJobs: "Available Jobs",
+    NoAvailableJobs: "No Available Jobs",
+    TakeJob : "Take Job",
+    ActiveAssignments: "Active Assignments"
 };
 
 const Messages_TR = {
@@ -87,5 +104,22 @@ const Messages_TR = {
     BrowseCareers:"İş İlanlarına Bak",
     Kindle:"E-Kitap Okuyucusu",
     ToggleFreelance : "Freelance Penceresini Aç/Kapa",
-    WriteCodeButtonLabel : `Kod Yaz(1 Tık = [0] satır kod)`
+    WriteCodeButtonLabel : `Kod Yaz(1 Tık = [0] satır kod)`,
+    SubscribeToBoard: "Freelance mesaj panosuna üye ol([0] $)",
+    Description: "Tanım",
+    LoC: "Kod Satırı Sayısı",
+    DeadlineHours : "Teslim Zamanı(saat)",
+    NoActiveJobs: "Aktif Freelance İşin Yok",
+    PrettyTime :"Gün: [0] Saat: [1]",
+    NoActiveAssignments: "Aktif Görev Yok",
+    CareersBoard : "İş İlanları",
+    AvailableCareers : "CV'nize uygun ilanlar",
+    ActiveJobs : "Aktif Projeler",
+    Job: "Proje",
+    Pay:"Ücret",
+    Year: "Yıl",
+    AvailableJobs : "Aktif İlanlar",
+    NoAvailableJobs: "Aktif İlan Yok",
+    TakeJob : "İşi Al",
+    ActiveAssignments : "Aktif Görevler"
 };
