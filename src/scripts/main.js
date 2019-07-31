@@ -240,7 +240,7 @@ $(function () {
               if (element.hasOwnProperty('LoC') && game.LoC >= element.LoC) {
                 game.completedAchievements.push(key);
                 element.Do(game);
-                game.log(Messages.Achievement + " : " + element.Title);
+                game.log(Messages.Achievement + " : " + element.Description);
               }
             }
           }

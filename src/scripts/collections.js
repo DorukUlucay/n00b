@@ -200,7 +200,7 @@ var Careers = {
 var Achievements = {
   at_100: {
     Title: "100 Lines Of Code",
-    Description: "Written 100 lines of code",
+    Description: Messages.LoC100,
     done: false,
     LoC: 100,
     Do: function (game) {
@@ -215,7 +215,7 @@ var Achievements = {
   },
   at_200: {
     Title: "200 Lines Of Code",
-    Description: "Written 200 lines of code",
+    Description: Messages.LoC200,
     done: false,
     LoC: 200,
     Do: function (game) {
@@ -231,7 +231,7 @@ var Achievements = {
   },
   at_300: {
     Title: "300 Lines Of Code",
-    Description: "Written 300 lines of code",
+    Description: Messages.LoC300,
     done: false,
     LoC: 300,
     Do: function (game) {
@@ -241,7 +241,7 @@ var Achievements = {
   },
   at_400: {
     Title: "400 Lines Of Code",
-    Description: "Written 400 lines of code",
+    Description: Messages.LoC400,
     done: false,
     LoC: 400,
     Do: function (game) {
@@ -255,7 +255,7 @@ var Achievements = {
   },
   at_500: {
     Title: "500 Lines Of Code",
-    Description: "Written 500 lines of code",
+    Description: Messages.LoC500,
     done: false,
     LoC: 500,
     Do: function (game) {
@@ -266,7 +266,7 @@ var Achievements = {
   },
   at_600: {
     Title: "600 Lines Of Code",
-    Description: "Written 600 lines of code",
+    Description: Messages.LoC600,
     done: false,
     LoC: 600,
     Do: function (game) {
@@ -276,7 +276,7 @@ var Achievements = {
   },
   at_700: {
     Title: "700 Lines Of Code",
-    Description: "Written 700 lines of code",
+    Description: Messages.LoC700,
     done: false,
     LoC: 700,
     Do: function (game) {
@@ -285,6 +285,33 @@ var Achievements = {
       game.shop.push(Items.geralt_figure);
       game.shop.push(Items.vader_bust);
       game.achievements.at_700.done = true;
+    }
+  },
+  at_800: {
+    Title: "800 Lines Of Code",
+    Description: Messages.LoC800,
+    done: false,
+    LoC: 800,
+    Do: function (game) {
+      game.achievements.at_800.done = true;
+    }
+  },
+  at_900: {
+    Title: "900 Lines Of Code",
+    Description: Messages.LoC900,
+    done: false,
+    LoC: 900,
+    Do: function (game) {
+      game.achievements.at_900.done = true;
+    }
+  },
+  at_1000: {
+    Title: "1000 Lines Of Code",
+    Description: Messages.LoC1000,
+    done: false,
+    LoC: 1000,
+    Do: function (game) {
+      game.achievements.at_1000.done = true;
     }
   }
 }

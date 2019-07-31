@@ -62,7 +62,17 @@ const Messages_EN = {
     AvailableJobs: "Available Jobs",
     NoAvailableJobs: "No Available Jobs",
     TakeJob : "Take Job",
-    ActiveAssignments: "Active Assignments"
+    ActiveAssignments: "Active Assignments",
+    LoC100: "100 Lines Of Code Written",
+    LoC200: "200 Lines Of Code Written",
+    LoC300: "300 Lines Of Code Written",
+    LoC400: "400 Lines Of Code Written",
+    LoC500: "500 Lines Of Code Written",
+    LoC600: "600 Lines Of Code Written",
+    LoC700: "700 Lines Of Code Written",
+    LoC800: "800 Lines Of Code Written",
+    LoC900: "900 Lines Of Code Written",
+    LoC1000: "1000 Lines Of Code Written"
 };
 
 const Messages_TR = {
@@ -87,7 +97,7 @@ const Messages_TR = {
     LCD_27: `27' LCD Monitör`,
     ReceivedPaycheck: "maaş yattı",
     FailedAssignment: "teslim etmen gereken bir maddenin süresi doldu. dikkat et.",
-    Achievement: "Achievement",
+    Achievement: "Başarım",
     FailedProject: "bir proje başarısız oldu",
     YouAreHired: "işe alındın! her gün sana bazı görevler gelecek. bu görevleri süreleri dolmadan önce tamamlamalısın.",
     YouAreNotHired: "reddedildin. daha fazla kod yazmalısın.",
@@ -121,5 +131,16 @@ const Messages_TR = {
     AvailableJobs : "Aktif İlanlar",
     NoAvailableJobs: "Aktif İlan Yok",
     TakeJob : "İşi Al",
-    ActiveAssignments : "Aktif Görevler"
+    ActiveAssignments : "Aktif Görevler",
+    LoC100: "100 satır kod yazıldı",
+    LoC200: "200 satır kod yazıldı",
+    LoC300: "300 satır kod yazıldı",
+    LoC400: "400 satır kod yazıldı",
+    LoC500: "500 satır kod yazıldı",
+    LoC600: "600 satır kod yazıldı",
+    LoC700: "700 satır kod yazıldı",
+    LoC800: "800 satır kod yazıldı",
+    LoC900: "900 satır kod yazıldı",
+    LoC1000: "1000 satır kod yazıldı",
+
 };
