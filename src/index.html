@@ -147,6 +147,9 @@
     </div>
 
     <div id="ex1" class="modal">
+      <p id="storeMsg">
+
+      </p>
       <p v-for="item in shop">
         <button v-if="!item.bought" v-bind:id="item.id" v-on:click="buy">
           {{ item.name }}({{ item.price }} $)

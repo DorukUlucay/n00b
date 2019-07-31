@@ -165,9 +165,18 @@ $(function () {
 
           if (item.type == "Book") {
             this.books.unread.push(item);
+            this.log(Messages.BoughtABook.replace("[0]",item.name));
+          $("#storeMsg").html(Messages.BoughtABook.replace("[0]",item.name))
+          }
+          else{
+            this.log(Messages.BoughtA.replace("[0]",item.name));
+            $("#storeMsg").html(Messages.BoughtA.replace("[0]",item.name))
           }
           this.money -= item.price;
-          this.log(Messages.BoughtA + item.name);
+        }
+        else{
+          $("#storeMsg").html("not enough money")
+          
         }
       },
       getJob: function () {
