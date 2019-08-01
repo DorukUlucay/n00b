@@ -55,6 +55,14 @@ $(function () {
       career: null,
       careerAsignments: [],
       verbose: options.verbose,
+      stats:{
+        freelanceProjectsCompleted : 0,
+        freelanceMoneyEarned:0,
+        careerDays:0,
+        careerAssignmentsCompleted:0,
+        careerMoneyEarned:0,
+        moneySpent:0
+      },
       M : Messages //TODO: fix repetition
     },
 
@@ -88,6 +96,7 @@ $(function () {
       dailyEvents: function () {
         if (this.career != null) {
           this.workedDays++;
+          this.stats.careerDays++;
         }
         this.salary();
         this.log("a new day", true);
@@ -132,15 +141,21 @@ $(function () {
           if (0 >= this.careerAsignments[0].LoC) {
             this.log(Messages.completedAssignment);
             this.careerAsignments.splice(0, 1);
+            this.stats.careerAssignmentsCompleted++;
           }
         } else if (this.activeFreelance.length != 0) {
           this.activeFreelance[0].LoC -= this.locPerTick;
           if (0 >= this.activeFreelance[0].LoC) {
+            //a freelance job is completed here
             this.log(
               Messages.completed_job.format(this.activeFreelance[0].price)
             );
             this.money += this.activeFreelance[0].price;
+            this.stats.freelanceProjectsCompleted++;
+            this.stats.freelanceMoneyEarned += this.activeFreelance[0].price;
+            
             this.activeFreelance.splice(0, 1);
+            
           }
         }
       },
@@ -150,6 +165,7 @@ $(function () {
         }
         this.achievements.boughtFreelanceSubscr.done = true;
         this.money -= this.boardSubscriptionPrice;
+        this.stats.moneySpent+=this.boardSubscriptionPrice;
       },
       buy: function () {
         var elementId = event.toElement.id;
@@ -173,10 +189,10 @@ $(function () {
             $("#storeMsg").html(Messages.BoughtA.replace("[0]",item.name))
           }
           this.money -= item.price;
+          this.stats.moneySpent+=item.price;
         }
         else{
           $("#storeMsg").html("not enough money")
-          
         }
       },
       getJob: function () {
@@ -322,10 +338,11 @@ $(function () {
         if (this.career != null) {
           if (this.workedDays > 29 && this.workedDays % 30 == 0) {
             this.money += this.career.annualSalary / 12;
+            this.money.careerMoneyEarned += this.career.annualSalary / 12;
             this.log(Messages.ReceivedPaycheck);
           }
         }
-      },
+      }
     },
 
 

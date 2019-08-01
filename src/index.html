@@ -43,6 +43,8 @@
 
           <button onclick="$('#freelanceJobs').toggle()" v-if="achievements.boughtFreelanceSubscr.done">{{M.ToggleFreelance}}</button>
 
+          <a href="#ex6" rel="modal:open"><button>Stats</button></a>
+
         </p>
       </div>
 
@@ -191,6 +193,13 @@
 
     <div id="ex5" class="modal">
       <h4>GotHub.com under construction...</h4>
+    </div>
+
+    <div id="ex6" class="modal">
+      <h4>stats</h4>
+      <pre>
+        {{stats}}
+      </pre>
     </div>
   </div>
 </body>
