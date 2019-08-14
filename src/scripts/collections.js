@@ -152,6 +152,15 @@ var Items = {
     price: 1150,
     boost: 2,
     bought: false
+  },
+  cthulhuFigurine: {
+    id: 16,
+    type: "Decorative",
+    name: Messages.CthulhuFigurine,
+    description: null,
+    price: 666,
+    boost: 0.1,
+    bought: false
   }
 };
 
@@ -318,6 +327,7 @@ var Achievements = {
     Do: function (game) {
       game.achievements.at_800.done = true;
       game.shop.push(Items.gamerArmChair);
+      game.shop.push(Items.cthulhuFigurine);
     }
   },
   at_900: {

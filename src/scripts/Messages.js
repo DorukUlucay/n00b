@@ -84,7 +84,8 @@ const Messages_EN = {
     SureToRestart : "Are you sure you want to restart the game ?",
     WriteSQLFunction: "Write an SQL function",
     FixMyCss: "Fix My CSS",
-    GamerArmChair : "Gamer Armchair"
+    GamerArmChair : "Gamer Armchair",
+    CthulhuFigurine: "Cthulhu Figurine"
 };
 
 const Messages_TR = {
@@ -165,5 +166,6 @@ const Messages_TR = {
     SureToRestart : "Oyunu sıfırlamak istediğinize emin misiniz ?",
     WriteSQLFunction : "Bir SQL Fonksiyonu yaz",
     FixMyCss: "CSS dosyamı düzenle",
-    GamerArmChair : "Oyuncu Koltuğu"
+    GamerArmChair : "Oyuncu Koltuğu",
+    CthulhuFigurine : "Cthulhu Figürü"
 };
