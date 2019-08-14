@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     mainjs: path.resolve(__dirname, "src/scripts/main.js"),
-    maincss: path.resolve(__dirname, "src/style/main.css"),
+    //maincss: path.resolve(__dirname, "src/style/main.css"),
   },
 
   //   output: {
@@ -20,7 +20,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
       inject: true,
-      chunks: ['mainjs', 'maincss'],
+      chunks: ['mainjs'],
       filename: 'index.html'
     })
   ]

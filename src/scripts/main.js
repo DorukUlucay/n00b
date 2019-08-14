@@ -206,18 +206,26 @@ $(function () {
         this.freelance.splice(this.freelance.indexOf(item), 1);
       },
       interview: function () {
+if(this.career ==null){
         var elementId = event.toElement.id;
         var items = jQuery.grep(this.availableCareers, function (a) {
           return a.id == elementId;
         });
         var career = items[0];
-
         if (this.LoC >= career.LoC) {
           this.career = career;
-          this.log(Messages.YouAreHired)
+          this.log(Messages.YouAreHired.format(this.career.monthlySalary()))
+          $("#careerMsg").html(Messages.YouAreHired.format(this.career.monthlySalary()))
         } else {
           this.log(Messages.YouAreNotHired)
+          $("#careerMsg").html(Messages.YouAreNotHired)
         }
+}
+else
+{
+  $("#careerMsg").html(Messages.LeaveYourJobFirst)
+}
+
       },
       read: function () {
         var elementId = event.toElement.id;
@@ -232,6 +240,7 @@ $(function () {
           var index = this.books.unread.indexOf(book);
           this.books.read.push(book);
           this.books.unread.splice(index, 1);
+          this.locPerTick *= 1.1;
         }
 
       },
@@ -285,8 +294,8 @@ $(function () {
             }
           }
 
-          if (job !== null) {
-            game.freelance.push(JSON.parse(JSON.stringify(job)));
+          if (job !== null && this.freelance.length < 6) { //ekranda 6 taneden fazla görünmesin
+            game.freelance.push(JSON.parse(JSON.stringify(job))); //clone
           }
         }
       },
@@ -341,6 +350,14 @@ $(function () {
             this.money.careerMoneyEarned += this.career.annualSalary / 12;
             this.log(Messages.ReceivedPaycheck);
           }
+        }
+      },
+      restart : function(){
+        var c = confirm(this.M.SureToRestart);
+        if(c){
+          clearTimeout(game);
+          localStorage.removeItem("gameData");
+          window.location.reload()
         }
       }
     },

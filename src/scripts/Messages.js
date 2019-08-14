@@ -30,7 +30,7 @@ const Messages_EN = {
     FailedAssignment: "failed an assignment. watch out.",
     Achievement: "Achievement",
     FailedProject: "failed a project",
-    YouAreHired: "you're hired! everyday, you'll be assigned with tasks. complete them before they're due.",
+    YouAreHired: "you're hired! everyday, you'll be assigned with tasks. complete them before they're due. Your salary per month is {0} $",
     YouAreNotHired: "you're turned down. you need to write more code.",
     BoughtA: "bought a [0]",
     BoughtABook: "bought a [0] book",
@@ -73,7 +73,17 @@ const Messages_EN = {
     LoC700: "700 Lines Of Code Written",
     LoC800: "800 Lines Of Code Written",
     LoC900: "900 Lines Of Code Written",
-    LoC1000: "1000 Lines Of Code Written"
+    LoC1000: "1000 Lines Of Code Written",
+    LoC1300: "1300 Lines Of Code Written",
+    YourReadList : "Your reading list. Click to read.",
+    ReadBefore:"Books you have read",
+    LeaveYourJobFirst: "You must leave your current job to get an interview",
+    Settings: "Settings",
+    Stats: "Stats",
+    Restart : "Restart Game",
+    SureToRestart : "Are you sure you want to restart the game ?",
+    WriteSQLFunction: "Write an SQL function",
+    FixMyCss: "Fix My CSS"
 };
 
 const Messages_TR = {
@@ -100,7 +110,7 @@ const Messages_TR = {
     FailedAssignment: "teslim etmen gereken bir maddenin süresi doldu. dikkat et.",
     Achievement: "Başarım",
     FailedProject: "bir proje başarısız oldu",
-    YouAreHired: "işe alındın! her gün sana bazı görevler gelecek. bu görevleri süreleri dolmadan önce tamamlamalısın.",
+    YouAreHired: "işe alındın! her gün sana bazı görevler gelecek. bu görevleri süreleri dolmadan önce tamamlamalısın. Aylık maaşın {0} $",
     YouAreNotHired: "reddedildin. daha fazla kod yazmalısın.",
     BoughtA: "bir [0] satın aldın",
     BoughtABook: "bir [0] kitabı satın aldın",
@@ -144,5 +154,14 @@ const Messages_TR = {
     LoC800: "800 satır kod yazıldı",
     LoC900: "900 satır kod yazıldı",
     LoC1000: "1000 satır kod yazıldı",
-
+    LoC1300: "1300 satır kod yazıldı",
+    YourReadList : "Okuma listeniz. Okumak için tıklayın.",
+    ReadBefore:"Okuduğunuz kitaplar",
+    LeaveYourJobFirst: "Yeni bir işe girmek için mevcut işinizden ayrılmalısınız",
+    Settings: "Ayarlar",
+    Stats: "İstatistikler",
+    Restart : "Oyunu Sıfırla",
+    SureToRestart : "Oyunu sıfırlamak istediğinize emin misiniz ?",
+    WriteSQLFunction : "Bir SQL Fonksiyonu yaz",
+    FixMyCss: "CSS dosyamı düzenle"
 };

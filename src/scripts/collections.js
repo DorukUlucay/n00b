@@ -156,8 +156,8 @@ var Jobs = {
     expires: 10,
     difficulty: 1,
     chances: {
-      min: 85,
-      max: 100
+      min: 50,
+      max: 65
     }
   },
   LandingPage: {
@@ -169,8 +169,8 @@ var Jobs = {
     expires: 15,
     difficulty: 2,
     chances: {
-      min: 70,
-      max: 85
+      min: 65,
+      max: 80
     }
   },
   PaymentGateway: {
@@ -182,8 +182,21 @@ var Jobs = {
     expires: 15,
     difficulty: 3,
     chances: {
-      min: 60,
-      max: 70
+      min: 80,
+      max: 90
+    }
+  },
+  FixMyCss: {
+    title: Messages.FixMyCss,
+    price: 35,
+    LoC: 40,
+    deadline: 72,
+    id: Guid.NewGuidWithoutDash(),
+    expires: 15,
+    difficulty: 3,
+    chances: {
+      min: 90,
+      max: 100
     }
   }
 };
@@ -193,7 +206,8 @@ var Careers = {
     id: 1,
     title: Messages.JuniorDeveloper,
     LoC: 1000,
-    annualSalary: 15000
+    annualSalary: 15000,
+    monthlySalary : function(){return (this.annualSalary /12).toFixed(2)}
   }
 };
 
@@ -313,6 +327,16 @@ var Achievements = {
     Do: function (game) {
       game.achievements.at_1000.done = true;
     }
+  },
+  at_1300: {
+    Title: "1300 Lines Of Code",
+    Description: Messages.LoC1300,
+    done: false,
+    LoC: 1300,
+    Do: function (game) {
+      game.achievements.at_1300.done = true;
+      alert("code clicker'ı oynadığın için teşekkürler. şu anda 0.1 sürümündeyiz. eğer ekrandaki her şeye tıkladıysan bundan sonra pek bir şey yok(şimdilik). takipte kal.")
+    }
   }
 }
 
@@ -323,8 +347,8 @@ var Assignments = {
     deadline: 24,
     id: Guid.NewGuidWithoutDash(),
     chances: {
-      min: 50,
-      max: 100
+      min: 1,
+      max: 33
     }
   },
   UnitTest: {
@@ -333,8 +357,18 @@ var Assignments = {
     deadline: 24,
     id: Guid.NewGuidWithoutDash(),
     chances: {
-      min: 1,
-      max: 50
+      min: 34,
+      max: 66
+    }
+  },
+  WriteSQLFunction: {
+    title: Messages.WriteSQLFunction,
+    LoC: 25,
+    deadline: 24,
+    id: Guid.NewGuidWithoutDash(),
+    chances: {
+      min: 67,
+      max: 100
     }
   },
 };

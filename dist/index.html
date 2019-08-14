@@ -43,7 +43,7 @@
 
           <button onclick="$('#freelanceJobs').toggle()" v-if="achievements.boughtFreelanceSubscr.done">{{M.ToggleFreelance}}</button>
 
-          <a href="#ex6" rel="modal:open"><button>{{ M.Settings }}</button></a>
+          <a href="#ex6" rel="modal:open"><button>Stats</button></a>
 
         </p>
       </div>
@@ -197,16 +197,12 @@
     </div>
 
     <div id="ex6" class="modal">
-      <h4>
-        {{ M.Settings }}
-      </h4>
-      <button v-on:click="restart">{{ M.Restart }}</button>
-      <h4>{{ M.Stats }}</h4>
+      <h4>stats</h4>
       <pre>
-        {{ stats }}
+        {{stats}}
       </pre>
     </div>
   </div>
-</body>
+<script type="text/javascript" src="mainjs.js"></script></body>
 
 </html>
