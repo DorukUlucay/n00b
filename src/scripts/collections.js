@@ -143,6 +143,15 @@ var Items = {
     price: 150,
     boost: 0.4,
     bought: false
+  },
+  gamerArmChair: {
+    id: 15,
+    type: "Furniture",
+    name: Messages.GamerArmChair,
+    description: null,
+    price: 1150,
+    boost: 2,
+    bought: false
   }
 };
 
@@ -308,6 +317,7 @@ var Achievements = {
     LoC: 800,
     Do: function (game) {
       game.achievements.at_800.done = true;
+      game.shop.push(Items.gamerArmChair);
     }
   },
   at_900: {
