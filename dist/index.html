@@ -1,0 +1,211 @@
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="style/main.css" />
+  <link rel="stylesheet" href="scripts/vendor/jquery.modal.min.css" />
+
+  <script src="scripts/vendor/jquery-3.3.1.slim.min.js"></script>
+  <script src="scripts/vendor/vue.js"></script>
+  <script src="scripts/vendor/jquery.modal.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div style="width: 100%; display: block;">
+
+      <div class="container">
+        <p>
+          <span style="font-size: 18px;">{{M.LoCWritten}} : {{ LoC.toFixed(2) }}</span>
+          <span>{{M.Time}} : {{ printTime }}</span>
+          <span>{{M.Money}} : {{ money }} $</span>
+        </p>
+
+        <p>
+          <button v-on:click="writeCode">
+            {{ writeCodeLabel }}
+          </button>
+        </p>
+
+        <p>
+
+          <a v-if="achievements.at_100.done" href="#ex1" rel="modal:open"><button>{{ M.BrowseOnlineStore  }}</button></a>
+
+          <a v-if="achievements.at_500.done" href="#ex3" rel="modal:open"><button>{{M.BrowseCareers}}</button></a>
+
+          <!-- <a v-if="achievements.at_600.done" href="#ex5" rel="modal:open"><button>GotCode.com</button></a> -->
+
+          <a v-if="achievements.at_400.done" href="#ex4" rel="modal:open"><button>{{M.Kindle}}</button></a>
+
+          <button v-on:click="subscribe" v-if="!achievements.boughtFreelanceSubscr.done && achievements.at_200.done">{{boardSubscriptionPriceLabel}}</button>
+
+          <button onclick="$('#freelanceJobs').toggle()" v-if="achievements.boughtFreelanceSubscr.done">{{M.ToggleFreelance}}</button>
+
+          <a href="#ex6" rel="modal:open"><button>{{ M.Settings }}</button></a>
+
+        </p>
+      </div>
+
+      <div class=" container3borderless container" v-if="career != null">
+          <h2>{{M.ActiveAssignments}}</h2>
+        <table>
+          <thead>
+            <th style="width:300px;">{{M.Description}}</th>
+            <th style="width:200px;">{{M.LoC}}</th>
+            <th style="width:200px;">{{M.DeadlineHours}}</th>
+          </thead>
+          <tbody v-if="careerAsignments.length > 0">
+            <tr v-for="item in careerAsignments">
+              <td>{{ item.title }}</td>
+              <td>{{ item.LoC.toFixed(2) }}</td>
+              <td>{{ item.deadline }}</td>
+            </tr>
+          </tbody>
+          <tbody v-if="careerAsignments.length == 0">
+            <tr>
+              <td colspan="3">{{M.NoActiveAssignments}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="container container3borderless" id="freelanceJobs" v-if="achievements.boughtFreelanceSubscr.done">
+        <h2>{{M.ActiveJobs}}</h2>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:300px;">
+                {{M.Job}}
+              </th>
+              <th style="width:200px;">
+                {{M.LoC}}
+              </th>
+              <th style="width:200px;">
+                {{M.DeadlineHours}}
+              </th>
+              <th style="width:100px;">
+                {{M.Pay}}
+              </th>
+            </tr>
+          </thead>
+          <tbody v-if="activeFreelance.length >=1">
+            <tr v-for="item in activeFreelance">
+              <td>{{ item.title }}</td>
+              <td>{{ item.LoC.toFixed(2) }}</td>
+              <td>{{ item.deadline }}</td>
+              <td>{{ item.price }} $</td>
+            </tr>
+          </tbody>
+          <tbody v-if="activeFreelance.length ==0">
+            <tr>
+              <td colspan="3">{{M.NoActiveJobs}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br>
+
+        <h2>{{M.AvailableJobs}}</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 300px;">
+                {{M.Job}}
+              </th>
+              <th style="width: 200px;">
+                {{M.LoC}}
+              </th>
+              <th style="width: 200px;">
+                {{M.Pay}}
+              </th>
+            </tr>
+          </thead>
+          <tbody v-if="freelance.length >= 1">
+            <tr v-for="item in freelance">
+              <td>{{ item.title }}</td>
+              <td>{{ item.LoC.toFixed(2) }}</td>
+              <td>{{ item.price }} $</td>
+              <td>
+                <button v-bind:id="item.id" v-on:click="getJob">
+                  {{M.TakeJob}}
+                </button>
+              </td>
+            </tr>
+          </tbody>
+          <tbody v-if="freelance.length ==0">
+            <tr>
+              <td colspan="3">{{M.NoAvailableJobs}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <div class=" container container3borderless messages" id="messages"></div>
+
+    </div>
+
+    <div id="ex1" class="modal">
+      <p id="storeMsg">
+
+      </p>
+      <p v-for="item in shop">
+        <button v-if="!item.bought" v-bind:id="item.id" v-on:click="buy">
+          {{ item.name }}({{ item.price }} $)
+          <span :if="item.description !=undefined">{{item.description}}</span>
+        </button>
+      </p>
+    </div>
+
+    <div id="ex2" class="modal">
+
+    </div>
+
+    <div id="ex3" class="modal">
+      <h3>{{M.CareersBoard}}</h3>
+      <p id="careerMsg"></p>
+      <p>{{M.AvailableCareers}}</p>
+      <p v-for="item in availableCareers">
+        <button v-bind:id="item.id" v-on:click="interview">
+          {{ item.title }} - {{ item.annualSalary }}$ / {{M.Year}}
+        </button>
+      </p>
+    </div>
+
+    <div id="ex4" class="modal">
+      <h4>{{M.YourReadList}}</h4>
+      <p v-for="item in books.unread">
+        <button v-bind:id="item.id" v-on:click="read">{{ item.name }} (Pages:
+          {{item.readPages}}/{{item.pages}})</button>
+      </p>
+      <p v-if="books.unread.length == 0">(none)</p>
+
+      <h4>{{M.ReadBefore}}</h4>
+      <p v-for="item in books.read">
+        <button disabled v-bind:id="item.id" v-on:click="read">
+          {{ item.name }}
+        </button>
+      </p>
+      <p v-if="books.read.length == 0">(none)</p>
+    </div>
+
+    <div id="ex5" class="modal">
+      <h4>GotHub.com under construction...</h4>
+    </div>
+
+    <div id="ex6" class="modal">
+      <h4>
+        {{ M.Settings }}
+      </h4>
+      <button v-on:click="restart">{{ M.Restart }}</button>
+      <h4>{{ M.Stats }}</h4>
+      <pre>
+        {{ stats }}
+      </pre>
+    </div>
+  </div>
+  <script src="scripts/main.js" type="module"></script>
+
+<script type="text/javascript" src="/scripts/scripts/main.js"></script></body>
+
+</html>

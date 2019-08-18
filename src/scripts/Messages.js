@@ -7,7 +7,7 @@ export {
 }
 
 const Messages_EN = {
-    GameName: "Code Clicker V 0.1",
+    GameName: "Code Clicker V 0.2",
     welcome: "you just got your cs degree. you may as well write some code while waiting for a job.",
     family_fund: "since you look interested, your family gives you some money to get some wares",
     freelance_board: "some friend talked about a freelance site. you may want to look at it",
@@ -89,7 +89,7 @@ const Messages_EN = {
 };
 
 const Messages_TR = {
-    GameName: "Code Clicker V 0.1",
+    GameName: "Code Clicker V 0.2",
     welcome: "bilgisayar mühendisliği diplomanı aldın. iş bulmayı beklerken biraz kod yazsan iyi olur.",
     family_fund: "ailen ilginden memnun. bu yüzden sana biraz para verdiler. bazı eşyalar satın alabilirsin.",
     freelance_board: "bir arkadaşın freelance işler bulabileceğin bir mesaj panosundan bahsetti. bir baksan iyi olur.",

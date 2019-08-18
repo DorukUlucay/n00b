@@ -5,3 +5,7 @@ A clicker game where you are a programmer
 * JQuery
 * VueJs
 * jquery-modal
+* webpack
+* npm
+* html-webpack-plugin
+* copy-webpack-plugin
