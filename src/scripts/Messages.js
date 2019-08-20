@@ -85,7 +85,8 @@ const Messages_EN = {
     WriteSQLFunction: "Write an SQL function",
     FixMyCss: "Fix My CSS",
     GamerArmChair : "Gamer Armchair",
-    CthulhuFigurine: "Cthulhu Figurine"
+    CthulhuFigurine: "Cthulhu Figurine",
+    WirelessMouse: "Wireless Mouse"
 };
 
 const Messages_TR = {
@@ -167,5 +168,6 @@ const Messages_TR = {
     WriteSQLFunction : "Bir SQL Fonksiyonu yaz",
     FixMyCss: "CSS dosyamı düzenle",
     GamerArmChair : "Oyuncu Koltuğu",
-    CthulhuFigurine : "Cthulhu Figürü"
+    CthulhuFigurine : "Cthulhu Figürü",
+    WirelessMouse: "Kablosuz Mouse"
 };

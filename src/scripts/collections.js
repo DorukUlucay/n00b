@@ -161,7 +161,15 @@ var Items = {
     price: 666,
     boost: 0.1,
     bought: false
-  }
+  },
+  wireless_mouse: {
+    id: 17,
+    type: "Hardware",
+    name: Messages.WirelessMouse,
+    price: 25,
+    boost: 0.4,
+    bought: false
+  },
 };
 
 var Jobs = {
@@ -241,6 +249,7 @@ var Achievements = {
       game.shop.push(Items.lcd_22);
       game.shop.push(Items.lcd_27);
       game.shop.push(Items.coffee);
+      game.shop.push(Items.wireless_mouse);
       game.money += 100;
       game.achievements.at_100.done = true;
     }
