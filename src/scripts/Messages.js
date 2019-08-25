@@ -3,11 +3,14 @@ import {
   } from './doruk.js'
 
 export {
-    Messages_TR as Messages
+    Messages_TR as Messages,
+    Version 
 }
 
+const Version = "0.2"
+
 const Messages_EN = {
-    GameName: "Code Clicker V 0.2",
+    GameName: `Code Clicker V ${Version}`,
     welcome: "you just got your cs degree. you may as well write some code while waiting for a job.",
     family_fund: "since you look interested, your family gives you some money to get some wares",
     freelance_board: "some friend talked about a freelance site. you may want to look at it",
@@ -74,7 +77,8 @@ const Messages_EN = {
     LoC800: "800 Lines Of Code Written",
     LoC900: "900 Lines Of Code Written",
     LoC1000: "1000 Lines Of Code Written",
-    LoC1300: "1300 Lines Of Code Written",
+    LoC1500: "1500 Lines Of Code Written",
+    LoC5000: "5000 Lines Of Code Written",
     YourReadList : "Your reading list. Click to read.",
     ReadBefore:"Books you have read",
     LeaveYourJobFirst: "You must leave your current job to get an interview",
@@ -86,11 +90,14 @@ const Messages_EN = {
     FixMyCss: "Fix My CSS",
     GamerArmChair : "Gamer Armchair",
     CthulhuFigurine: "Cthulhu Figurine",
-    WirelessMouse: "Wireless Mouse"
+    WirelessMouse: "Wireless Mouse",
+    YoureFiredFailedAssignments:"You failed too many assignments. You're fired.",
+    MidLevelDeveloper : "Mid Level Developer",
+    PartialSalaryWired : "{0} $ for {1} days you worked was wired to your account."
 };
 
 const Messages_TR = {
-    GameName: "Code Clicker V 0.2",
+    GameName: `Code Clicker V ${Version}`,
     welcome: "bilgisayar mühendisliği diplomanı aldın. iş bulmayı beklerken biraz kod yazsan iyi olur.",
     family_fund: "ailen ilginden memnun. bu yüzden sana biraz para verdiler. bazı eşyalar satın alabilirsin.",
     freelance_board: "bir arkadaşın freelance işler bulabileceğin bir mesaj panosundan bahsetti. bir baksan iyi olur.",
@@ -157,7 +164,8 @@ const Messages_TR = {
     LoC800: "800 satır kod yazıldı",
     LoC900: "900 satır kod yazıldı",
     LoC1000: "1000 satır kod yazıldı",
-    LoC1300: "1300 satır kod yazıldı",
+    LoC1500: "1500 satır kod yazıldı",
+    LoC5000: "5000 satır kod yazıldı",
     YourReadList : "Okuma listeniz. Okumak için tıklayın.",
     ReadBefore:"Okuduğunuz kitaplar",
     LeaveYourJobFirst: "Yeni bir işe girmek için mevcut işinizden ayrılmalısınız",
@@ -169,5 +177,8 @@ const Messages_TR = {
     FixMyCss: "CSS dosyamı düzenle",
     GamerArmChair : "Oyuncu Koltuğu",
     CthulhuFigurine : "Cthulhu Figürü",
-    WirelessMouse: "Kablosuz Mouse"
+    WirelessMouse: "Kablosuz Mouse",
+    YoureFiredFailedAssignments: "Atanan maddeleri tamamlamadığın için işine son verildi.",
+    MidLevelDeveloper : "Mid Level Developer",
+    PartialSalaryWired : "{0} $ (çalıştığın {1} günün karşılığı) hesabına yatırıldı."
 };

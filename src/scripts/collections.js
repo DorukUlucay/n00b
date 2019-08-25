@@ -4,7 +4,7 @@ import {
 } from './doruk.js'
 
 import {
-  Messages
+  Messages, Version
 } from './Messages.js'
 
 export {
@@ -233,6 +233,15 @@ var Careers = {
     title: Messages.JuniorDeveloper,
     LoC: 1000,
     annualSalary: 15000,
+    failedAssignmentCount : 0,
+    monthlySalary : function(){return (this.annualSalary /12).toFixed(2)}
+  },
+  mid_dev: {
+    id: 2,
+    title: Messages.MidLevelDeveloper,
+    LoC: 3000,
+    annualSalary: 30000,
+    failedAssignmentCount : 0,
     monthlySalary : function(){return (this.annualSalary /12).toFixed(2)}
   }
 };
@@ -302,6 +311,7 @@ var Achievements = {
     Do: function (game) {
       game.log(Messages.get_fulltime);
       game.availableCareers.push(Careers.junior_dev);
+      game.availableCareers.push(Careers.mid_dev);
       game.achievements.at_500.done = true;
     }
   },
@@ -357,14 +367,23 @@ var Achievements = {
       game.achievements.at_1000.done = true;
     }
   },
-  at_1300: {
-    Title: "1300 Lines Of Code",
-    Description: Messages.LoC1300,
+  at_1500: {
+    Title: "1500 Lines Of Code",
+    Description: Messages.LoC1500,
     done: false,
-    LoC: 1300,
+    LoC: 1500,
     Do: function (game) {
-      game.achievements.at_1300.done = true;
-      alert("code clicker'ı oynadığın için teşekkürler. şu anda 0.1 sürümündeyiz. eğer ekrandaki her şeye tıkladıysan bundan sonra pek bir şey yok(şimdilik). takipte kal.")
+      game.achievements.at_1500.done = true;
+    }
+  },
+  at_5000: {
+    Title: "5000 Lines Of Code",
+    Description: Messages.LoC5000,
+    done: false,
+    LoC: 5000,
+    Do: function (game) {
+      game.achievements.at_5000.done = true;
+      alert(`code clicker'ı oynadığın için teşekkürler. şu anda ${Version} sürümündeyiz. eğer ekrandaki her şeye tıkladıysan bundan sonra pek bir şey yok(şimdilik). takipte kal.`)
     }
   }
 }

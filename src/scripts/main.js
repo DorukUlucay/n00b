@@ -206,13 +206,23 @@ $(function () {
         this.freelance.splice(this.freelance.indexOf(item), 1);
       },
       interview: function () {
-if(this.career ==null){
         var elementId = event.toElement.id;
         var items = jQuery.grep(this.availableCareers, function (a) {
           return a.id == elementId;
         });
         var career = items[0];
         if (this.LoC >= career.LoC) {
+
+          if(this.career !=null){
+            var partialSalary  = ((this.career.annualSalary / 12)/30 )* this.workedDays;
+            this.money += partialSalary;
+            this.log(Messages.PartialSalaryWired.format(partialSalary, this.workedDays));            
+            this.workedDays = 0;
+            this.failedAssignmentCount=0;
+            this.career = null;
+            this.careerAsignments = [];
+          }
+
           this.career = career;
           this.log(Messages.YouAreHired.format(this.career.monthlySalary()))
           $("#careerMsg").html(Messages.YouAreHired.format(this.career.monthlySalary()))
@@ -220,12 +230,6 @@ if(this.career ==null){
           this.log(Messages.YouAreNotHired)
           $("#careerMsg").html(Messages.YouAreNotHired)
         }
-}
-else
-{
-  $("#careerMsg").html(Messages.LeaveYourJobFirst)
-}
-
       },
       read: function () {
         var elementId = event.toElement.id;
@@ -340,6 +344,19 @@ else
           if (element.deadline == 0) {
             game.careerAsignments.splice(index, 1);
             game.log(Messages.FailedAssignment);
+            this.career.failedAssignmentCount++;
+
+            if(this.career.failedAssignmentCount == 10){
+              game.log(Messages.YoureFiredFailedAssignments);
+              var partialSalary = ((this.career.annualSalary / 12)/30 )* this.workedDays;
+              this.money += partialSalary;
+              this.log(Messages.PartialSalaryWired.format(partialSalary, this.workedDays));
+              this.workedDays = 0;
+              this.failedAssignmentCount=0;
+              this.career = null;
+              this.careerAsignments = [];
+
+            }
           }
         }
       },
