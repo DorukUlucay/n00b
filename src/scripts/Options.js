@@ -1,7 +1,7 @@
 export { Options }
 
 var Options = {
-  interval: 150,
-  locPerTick: 500,
+  interval: 900,
+  locPerTick: 2,
   verbose: false
 }
