@@ -7,7 +7,7 @@ export {
     Version 
 }
 
-const Version = "0.2"
+const Version = "0.2.2"
 
 const Messages_EN = {
     GameName: `Code Clicker V ${Version}`,

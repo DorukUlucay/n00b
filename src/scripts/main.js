@@ -5,8 +5,6 @@ import {
 } from './doruk.js'
 
 import {
-  Items,
-  Jobs,
   Careers,
   Achievements,
   Assignments
@@ -15,6 +13,10 @@ import {
 import {
   Messages
 } from './Messages.js'
+
+import {
+  Jobs
+} from './Jobs.js'
 
 import {
   Options as options
