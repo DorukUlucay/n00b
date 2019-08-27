@@ -94,7 +94,10 @@ const Messages_EN = {
     YoureFiredFailedAssignments:"You failed too many assignments. You're fired.",
     MidLevelDeveloper : "Mid Level Developer",
     PartialSalaryWired : "{0} $ for {1} days you worked was wired to your account.",
-    ThanksForPlaying : `Thanks for playing code clicker. We are currently on version ${Version}. If you clicked everything on screen, there is nothing more to see(for now). Stay in touch.`
+    ThanksForPlaying : `Thanks for playing code clicker. We are currently on version ${Version}. If you clicked everything on screen, there is nothing more to see(for now). Stay in touch.`,
+OpenSourceGameEngine : "3D game engine",
+OpenSourceLogger:"Modular logger library",
+OpenSourceBoard:"Yet another message board"
 };
 
 const Messages_TR = {
@@ -182,5 +185,8 @@ const Messages_TR = {
     YoureFiredFailedAssignments: "Atanan maddeleri tamamlamadığın için işine son verildi.",
     MidLevelDeveloper : "Mid Level Developer",
     PartialSalaryWired : "{0} $ (çalıştığın {1} günün karşılığı) hesabına yatırıldı.",
-    ThanksForPlaying : `Code Clicker'ı oynadığın için teşekkürler. Şu anda ${Version} sürümündeyiz. Eğer ekrandaki her şeye tıkladıysan bundan sonra pek bir şey yok(şimdilik). Takipte kal.`
+    ThanksForPlaying : `Code Clicker'ı oynadığın için teşekkürler. Şu anda ${Version} sürümündeyiz. Eğer ekrandaki her şeye tıkladıysan bundan sonra pek bir şey yok(şimdilik). Takipte kal.`,
+    OpenSourceGameEngine : "3B oyun motoru",
+OpenSourceLogger:"Modüler loglama kütüphanesi",
+OpenSourceBoard:"Bir başka forum alt yapısı"
 };
