@@ -22,6 +22,10 @@ import {
   Options as options
 } from './Options.js'
 
+import {
+  GenerateIssue
+} from './OpenSourceProjects.js'
+
 var game = null;
 
 $(function () {

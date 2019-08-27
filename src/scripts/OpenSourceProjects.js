@@ -2,9 +2,22 @@ import {
   Messages
 } from './Messages.js'
 
+import{
+    Randomize,
+    Guid
+} from './doruk.js'
+
 export {
-  OpenSourceProjects
+  GenerateIssue
 }
+
+var GenerateIssue = function(){
+    var proj =  Randomize(OpenSourceProjects);
+    var issue = Randomize(OpenSourceProjectIssueTypes);
+    
+    return proj + " " +issue;
+}
+
 
 var OpenSourceProjects = {
   gameEngine: {
