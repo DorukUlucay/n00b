@@ -212,17 +212,7 @@ $(function () {
         });
         var career = items[0];
         if (this.LoC >= career.LoC) {
-
-          if(this.career !=null){
-            var partialSalary  = ((this.career.annualSalary / 12)/30 )* this.workedDays;
-            this.money += partialSalary;
-            this.log(Messages.PartialSalaryWired.format(partialSalary, this.workedDays));            
-            this.workedDays = 0;
-            this.failedAssignmentCount=0;
-            this.career = null;
-            this.careerAsignments = [];
-          }
-
+          this.leaveCareer();
           this.career = career;
           this.log(Messages.YouAreHired.format(this.career.monthlySalary()))
           $("#careerMsg").html(Messages.YouAreHired.format(this.career.monthlySalary()))
@@ -348,14 +338,7 @@ $(function () {
 
             if(this.career.failedAssignmentCount == 10){
               game.log(Messages.YoureFiredFailedAssignments);
-              var partialSalary = ((this.career.annualSalary / 12)/30 )* this.workedDays;
-              this.money += partialSalary;
-              this.log(Messages.PartialSalaryWired.format(partialSalary, this.workedDays));
-              this.workedDays = 0;
-              this.failedAssignmentCount=0;
-              this.career = null;
-              this.careerAsignments = [];
-
+              this.leaveCareer();
             }
           }
         }
@@ -376,6 +359,17 @@ $(function () {
           localStorage.removeItem("gameData");
           window.location.reload()
         }
+      },
+      leaveCareer : function(){
+        if(this.career !=null){
+        var partialSalary  = ((this.career.annualSalary / 12)/30 )* this.workedDays;
+        this.money += partialSalary;
+        this.log(Messages.PartialSalaryWired.format(partialSalary, this.workedDays));            
+        this.workedDays = 0;
+        this.failedAssignmentCount=0;
+        this.career = null;
+        this.careerAsignments = [];
+      }
       }
     },
 

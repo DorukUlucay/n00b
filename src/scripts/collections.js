@@ -383,7 +383,7 @@ var Achievements = {
     LoC: 5000,
     Do: function (game) {
       game.achievements.at_5000.done = true;
-      alert(`code clicker'ı oynadığın için teşekkürler. şu anda ${Version} sürümündeyiz. eğer ekrandaki her şeye tıkladıysan bundan sonra pek bir şey yok(şimdilik). takipte kal.`)
+      alert(Messages.ThanksForPlaying);
     }
   }
 }
