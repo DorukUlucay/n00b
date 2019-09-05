@@ -9,3 +9,4 @@ A clicker game where you are a programmer
 * npm
 * html-webpack-plugin
 * copy-webpack-plugin
+* https://github.com/duiker101/Hacker-Typer

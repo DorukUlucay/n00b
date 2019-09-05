@@ -121,6 +121,7 @@ $(function () {
       writeCode: function () {
         this.LoC += this.locPerTick;
         this.descendLoC();
+        Typer.addText();
       },
       log: function (message, isVerbose = null) {
         if (isVerbose && this.verbose) {
@@ -380,6 +381,10 @@ $(function () {
       document.title = this.title;
       this.loadGamex();
       this.next(); // game loop starts here
+
+      Typer.speed = 10;
+      Typer.file = 'kernel.txt';
+      Typer.init();
     },
 
     computed: {
