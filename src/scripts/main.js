@@ -5,14 +5,16 @@ import {
 } from './doruk.js'
 
 import {
-  Careers,
-  Achievements,
-  Assignments
-} from './collections.js'
-
-import {
   Messages
 } from './Messages.js'
+
+import {
+  Achievements
+} from './Achievements.js'
+
+import {
+  Assignments
+} from './Assignments.js'
 
 import {
   Jobs
