@@ -4,10 +4,8 @@
   <link rel="stylesheet" type="text/css" href="style/main.css" />
   <link rel="stylesheet" href="scripts/vendor/jquery.modal.min.css" />
 
-  <script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="scripts/vendor/vue.js"></script>
   <script src="scripts/vendor/jquery.modal.min.js"></script>
 </head>
@@ -16,13 +14,15 @@
   <div id="app">
     <div style="width: 100%; display: block;">
 
-            <div class="container" style="height: 100px;" id='console'></div>
+      <div class="container" style="height: 100px;" id='console'>
         
-         
+      </div>
 
       <div class="container">
         <p>
-          <span style="font-size: 18px;">{{M.LoCWritten}} : {{ LoC.toFixed(2) }}</span>
+          <span style="font-size: 20px; font-weight: bold;">{{ LoC.toFixed(2) }} {{M.LoC}}</span>
+        </p>
+        <p>
           <span>{{M.Time}} : {{ printTime }}</span>
           <span>{{M.Money}} : {{ money }} $</span>
         </p>
@@ -35,7 +35,8 @@
 
         <p>
 
-          <a v-if="achievements.at_100.done" href="#ex1" rel="modal:open"><button>{{ M.BrowseOnlineStore  }}</button></a>
+          <a v-if="achievements.at_100.done" href="#ex1"
+            rel="modal:open"><button>{{ M.BrowseOnlineStore  }}</button></a>
 
           <a v-if="achievements.at_500.done" href="#ex3" rel="modal:open"><button>{{M.BrowseCareers}}</button></a>
 
@@ -43,9 +44,11 @@
 
           <a v-if="achievements.at_400.done" href="#ex4" rel="modal:open"><button>{{M.Kindle}}</button></a>
 
-          <button v-on:click="subscribe" v-if="!achievements.boughtFreelanceSubscr.done && achievements.at_200.done">{{boardSubscriptionPriceLabel}}</button>
+          <button v-on:click="subscribe"
+            v-if="!achievements.boughtFreelanceSubscr.done && achievements.at_200.done">{{boardSubscriptionPriceLabel}}</button>
 
-          <button onclick="$('#freelanceJobs').toggle()" v-if="achievements.boughtFreelanceSubscr.done">{{M.ToggleFreelance}}</button>
+          <button onclick="$('#freelanceJobs').toggle()"
+            v-if="achievements.boughtFreelanceSubscr.done">{{M.ToggleFreelance}}</button>
 
           <a href="#ex6" rel="modal:open"><button>{{ M.Settings }}</button></a>
 
@@ -53,7 +56,7 @@
       </div>
 
       <div class=" container3borderless container" v-if="career != null">
-          <h2>{{M.ActiveAssignments}}</h2>
+        <h2>{{M.ActiveAssignments}}</h2>
         <table>
           <thead>
             <th style="width:300px;">{{M.Description}}</th>

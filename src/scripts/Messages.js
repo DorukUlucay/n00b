@@ -140,7 +140,7 @@ const Messages_TR = {
     WriteCodeButtonLabel : `Kod Yaz(1 Tık = [0] satır kod)`,
     SubscribeToBoard: "Freelance mesaj panosuna üye ol([0] $)",
     Description: "Tanım",
-    LoC: "Kod Satırı Sayısı",
+    LoC: "Satır Kod",
     DeadlineHours : "Teslim Zamanı(saat)",
     NoActiveJobs: "Aktif Freelance İşin Yok",
     PrettyTime :"Gün: [0] Saat: [1]",
