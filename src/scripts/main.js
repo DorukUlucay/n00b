@@ -24,6 +24,10 @@ import {
   Options as options
 } from './Options.js'
 
+import {
+  Typer as Typer
+} from './typer.js'
+
 var game = null;
 
 $(function () {
@@ -59,15 +63,15 @@ $(function () {
       career: null,
       careerAsignments: [],
       verbose: options.verbose,
-      stats:{
-        freelanceProjectsCompleted : 0,
-        freelanceMoneyEarned:0,
-        careerDays:0,
-        careerAssignmentsCompleted:0,
-        careerMoneyEarned:0,
-        moneySpent:0
+      stats: {
+        freelanceProjectsCompleted: 0,
+        freelanceMoneyEarned: 0,
+        careerDays: 0,
+        careerAssignmentsCompleted: 0,
+        careerMoneyEarned: 0,
+        moneySpent: 0
       },
-      M : Messages //TODO: fix repetition
+      M: Messages //TODO: fix repetition
     },
 
     methods: {
@@ -137,7 +141,7 @@ $(function () {
         }
       },
       prettyTime: function () {
-        return this.M.PrettyTime.replace("[0]",this.day).replace("[1]",this.hour);
+        return this.M.PrettyTime.replace("[0]", this.day).replace("[1]", this.hour);
       },
       descendLoC: function () {
 
@@ -158,9 +162,9 @@ $(function () {
             this.money += this.activeFreelance[0].price;
             this.stats.freelanceProjectsCompleted++;
             this.stats.freelanceMoneyEarned += this.activeFreelance[0].price;
-            
+
             this.activeFreelance.splice(0, 1);
-            
+
           }
         }
       },
@@ -170,7 +174,7 @@ $(function () {
         }
         this.achievements.boughtFreelanceSubscr.done = true;
         this.money -= this.boardSubscriptionPrice;
-        this.stats.moneySpent+=this.boardSubscriptionPrice;
+        this.stats.moneySpent += this.boardSubscriptionPrice;
       },
       buy: function () {
         var elementId = event.toElement.id;
@@ -186,17 +190,15 @@ $(function () {
 
           if (item.type == "Book") {
             this.books.unread.push(item);
-            this.log(Messages.BoughtABook.replace("[0]",item.name));
-          $("#storeMsg").html(Messages.BoughtABook.replace("[0]",item.name))
-          }
-          else{
-            this.log(Messages.BoughtA.replace("[0]",item.name));
-            $("#storeMsg").html(Messages.BoughtA.replace("[0]",item.name))
+            this.log(Messages.BoughtABook.replace("[0]", item.name));
+            $("#storeMsg").html(Messages.BoughtABook.replace("[0]", item.name))
+          } else {
+            this.log(Messages.BoughtA.replace("[0]", item.name));
+            $("#storeMsg").html(Messages.BoughtA.replace("[0]", item.name))
           }
           this.money -= item.price;
-          this.stats.moneySpent+=item.price;
-        }
-        else{
+          this.stats.moneySpent += item.price;
+        } else {
           $("#storeMsg").html("not enough money")
         }
       },
@@ -341,7 +343,7 @@ $(function () {
             game.log(Messages.FailedAssignment);
             this.career.failedAssignmentCount++;
 
-            if(this.career.failedAssignmentCount == 10){
+            if (this.career.failedAssignmentCount == 10) {
               game.log(Messages.YoureFiredFailedAssignments);
               this.leaveCareer();
             }
@@ -357,24 +359,24 @@ $(function () {
           }
         }
       },
-      restart : function(){
+      restart: function () {
         var c = confirm(this.M.SureToRestart);
-        if(c){
+        if (c) {
           clearTimeout(game);
           localStorage.removeItem("gameData");
           window.location.reload()
         }
       },
-      leaveCareer : function(){
-        if(this.career !=null){
-        var partialSalary  = ((this.career.annualSalary / 12)/30 )* this.workedDays;
-        this.money += partialSalary;
-        this.log(Messages.PartialSalaryWired.format(partialSalary, this.workedDays));            
-        this.workedDays = 0;
-        this.failedAssignmentCount=0;
-        this.career = null;
-        this.careerAsignments = [];
-      }
+      leaveCareer: function () {
+        if (this.career != null) {
+          var partialSalary = ((this.career.annualSalary / 12) / 30) * this.workedDays;
+          this.money += partialSalary;
+          this.log(Messages.PartialSalaryWired.format(partialSalary, this.workedDays));
+          this.workedDays = 0;
+          this.failedAssignmentCount = 0;
+          this.career = null;
+          this.careerAsignments = [];
+        }
       }
     },
 
@@ -384,7 +386,7 @@ $(function () {
       this.loadGamex();
       this.next(); // game loop starts here
 
-      Typer.speed = 10;
+      //      Typer.speed = 10;
       Typer.file = 'kernel.txt';
       Typer.init();
     },
@@ -393,10 +395,10 @@ $(function () {
       printTime: function () {
         return this.prettyTime();
       },
-      writeCodeLabel : function(){
+      writeCodeLabel: function () {
         return this.M.WriteCodeButtonLabel.replace('[0]', this.locPerTick.toFixed(2));
       },
-      boardSubscriptionPriceLabel : function(){
+      boardSubscriptionPriceLabel: function () {
         return this.M.SubscribeToBoard.replace('[0]', this.boardSubscriptionPrice.toFixed(2));
       }
     }

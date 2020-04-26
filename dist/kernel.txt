@@ -1,0 +1,22 @@
+SELECT *
+FROM Customers;
+
+INSERT INTO Sales
+VALUES(ProductId, CustomerId, Amount);
+
+public class PaymentService{
+    public IGateway _gateway;
+
+    public PaymentService(){
+        _gateway = services.GetService(IGateway);
+    }
+}
+
+const toggleUi = function(){
+    main.visible = false;
+}
+
+import { DoStuff } 
+	from './stuffdoer.js';
+
+"use strict"

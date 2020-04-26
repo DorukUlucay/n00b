@@ -27,7 +27,9 @@ module.exports = {
     }),
     new CopyPlugin([
       { from: 'src/scripts/vendor', to: 'scripts/vendor' },
-      { from: 'src/style', to: 'style' }
+      { from: 'src/style', to: 'style' },
+      { from: 'src/kernel.txt', to: 'kernel.txt' }
+
     ])
   ]
 
