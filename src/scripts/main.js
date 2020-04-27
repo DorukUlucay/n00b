@@ -117,8 +117,8 @@ $(function () {
         this.log("a new month", true);
       },
       next: function () {
-        theloop = this;
-        setTimeout(function () {
+        game = this;
+         theloop = setTimeout(function () {
           game.events();
           game.print();
           game.next();
