@@ -24,7 +24,7 @@
         </p>
         <p>
           <span>{{M.Time}} : {{ printTime }}</span>
-          <span>{{M.Money}} : {{ money }} $</span>
+          <span>{{M.Money}} : {{ money }} {{currency}}</span>
         </p>
 
         <p>
@@ -102,7 +102,7 @@
               <td>{{ item.title }}</td>
               <td>{{ item.LoC.toFixed(2) }}</td>
               <td>{{ item.deadline }}</td>
-              <td>{{ item.price }} $</td>
+              <td>{{ item.price }} {{currency}}</td>
             </tr>
           </tbody>
           <tbody v-if="activeFreelance.length ==0">
@@ -134,7 +134,7 @@
             <tr v-for="item in freelance">
               <td>{{ item.title }}</td>
               <td>{{ item.LoC.toFixed(2) }}</td>
-              <td>{{ item.price }} $</td>
+              <td>{{ item.price }} {{currency}}</td>
               <td>
                 <button v-bind:id="item.id" v-on:click="getJob">
                   {{M.TakeJob}}
@@ -161,7 +161,7 @@
       </p>
       <p v-for="item in shop">
         <button v-if="!item.bought" v-bind:id="item.id" v-on:click="buy">
-          {{ item.name }}({{ item.price }} $)
+          {{ item.name }}({{ item.price }} {{currency}})
           <span :if="item.description !=undefined">{{item.description}}</span>
         </button>
       </p>
@@ -177,7 +177,7 @@
       <p>{{M.AvailableCareers}}</p>
       <p v-for="item in availableCareers">
         <button v-bind:id="item.id" v-on:click="interview">
-          {{ item.title }} - {{ item.annualSalary }}$ / {{M.Year}}
+          {{ item.title }} - {{ item.annualSalary }} {{currency}} / {{M.Year}}
         </button>
       </p>
     </div>
