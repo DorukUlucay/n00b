@@ -28,6 +28,7 @@ import {
   Typer as Typer
 } from './typer.js'
 
+var theloop = null;
 var game = null;
 
 $(function () {
@@ -116,7 +117,7 @@ $(function () {
         this.log("a new month", true);
       },
       next: function () {
-        game = this;
+        theloop = this;
         setTimeout(function () {
           game.events();
           game.print();
@@ -361,8 +362,9 @@ $(function () {
       },
       restart: function () {
         var c = confirm(this.M.SureToRestart);
+        debugger;
         if (c) {
-          clearTimeout(game);
+          clearTimeout(theloop);
           localStorage.removeItem("gameData");
           window.location.reload()
         }
