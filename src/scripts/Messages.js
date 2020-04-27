@@ -2,13 +2,14 @@ import {
     Randomize
   } from './doruk.js'
 
+  import {
+    Options
+  } from './Options.js'
+
 export {
     Messages_TR as Messages,
-    Version,
-    Currency
+    Version
 }
-
-const Currency = "$"
 
 const Version = "0.2.2"
 
@@ -17,7 +18,7 @@ const Messages_EN = {
     welcome: "you just got your cs degree. you may as well write some code while waiting for a job.",
     family_fund: "since you look interested, your family gives you some money to get some wares",
     freelance_board: "some friend talked about a freelance site. you may want to look at it",
-    completed_job: `completed a freelance project and got paid {0} ${Currency}`,
+    completed_job: `completed a freelance project and got paid {0} ${Options.Currency}`,
     get_books: "you may need to learn a few things more before taking complex jobs. buy a few books from store.",
     open_source: "a friend talked about an open source project. it will be more practice and maybe some networking.",
     get_fulltime: "a friend found an internship. may be you can put your cv on that career site.",
@@ -36,7 +37,7 @@ const Messages_EN = {
     FailedAssignment: "failed an assignment. watch out.",
     Achievement: "Achievement",
     FailedProject: "failed a project",
-    YouAreHired: `you're hired! everyday, you'll be assigned with tasks. complete them before they're due. Your salary per month is {0} ${Currency}`,
+    YouAreHired: `you're hired! everyday, you'll be assigned with tasks. complete them before they're due. Your salary per month is {0} ${Options.Currency}`,
     YouAreNotHired: "you're turned down. you need to write more code.",
     BoughtA: "bought a [0]",
     BoughtABook: "bought a [0] book",
@@ -53,7 +54,7 @@ const Messages_EN = {
     Kindle:"E-Book Reader",
     ToggleFreelance : "Toggle Freelance Window",
     WriteCodeButtonLabel : `Write Code(1 Click [0] Line Of Code)`,
-    SubscribeToBoard: `Subscribe for [0] ${Currency} to Jobs board`,
+    SubscribeToBoard: `Subscribe for [0] ${Options.Currency} to Jobs board`,
     Description: "Description",
     LoC: "Lines Of Code",
     Deadline : "Deadline(Hours)",
@@ -96,7 +97,7 @@ const Messages_EN = {
     WirelessMouse: "Wireless Mouse",
     YoureFiredFailedAssignments:"You failed too many assignments. You're fired.",
     MidLevelDeveloper : "Mid Level Developer",
-    PartialSalaryWired : `{0} ${Currency} for {1} days you worked was wired to your account.`,
+    PartialSalaryWired : `{0} ${Options.Currency} for {1} days you worked was wired to your account.`,
     ThanksForPlaying : `Thanks for playing code clicker. We are currently on version ${Version}. If you clicked everything on screen, there is nothing more to see(for now). Stay in touch.`
 };
 
@@ -105,7 +106,7 @@ const Messages_TR = {
     welcome: "bilgisayar mühendisliği diplomanı aldın. iş bulmayı beklerken biraz kod yazsan iyi olur.",
     family_fund: "ailen ilginden memnun. bu yüzden sana biraz para verdiler. bazı eşyalar satın alabilirsin.",
     freelance_board: "bir arkadaşın freelance işler bulabileceğin bir mesaj panosundan bahsetti. bir baksan iyi olur.",
-    completed_job: `freelance bir projeyi tamamladın ve {0} ${Currency} kazandın`,
+    completed_job: `freelance bir projeyi tamamladın ve {0} ${Options.Currency} kazandın`,
     get_books: "daha ciddi işlere girişmeden önce bazı kitaplar okusan iyi olur. internet mağazasına bak.",
     open_source: "bir arkadaşın open source projeler bulabileceğin bir siteden bahsetti. biraz daha pratik ve biraz da network yapmış olursun.",
     get_fulltime: "bir arkadaşın staj hakkında konuşuyordu. şu kariyer sitesine girme vaktin gelmedi mi ?",
@@ -124,7 +125,7 @@ const Messages_TR = {
     FailedAssignment: "teslim etmen gereken bir maddenin süresi doldu. dikkat et.",
     Achievement: "Başarım",
     FailedProject: "bir proje başarısız oldu",
-    YouAreHired: `işe alındın! her gün sana bazı görevler gelecek. bu görevleri süreleri dolmadan önce tamamlamalısın. Aylık maaşın {0} ${Currency}`,
+    YouAreHired: `işe alındın! her gün sana bazı görevler gelecek. bu görevleri süreleri dolmadan önce tamamlamalısın. Aylık maaşın {0} ${Options.Currency}`,
     YouAreNotHired: "reddedildin. daha fazla kod yazmalısın.",
     BoughtA: "bir [0] satın aldın",
     BoughtABook: "bir [0] kitabı satın aldın",
@@ -141,7 +142,7 @@ const Messages_TR = {
     Kindle:"E-Kitap Okuyucusu",
     ToggleFreelance : "Freelance Penceresini Aç/Kapa",
     WriteCodeButtonLabel : `Kod Yaz(1 Tık = [0] satır kod)`,
-    SubscribeToBoard: `Freelance mesaj panosuna üye ol([0] ${Currency})`,
+    SubscribeToBoard: `Freelance mesaj panosuna üye ol([0] ${Options.Currency})`,
     Description: "Tanım",
     LoC: "Satır Kod",
     DeadlineHours : "Teslim Zamanı(saat)",
@@ -184,6 +185,6 @@ const Messages_TR = {
     WirelessMouse: "Kablosuz Mouse",
     YoureFiredFailedAssignments: "Atanan maddeleri tamamlamadığın için işine son verildi.",
     MidLevelDeveloper : "Mid Level Developer",
-    PartialSalaryWired : `{0} ${Currency} (çalıştığın {1} günün karşılığı) hesabına yatırıldı.`,
+    PartialSalaryWired : `{0} ${Options.Currency} (çalıştığın {1} günün karşılığı) hesabına yatırıldı.`,
     ThanksForPlaying : `Code Clicker'ı oynadığın için teşekkürler. Şu anda ${Version} sürümündeyiz. Eğer ekrandaki her şeye tıkladıysan bundan sonra pek bir şey yok(şimdilik). Takipte kal.`
 };

@@ -5,7 +5,7 @@ import {
 } from './doruk.js'
 
 import {
-  Messages, Currency
+  Messages
 } from './Messages.js'
 
 import {
@@ -404,7 +404,7 @@ $(function () {
         return this.M.SubscribeToBoard.replace('[0]', this.boardSubscriptionPrice.toFixed(2));
       },
       currency : function(){
-       return Currency;
+       return options.Currency;
       }
     }
   });
