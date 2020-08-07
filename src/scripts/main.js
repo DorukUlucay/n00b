@@ -118,7 +118,7 @@ $(function () {
       },
       next: function () {
         game = this;
-         theloop = setTimeout(function () {
+        theloop = setTimeout(function () {
           game.events();
           game.print();
           game.next();
@@ -219,15 +219,26 @@ $(function () {
           return a.id == elementId;
         });
         var career = items[0];
-        if (this.LoC >= career.LoC) {
-          this.leaveCareer();
-          this.career = career;
-          this.log(Messages.YouAreHired.format(this.career.monthlySalary()))
-          $("#careerMsg").html(Messages.YouAreHired.format(this.career.monthlySalary()))
-        } else {
+
+        debugger;
+
+
+        if (career.LoC > this.LoC) {
           this.log(Messages.YouAreNotHired)
           $("#careerMsg").html(Messages.YouAreNotHired)
+          return;
         }
+
+        if (career.RequiredDays > this.stats.careerDays) {
+          this.log(Messages.YouAreNotHired_Days)
+          $("#careerMsg").html(Messages.YouAreNotHired_Days)
+          return;
+        }
+
+        this.leaveCareer();
+        this.career = career;
+        this.log(Messages.YouAreHired.format(this.career.monthlySalary()))
+        $("#careerMsg").html(Messages.YouAreHired.format(this.career.monthlySalary()))
       },
       read: function () {
         var elementId = event.toElement.id;
@@ -403,8 +414,8 @@ $(function () {
       boardSubscriptionPriceLabel: function () {
         return this.M.SubscribeToBoard.replace('[0]', this.boardSubscriptionPrice.toFixed(2));
       },
-      currency : function(){
-       return options.Currency;
+      currency: function () {
+        return options.Currency;
       }
     }
   });

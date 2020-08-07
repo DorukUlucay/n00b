@@ -11,6 +11,7 @@ var Careers = {
         title: Messages.JuniorDeveloper,
         LoC: 1000,
         annualSalary: 15000,
+        RequiredDays: 0,
         failedAssignmentCount: 0,
         monthlySalary: function() {
             return (this.annualSalary / 12).toFixed(2)
@@ -21,6 +22,7 @@ var Careers = {
         title: Messages.MidLevelDeveloper,
         LoC: 3000,
         annualSalary: 30000,
+        RequiredDays: 30,
         failedAssignmentCount: 0,
         monthlySalary: function() {
             return (this.annualSalary / 12).toFixed(2)
@@ -30,6 +32,7 @@ var Careers = {
         id: 3,
         title: Messages.SeniorDeveloper,
         LoC: 5000,
+        RequiredDays: 90,
         annualSalary: 50000,
         failedAssignmentCount: 0,
         monthlySalary: function() {
@@ -40,6 +43,7 @@ var Careers = {
         id: 4,
         title: Messages.TeamLeader,
         LoC: 10000,
+        RequiredDays: 150,
         annualSalary: 75000,
         failedAssignmentCount: 0,
         monthlySalary: function() {
