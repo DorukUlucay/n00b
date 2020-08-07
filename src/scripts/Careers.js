@@ -1,30 +1,50 @@
 import {
     Messages
-  } from './Messages.js'
+} from './Messages.js'
 
 export {
     Careers
-  }
+}
 var Careers = {
     junior_dev: {
-      id: 1,
-      title: Messages.JuniorDeveloper,
-      LoC: 1000,
-      annualSalary: 15000,
-      failedAssignmentCount: 0,
-      monthlySalary: function () {
-        return (this.annualSalary / 12).toFixed(2)
-      }
+        id: 1,
+        title: Messages.JuniorDeveloper,
+        LoC: 1000,
+        annualSalary: 15000,
+        failedAssignmentCount: 0,
+        monthlySalary: function() {
+            return (this.annualSalary / 12).toFixed(2)
+        }
     },
     mid_dev: {
-      id: 2,
-      title: Messages.MidLevelDeveloper,
-      LoC: 3000,
-      annualSalary: 30000,
-      failedAssignmentCount: 0,
-      monthlySalary: function () {
-        return (this.annualSalary / 12).toFixed(2)
-      }
-    }
-  };
-  
+        id: 2,
+        title: Messages.MidLevelDeveloper,
+        LoC: 3000,
+        annualSalary: 30000,
+        failedAssignmentCount: 0,
+        monthlySalary: function() {
+            return (this.annualSalary / 12).toFixed(2)
+        }
+    },
+    sr_dev: {
+        id: 3,
+        title: Messages.SeniorDeveloper,
+        LoC: 5000,
+        annualSalary: 50000,
+        failedAssignmentCount: 0,
+        monthlySalary: function() {
+            return (this.annualSalary / 12).toFixed(2)
+        }
+    },
+    team_leader: {
+        id: 4,
+        title: Messages.TeamLeader,
+        LoC: 10000,
+        annualSalary: 75000,
+        failedAssignmentCount: 0,
+        monthlySalary: function() {
+            return (this.annualSalary / 12).toFixed(2)
+        }
+    },
+
+};

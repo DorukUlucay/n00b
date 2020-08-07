@@ -2,8 +2,8 @@ import {
     Guid,
     getRandomInt,
     Randomize
-  } from './doruk.js'
-  
+} from './doruk.js'
+
 import {
     Messages
 } from './Messages.js'
@@ -144,7 +144,7 @@ var Items = {
         name: Messages.GamerArmChair,
         description: null,
         price: 1150,
-        boost: 2,
+        boost: 4,
         bought: false
     },
     cthulhuFigurine: {
