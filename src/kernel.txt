@@ -20,3 +20,63 @@ import { DoStuff }
 	from './stuffdoer.js';
 
 "use strict"
+
+private List<User> GetUsers()
+{
+    return _userRepository.GetAll().ToList();
+}
+
+GC.Collect();
+
+import sql;
+
+def getApiStatus():
+    return _healthCheckService.Status();
+
+pip install requirements.txt
+
+UPDATE Users SET Active=1 WHERE Id=9;
+
+public class InvoiceService:IInvoiceService{
+
+    IInvoiceRepository _invoiceRepository;
+
+    public InvoiceService(IInvoiceRepository invoiceRepository ){
+        _invoiceRepository =invoiceRepository;
+    }
+
+    public Invoice GetInvoice(long id)
+    {
+        return _invoiceRepository.Get(id);
+    }
+}
+
+public class InvoiceUnitTest
+{
+
+    [Test]
+    public void CanGetInvoice(){
+        Assert.NotNull(_invoiceService.GetInvoice(1));
+    }
+}
+
+ if ((Test-Path ".git") -eq $TRUE) {
+        return $TRUE
+    }
+
+
+  if (!$path) {
+        cd \git
+    }
+    else {
+        cd $path
+    }
+
+    subscribe: function () {
+        if (this.money < this.boardSubscriptionPrice) {
+          this.log(Messages.not_enough_money);
+        }
+        this.achievements.boughtFreelanceSubscr.done = true;
+        this.money -= this.boardSubscriptionPrice;
+        this.stats.moneySpent += this.boardSubscriptionPrice;
+      },
