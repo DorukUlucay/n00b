@@ -101,7 +101,8 @@ const Messages_EN = {
     ThanksForPlaying: `Thanks for playing code clicker. We are currently on version ${Version}. If you clicked everything on screen, there is nothing more to see(for now). Stay in touch.`,
     SeniorDeveloper: `Senior Developer`,
     TeamLeader: `Team Leader`,
-    YouAreNotHired_Days: `You are rejected. Come when you have more experience.`
+    YouAreNotHired_Days: `You are rejected. Come when you have more experience.`,
+    NotEnoughMoney: `You have not enough money.`
 };
 
 const Messages_TR = {
@@ -192,5 +193,6 @@ const Messages_TR = {
     ThanksForPlaying: `Code Clicker'ı oynadığın için teşekkürler. Şu anda ${Version} sürümündeyiz. Eğer ekrandaki her şeye tıkladıysan bundan sonra pek bir şey yok(şimdilik). Takipte kal.`,
     SeniorDeveloper: `Senior Developer`,
     TeamLeader: `Team Leader`,
-    YouAreNotHired_Days: `Reddedildin. Daha fazla deneyim kazandığında gel.`
+    YouAreNotHired_Days: `Reddedildin. Daha fazla deneyim kazandığında gel.`,
+    NotEnoughMoney: `Yeterli paran yok.`
 };
