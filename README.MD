@@ -1,5 +1,5 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/64c0b41b-3cca-42b8-9584-67df5ae1a58e/deploy-status)](https://app.netlify.com/sites/pedantic-beaver-7c0943/deploys)
-[!Open Issues](https://img.shields.io/github/issues-raw/dorukulucay/n00b)
+[![Open Issues]](https://img.shields.io/github/issues-raw/dorukulucay/n00b)
 # N00B: Code your way to top
 A clicker game where you are a programmer
 
