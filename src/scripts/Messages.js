@@ -102,7 +102,8 @@ const Messages_EN = {
     SeniorDeveloper: `Senior Developer`,
     TeamLeader: `Team Leader`,
     YouAreNotHired_Days: `You are rejected. Come when you have more experience.`,
-    NotEnoughMoney: `You have not enough money.`
+    NotEnoughMoney: `You have not enough money.`,
+    FixProblemInPaymentIntegration: "Fix Problem In Payment Integration."
 };
 
 const Messages_TR = {
@@ -194,5 +195,6 @@ const Messages_TR = {
     SeniorDeveloper: `Senior Developer`,
     TeamLeader: `Team Leader`,
     YouAreNotHired_Days: `Reddedildin. Daha fazla deneyim kazandığında gel.`,
-    NotEnoughMoney: `Yeterli paran yok.`
+    NotEnoughMoney: `Yeterli paran yok.`,
+    FixProblemInPaymentIntegration: "Ödeme entegrasyonundaki problemi gider."
 };
