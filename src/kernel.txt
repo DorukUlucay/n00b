@@ -80,3 +80,57 @@ public class InvoiceUnitTest
         this.money -= this.boardSubscriptionPrice;
         this.stats.moneySpent += this.boardSubscriptionPrice;
       },
+
+
+function isAGitDir() {
+    if ((Test-Path ".git") -eq $TRUE) {
+        return $TRUE
+    }
+    return $FALSE
+}
+
+function gitCheck($path) {
+
+    $table = New-Object system.Data.DataTable “theTable”
+    $col1 = New-Object system.Data.DataColumn Directory, ([string])
+    $col2 = New-Object system.Data.DataColumn Branch, ([string])
+    $table.columns.add($col1)
+    $table.columns.add($col2)
+
+    if (!$path) {
+        cd \git
+    }
+    else {
+        cd $path
+    }
+	
+    foreach ($dir in ls -directory) {
+	
+        cd $dir.name	
+		
+        $row = $table.NewRow()
+        $row.Directory = $dir.name	
+        $isAGitDir = isAGitDir;
+	
+        if ($isAGitDir) {
+            $branch = git rev-parse --abbrev-ref HEAD
+            $row.Branch = $branch
+        }
+        else {
+            $row.Branch = "NOT A GIT DIR"
+        }
+		
+        $table.Rows.Add($row)
+
+        cd ..
+    }
+	
+    cls
+    $table | format-table -AutoSize 
+}
+
+ECHO "Retrieving the info..."
+
+gitCheck
+
+Read-Host -Prompt "Press Enter to exit"
