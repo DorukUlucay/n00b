@@ -21,6 +21,7 @@ npm run build
 ```
 
 ### Uses
+* Bootstrap
 * jQuery
 * VueJs
 * jquery-modal
