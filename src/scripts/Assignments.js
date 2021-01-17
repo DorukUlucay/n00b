@@ -18,7 +18,7 @@ var Assignments = {
         id: Guid.NewGuidWithoutDash(),
         chances: {
             min: 1,
-            max: 25
+            max: 33
         }
     },
     UnitTest: {
@@ -27,8 +27,8 @@ var Assignments = {
         deadline: 24,
         id: Guid.NewGuidWithoutDash(),
         chances: {
-            min: 26,
-            max: 50
+            min: 34,
+            max: 66
         }
     },
     WriteSQLFunction: {
@@ -37,17 +37,7 @@ var Assignments = {
         deadline: 24,
         id: Guid.NewGuidWithoutDash(),
         chances: {
-            min: 51,
-            max: 75
-        }
-    },
-    FixProblemInPaymentIntegration: {
-        title: Messages.FixProblemInPaymentIntegration,
-        LoC: 25,
-        deadline: 24,
-        id: Guid.NewGuidWithoutDash(),
-        chances: {
-            min: 76,
+            min: 67,
             max: 100
         }
     },
