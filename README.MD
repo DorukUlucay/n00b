@@ -24,7 +24,7 @@ npm run build
 * Bootstrap
 * jQuery
 * VueJs
-* jquery-modal
+* Font Awesome
 * webpack
 * npm
 * html-webpack-plugin
