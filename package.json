@@ -3,9 +3,9 @@
   "description": "A clicker game where you are a programmer",
   "version": "0.0.1",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode production",
     "vscode:prepublish": "webpack --mode production",
-    "compile": "webpack --mode none",
+    "compile": "webpack --mode production",
     "watch": "webpack --mode none --watch",
     "test-compile": "tsc -p ./"
   },

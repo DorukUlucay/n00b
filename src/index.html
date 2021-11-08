@@ -1,228 +1,375 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="game, click game"/>
-    <meta name="description" content="click game"/>
-    <meta name="robots" content="index,follow" />
-   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="scripts/vendor/jquery.modal.min.css">   
-   <link rel="stylesheet" href="style/vendor/bootstrap.min.css">
-   <link rel="stylesheet" href="style/main.css">
-   <title>n00b click game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="game, click game" />
+  <meta name="description" content="click game" />
+  <meta name="robots" content="index,follow" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap">
+  <link rel="stylesheet" href="style/vendor/prism.css">
+  <link rel="stylesheet" href="style/vendor/all.min.css">
+  <link rel="stylesheet" href="style/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="style/main.css">
+  <title>n00b click game</title>
 </head>
 
 <body>
+
+  <!--### Header Start ###-->
+  <header>
+
+  </header>
+  <!--### Header End ###-->
+
+  <!--### Main Start ###-->
   <div id="app">
-    <div style="width: 100%; display: block;">
 
-      <div class="container" style="height: 100px;" id='console'>
-
-      </div>
-
+    <!--### Console Start ###-->
+    <section class="console">
       <div class="container">
-        <p>
-          <span style="font-size: 20px; font-weight: bold;">{{ LoC.toFixed(2) }} {{M.LoC}}</span>
-        </p>
-        <p>
-          <span>{{M.Time}} : {{ printTime }}</span>
-          <span>{{M.Money}} : {{ money }} {{currency}}</span>
-        </p>
-
-        <p>
-          <button v-on:keypress.enter.prevent v-on:click="writeCode">
-            {{ writeCodeLabel }}
-          </button>
-        </p>
-
-        <p>
-
-          <a v-if="achievements.at_100.done" href="#ex1"
-            rel="modal:open"><button>{{ M.BrowseOnlineStore  }}</button></a>
-
-          <a v-if="achievements.at_500.done" href="#ex3" rel="modal:open"><button>{{M.BrowseCareers}}</button></a>
-
-          <!-- <a v-if="achievements.at_600.done" href="#ex5" rel="modal:open"><button>GotCode.com</button></a> -->
-
-          <a v-if="achievements.at_400.done" href="#ex4" rel="modal:open"><button>{{M.Kindle}}</button></a>
-
-          <button v-on:click="subscribe"
-            v-if="!achievements.boughtFreelanceSubscr.done && achievements.at_200.done">{{boardSubscriptionPriceLabel}}</button>
-
-          <button onclick="$('#freelanceJobs').toggle()"
-            v-if="achievements.boughtFreelanceSubscr.done">{{M.ToggleFreelance}}</button>
-
-          <a href="#ex6" rel="modal:open"><button>{{ M.Settings }}</button></a>
-
-        </p>
+        <div class="row">
+          <div class="col-lg-2">
+            <h1 id="game">n00b</h1>
+          </div>
+          <div class="col-lg-8" id="screen">
+            <p id="console"></p>
+            <div id="code">
+              <span>{{LoC.toFixed(2)}}</span>
+              <span>{{M.LoC}}</span>
+            </div>
+          </div>
+          <div class="col-lg-2">
+            <h2 id="slogan">clicker game where you are a programmer </h2>
+          </div>
+        </div>
       </div>
+    </section>
+    <!--### Console End ###-->
 
-      <div class=" container3borderless container" v-if="career != null">
-        <h2>{{M.ActiveAssignments}}</h2>
-        <table>
-          <thead>
-            <th style="width:300px;">{{M.Description}}</th>
-            <th style="width:200px;">{{M.LoC}}</th>
-            <th style="width:200px;">{{M.DeadlineHours}}</th>
-          </thead>
-          <tbody v-if="careerAsignments.length > 0">
-            <tr v-for="item in careerAsignments">
-              <td>{{ item.title }}</td>
-              <td>{{ item.LoC.toFixed(2) }}</td>
-              <td>{{ item.deadline }}</td>
-            </tr>
-          </tbody>
-          <tbody v-if="careerAsignments.length == 0">
-            <tr>
-              <td colspan="3">{{M.NoActiveAssignments}}</td>
-            </tr>
-          </tbody>
-        </table>
+    <!--### Game Control Start ###-->
+    <section class="game-control">
+      <div class="container">
+        <div class="row">
+        <div class="col-lg-8 offset-lg-2 text-center">
+            <div class="kod">
+              <span class="time">{{ printTime }} </span>
+              <button class="click" v-on:keypress.enter.prevent v-on:click="writeCode">
+                {{ writeCodeLabel }}<i class="fas fa-mouse"></i>
+              </button>
+              <span class="time">{{M.Money}} : {{ money }} {{currency}}</span>
+            </div>
+          </div>
+       </div>
+
+
+        <!--### Buttons ###-->
+        <div class="row">
+          <div class="col-lg-8 offset-lg-2 text-center button-set">
+
+            <a v-if="achievements.at_100.done" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#store">{{
+              M.BrowseOnlineStore }}<i class="fas fa-cart-arrow-down"></i></a>
+
+            <a v-if="achievements.at_500.done" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+              data-bs-target="#career">{{M.BrowseCareers}}<i class="fas fa-address-card"></i></a>
+
+            <!--<a v-if="achievements.at_600.done" href="#ex5" rel="modal:open"><button>GotCode.com</button></a> -->
+
+            <a v-if="achievements.at_400.done" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+              data-bs-target="#reading-list">{{M.Kindle}}<i class="fas fa-book"></i></a>
+
+            <a v-on:click="subscribe" v-if="!achievements.boughtFreelanceSubscr.done && achievements.at_200.done"
+              class="btn btn-warning btn-sm">{{boardSubscriptionPriceLabel}}</a>
+
+            <a v-if="achievements.boughtFreelanceSubscr.done" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+              data-bs-target="#freelanceJobs">{{M.ToggleFreelance}}<i class="fas fa-user-tag"></i></a>
+
+            <a onclick="$('#messages').toggle()" class="btn btn-warning btn-sm">{{M.MessageBoard}}<i
+                class="fas fa-comment-dots"></i></a>
+
+            <a data-bs-toggle="modal" data-bs-target="#settings" class="btn btn-warning btn-sm">{{M.Settings}}<i
+                class="fas fa-cogs"></i></a>
+          </div>
+        </div>
+        <!--### Buttons End ###-->
       </div>
+    </section>
+    <!--### Game Control End ###-->
 
-      <div class="container container3borderless" id="freelanceJobs" v-if="achievements.boughtFreelanceSubscr.done">
-        <h2>{{M.ActiveJobs}}</h2>
-        <table>
-          <thead>
-            <tr>
-              <th style="width:300px;">
-                {{M.Job}}
-              </th>
-              <th style="width:200px;">
-                {{M.LoC}}
-              </th>
-              <th style="width:200px;">
-                {{M.DeadlineHours}}
-              </th>
-              <th style="width:100px;">
-                {{M.Pay}}
-              </th>
-            </tr>
-          </thead>
-          <tbody v-if="activeFreelance.length >=1">
-            <tr v-for="item in activeFreelance">
-              <td>{{ item.title }}</td>
-              <td>{{ item.LoC.toFixed(2) }}</td>
-              <td>{{ item.deadline }}</td>
-              <td>{{ item.price }} {{currency}}</td>
-            </tr>
-          </tbody>
-          <tbody v-if="activeFreelance.length ==0">
-            <tr>
-              <td colspan="3">{{M.NoActiveJobs}}</td>
-            </tr>
-          </tbody>
-        </table>
 
-        <br>
+    <!--<section>
+      <div class="container">
+        <div class="row">
+          <h1>tablo</h1>
+          <div class="col-lg-8 offset-lg-2" v-if="career != null">
+            <h2 class="text-center">{{M.ActiveAssignments}}</h2>
+         
+            <table class="table" style="color: red;">
+              <thead>
+                <th scope="col">{{M.Description}}</th>
+                <th scope="col">{{M.LoC}</th>
+                <th scope="col">{{M.DeadlineHours}}</th>
+              </thead>
+              <tbody v-if="careerAsignments.length > 0">
+                <tr v-for="item in careerAsignments">
+                  <td>{{ item.title }}</td>
+                  <td>{{ item.LoC.toFixed(2) }}</td>
+                  <td>{{ item.deadline }}</td>
+                </tr>
+              </tbody>
+              <tbody v-if="careerAsignments.length == 0">
+                <tr>
+                  <td>{{M.NoActiveAssignments}}</td>
+                </tr>
+              </tbody>
+            </table>
+         
+          </div>
+        </div>
+      </div>
+    </section>-->
 
-        <h2>{{M.AvailableJobs}}</h2>
+       
 
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 300px;">
-                {{M.Job}}
-              </th>
-              <th style="width: 200px;">
-                {{M.LoC}}
-              </th>
-              <th style="width: 200px;">
-                {{M.Pay}}
-              </th>
-            </tr>
-          </thead>
-          <tbody v-if="freelance.length >= 1">
-            <tr v-for="item in freelance">
-              <td>{{ item.title }}</td>
-              <td>{{ item.LoC.toFixed(2) }}</td>
-              <td>{{ item.price }} {{currency}}</td>
-              <td>
-                <button v-bind:id="item.id" v-on:click="getJob">
-                  {{M.TakeJob}}
+    <!--### Messages Start ###-->
+      <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 offset-lg-2">
+            <div class="font-monospace" id="messages"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--### Messages End ###-->
+
+    <!--### Freelance Modal ###-->
+    <div class="modal fade" id="freelanceJobs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center" id="exampleModalLabel">Freelance İşler</h5>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
+                class="fas fa-power-off"></i></button>
+          </div>
+          <div class="modal-body">
+            <h3 class="text-center">{{M.ActiveJobs}}</h3>
+            <table class="table table-dark table-hover">
+              <thead>
+                <tr>
+                  <th scope="col"> {{M.Job}}</th>
+                  <th scope="col">{{M.LoC}}</th>
+                  <th scope="col">{{M.DeadlineHours}}</th>
+                  <th scope="col">{{M.Pay}}</th>
+                </tr>
+              </thead>
+              <tbody v-if="activeFreelance.length ==0">
+                <tr class="alert alert-warning d-flex align-items-center">
+                  <td>{{M.NoActiveJobs}}<i class="fas fa-exclamation-triangle"></i></td>
+                </tr>
+              </tbody>
+              <tbody v-if="activeFreelance.length >=1">
+                <tr v-for="item in activeFreelance">
+                  <td>{{ item.title }}</td>
+                  <td>{{ item.LoC.toFixed(2) }}</td>
+                  <td>{{ item.deadline }}</td>
+                  <td>{{ item.price }} {{currency}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <h3 class="text-center">{{M.AvailableJobs}}</h3>
+            <table class="table table-dark table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">{{M.Job}}</th>
+                  <th scope="col">{{M.LoC}}</th>
+                  <th scope="col">{{M.Pay}}</th>
+                  <th scope="col"> {{M.TakeJob}}</th>
+                </tr>
+              </thead>
+              <tbody v-if="freelance.length >= 1">
+                <tr v-for="item in freelance">
+                  <td>{{ item.title }}</td>
+                  <td>{{ item.LoC.toFixed(2) }}</td>
+                  <td>{{ item.price }} {{currency}}</td>
+                  <td>
+                    <button class="btn btn-success" v-bind:id="item.id" v-on:click="getJob">
+                      <i class="fas fa-hand-holding-usd fa-lg"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+              <tbody v-if="freelance.length ==0">
+                <tr>
+                  <td>{{M.NoAvailableJobs}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--### Freelance End ###-->
+
+
+    <!--### Store Modal ###-->
+    <div class="modal fade" id="store" tabindex="-1" aria-labelledby="store" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="store">Mağaza<i class="fas fa-cart-arrow-down"></i></h5>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
+                class="fas fa-power-off"></i></button>
+          </div>
+          <div class="modal-body">
+            <p id="storeMsg"></p>
+           <!-- <ul class="list-group list-group-flush">
+              <li class="list-group-item" v-for="item in shop">
+                <button v-if="!item.bought" v-bind:id="item.id" v-on:click="buy">
+                  {{ item.name }}<span class="badge bg-warning text-dark">{{ item.price }} {{currency}}</span>
+                  <span :if="item.description !=undefined">{{item.description}}</span>
                 </button>
-              </td>
-            </tr>
-          </tbody>
-          <tbody v-if="freelance.length ==0">
-            <tr>
-              <td colspan="3">{{M.NoAvailableJobs}}</td>
-            </tr>
-          </tbody>
-        </table>
+              </li>
+            </ul>-->
 
+            <!-- yeni mağaza listesi -->
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Ürün</th>
+                  <th scope="col">Fiyat</th>
+                  <th scope="col">Satın Al</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="item in shop">
+                  <th scope="row">1</th>
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.price }} {{currency}}</td>
+                  <td><button v-if="!item.bought" v-bind:id="item.id" v-on:click="buy">Satın al</button></td>
+              </tr>
+            </tbody>
+            </table>
+            
+            <!-- yeni mağaza listesi -->
+
+          </div>
+          <div class="modal-footer">
+            <p>Alış veriş zamanı :)</p>
+          </div>
+        </div>
       </div>
-
-      <div class=" container container3borderless messages" id="messages"></div>
-
     </div>
+    <!--### Store Modal End ###-->
 
-    <div id="ex1" class="modal">
-      <p id="storeMsg">
+    <!--<div id="ex2" class="modal"></div>-->
 
-      </p>
-      <p v-for="item in shop">
-        <button v-if="!item.bought" v-bind:id="item.id" v-on:click="buy">
-          {{ item.name }}({{ item.price }} {{currency}})
-          <span :if="item.description !=undefined">{{item.description}}</span>
-        </button>
-      </p>
+    <!--### Careers Modal ###-->
+    <div class="modal" tabindex="-1" id="career">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">{{M.CareersBoard}}</h5>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
+                class="fas fa-power-off"></i></button>
+          </div>
+          <div class="modal-body">
+            <p id="careerMsg"></p>
+            <p>{{M.AvailableCareers}}</p>
+            <p v-for="item in availableCareers">
+              <a class="link-primary" v-bind:id="item.id" v-on:click="interview">
+                {{ item.title }} - {{ item.annualSalary }} {{currency}} / {{M.Year}}
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
+    <!--### Careers Board End ###-->
 
-    <div id="ex2" class="modal">
-
+    <!--### Reading List ###-->
+    <div class="modal" tabindex="-1" id="reading-list">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">{{M.YourReadList}}</h5>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
+                class="fas fa-power-off"></i></button>
+          </div>
+          <div class="modal-body">
+            <p v-for="item in books.unread">
+              <button type="button" class="" disabled v-bind:id="item.id" v-on:click="read">
+                {{ item.name }}
+              </button>
+            </p>
+            <p v-if="books.read.length == 0">(none)</p>
+          </div>
+        </div>
+      </div>
     </div>
+    <!--### Reading List End ###-->
 
-    <div id="ex3" class="modal">
-      <h3>{{M.CareersBoard}}</h3>
-      <p id="careerMsg"></p>
-      <p>{{M.AvailableCareers}}</p>
-      <p v-for="item in availableCareers">
-        <button v-bind:id="item.id" v-on:click="interview">
-          {{ item.title }} - {{ item.annualSalary }} {{currency}} / {{M.Year}}
-        </button>
-      </p>
-    </div>
-
-    <div id="ex4" class="modal">
-      <h4>{{M.YourReadList}}</h4>
-      <p v-for="item in books.unread">
-        <button v-bind:id="item.id" v-on:click="read">{{ item.name }} (Pages:
-          {{item.readPages}}/{{item.pages}})</button>
-      </p>
-      <p v-if="books.unread.length == 0">(none)</p>
-
-      <h4>{{M.ReadBefore}}</h4>
-      <p v-for="item in books.read">
-        <button disabled v-bind:id="item.id" v-on:click="read">
-          {{ item.name }}
-        </button>
-      </p>
-      <p v-if="books.read.length == 0">(none)</p>
-    </div>
-
-    <div id="ex5" class="modal">
+    <!-- <div id="ex5" class="modal">
       <h4>GotHub.com under construction...</h4>
-    </div>
+    </div>-->
 
-    <div id="ex6" class="modal">
-      <h4>
-        {{ M.Settings }}
-      </h4>
-      <button v-on:click="restart">{{ M.Restart }}</button>
-      <h4>{{ M.Stats }}</h4>
-      <pre>
-        {{ stats }}
-      </pre>
+    <!--### Settings ###-->
+    <div class="modal" tabindex="-1" id="settings">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h5 class="modal-title">{{ M.Settings }}</h5>
+          </div>
+          <div class="modal-body">
+            <h4>{{ M.Stats }}</h4>
+            <pre>{{ stats }}</pre>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" id="reset" v-on:click="restart" data-bs-dismiss="modal">{{
+              M.Restart }}</button>
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal" aria-label="Close"><i
+                class="fas fa-power-off"></i>İptal</button>
+          </div>
+        </div>
+      </div>
     </div>
+    <!--### Settings End ###-->
+
+
+    <!--### Thanks ###-->
+    <div class="modal" tabindex="-1" id="output">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-primary">
+            <h5 class="modal-title text-white">Tebrikler<i class="far fa-smile"></i></h5>
+          </div>
+          <div class="modal-body">
+            <p>{{M.ThanksForPlaying}}</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="close" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Hoşçakal
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--### Thanks End ###-->
+
   </div>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script src="scripts/vendor/vue.js"></script>
-  <script src="scripts/vendor/jquery.modal.min.js"></script>
-  <script src="scripts/vendor/bootstrap.min.js"></script>
-  <script src="scripts/main.js" type="module"></script>
+  <!--### Main End ###-->
 
+
+  <script src="scripts/vendor/vue.js"></script>
+  <script src="scripts/vendor/jquery-3.6.0.min.js"></script>
+  <script src="scripts/vendor/bootstrap.min.js"></script>
+  <script src="scripts/vendor/prism.js"></script>
+  <script src="scripts/main.js" type="module"></script>
+  <script>
+    // $('#ex1').modal('handleUpdate')
+  </script>
 </body>
 
 </html>

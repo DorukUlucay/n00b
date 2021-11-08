@@ -133,16 +133,21 @@ $(function () {
       log: function (message, isVerbose = null) {
         if (isVerbose && this.verbose) {
           $("#messages").prepend(
-            "<p>" + this.prettyTime() + ": " + message + "</p>"
+            "<p>" + this.prettyTime() + ":/ " + message + "</p>" 
           );
         } else if (isVerbose == null) {
           $("#messages").prepend(
-            "<p>" + this.prettyTime() + ": " + message + "</p>"
+            "<p><i class='fas fa-comment-dots' style='padding-right:0.3rem'></i>" + this.prettyTime() + ":>" + message + "</p><hr>"
           );
+       
+         /* message;
+          let mesaj = message;
+          document.getElementById('messages').innerHTML = mesaj;
+          document.getElementById('messages').innerHTML = this.prettyTime();*/
         }
       },
       prettyTime: function () {
-        return this.M.PrettyTime.replace("[0]", this.day).replace("[1]", this.hour);
+        return this.M.PrettyTime.replace("[0]", this.day).replace("[0]", this.hour);
       },
       descendLoC: function () {
 
@@ -420,3 +425,4 @@ $(function () {
     }
   });
 });
+
