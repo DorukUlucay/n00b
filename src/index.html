@@ -9,7 +9,6 @@
   <meta name="robots" content="index,follow" />
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap">
-  <link rel="stylesheet" href="style/vendor/prism.css">
   <link rel="stylesheet" href="style/vendor/all.min.css">
   <link rel="stylesheet" href="style/vendor/bootstrap.min.css">
   <link rel="stylesheet" href="style/main.css">
@@ -97,41 +96,7 @@
       </div>
     </section>
     <!--### Game Control End ###-->
-
-
-    <!--<section>
-      <div class="container">
-        <div class="row">
-          <h1>tablo</h1>
-          <div class="col-lg-8 offset-lg-2" v-if="career != null">
-            <h2 class="text-center">{{M.ActiveAssignments}}</h2>
-         
-            <table class="table" style="color: red;">
-              <thead>
-                <th scope="col">{{M.Description}}</th>
-                <th scope="col">{{M.LoC}</th>
-                <th scope="col">{{M.DeadlineHours}}</th>
-              </thead>
-              <tbody v-if="careerAsignments.length > 0">
-                <tr v-for="item in careerAsignments">
-                  <td>{{ item.title }}</td>
-                  <td>{{ item.LoC.toFixed(2) }}</td>
-                  <td>{{ item.deadline }}</td>
-                </tr>
-              </tbody>
-              <tbody v-if="careerAsignments.length == 0">
-                <tr>
-                  <td>{{M.NoActiveAssignments}}</td>
-                </tr>
-              </tbody>
-            </table>
-         
-          </div>
-        </div>
-      </div>
-    </section>-->
-
-       
+  
 
     <!--### Messages Start ###-->
       <section>
@@ -211,7 +176,7 @@
         </div>
       </div>
     </div>
-    <!--### Freelance End ###-->
+    <!--### Freelance Modal End ###-->
 
 
     <!--### Store Modal ###-->
@@ -225,17 +190,7 @@
           </div>
           <div class="modal-body">
             <p id="storeMsg"></p>
-           <!-- <ul class="list-group list-group-flush">
-              <li class="list-group-item" v-for="item in shop">
-                <button v-if="!item.bought" v-bind:id="item.id" v-on:click="buy">
-                  {{ item.name }}<span class="badge bg-warning text-dark">{{ item.price }} {{currency}}</span>
-                  <span :if="item.description !=undefined">{{item.description}}</span>
-                </button>
-              </li>
-            </ul>-->
-
-            <!-- yeni mağaza listesi -->
-            <table class="table">
+              <table class="table">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -253,10 +208,7 @@
               </tr>
             </tbody>
             </table>
-            
-            <!-- yeni mağaza listesi -->
-
-          </div>
+           </div>
           <div class="modal-footer">
             <p>Alış veriş zamanı :)</p>
           </div>
@@ -288,9 +240,9 @@
         </div>
       </div>
     </div>
-    <!--### Careers Board End ###-->
+    <!--### Careers Modal End ###-->
 
-    <!--### Reading List ###-->
+    <!--### Reading List Modal ###-->
     <div class="modal" tabindex="-1" id="reading-list">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -310,13 +262,13 @@
         </div>
       </div>
     </div>
-    <!--### Reading List End ###-->
+    <!--### Reading List Modal End ###-->
 
     <!-- <div id="ex5" class="modal">
       <h4>GotHub.com under construction...</h4>
     </div>-->
 
-    <!--### Settings ###-->
+    <!--### Settings Modal ###-->
     <div class="modal" tabindex="-1" id="settings">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -336,10 +288,10 @@
         </div>
       </div>
     </div>
-    <!--### Settings End ###-->
+    <!--### Settings Modal End ###-->
 
 
-    <!--### Thanks ###-->
+    <!--### Thanks Modal ###-->
     <div class="modal" tabindex="-1" id="output">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -356,7 +308,7 @@
         </div>
       </div>
     </div>
-    <!--### Thanks End ###-->
+    <!--### Thanks Modal End ###-->
 
   </div>
   <!--### Main End ###-->
@@ -365,11 +317,7 @@
   <script src="scripts/vendor/vue.js"></script>
   <script src="scripts/vendor/jquery-3.6.0.min.js"></script>
   <script src="scripts/vendor/bootstrap.min.js"></script>
-  <script src="scripts/vendor/prism.js"></script>
   <script src="scripts/main.js" type="module"></script>
-  <script>
-    // $('#ex1').modal('handleUpdate')
-  </script>
-</body>
+ </body>
 
 </html>
