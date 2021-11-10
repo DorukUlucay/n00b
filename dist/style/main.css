@@ -1,3 +1,10 @@
+:root{
+  --bg-color: #020713;
+  --screen-color: #1B1F2A;
+  --window-color: #22313f;
+  --orange-color: #ffd54f
+}
+
 @font-face {
   font-family: "8801-DKnR";
   src: url("./fonts/8801-DKnR.ttf") format("truetype");
@@ -17,7 +24,7 @@ html {
 
  body {
   font-family: 'Open Sans', sans-serif;
-  background-color:#040D21
+  background-color: var(--bg-color)
  }
 
  header{
@@ -26,15 +33,12 @@ html {
    color: #ffffff;
  }
  header h1{
-  font-family: "8801-DKnR";
+   font-family: "8801-DKnR";
    font-weight: 600;
  }
  header h2{
   margin-top: 20px;
 }
- section{
-   margin-top: 60px;
- }
  .box{
    border: 2px solid #ffffff;
    border-radius: 100px;
@@ -42,7 +46,7 @@ html {
  }
  .box-image{
    padding: .6rem;
-   color: darkgoldenrod
+   color: var(--orange-color)
  }
  .box-content{
    margin-top: .6rem;
@@ -53,57 +57,41 @@ html {
    transition: all .5s;
  }
  .box-content a:hover{
-   color:darkgoldenrod
+   color:var(--orange-color)
  }
  
-/* index page */
-
-/* index page */
-#screen{
+ #screen{
   padding: 1rem;
   height: 300px;
   color: #00C647;
-  background-color: #252525;
-  border: .5rem solid #fff59d;
+  background-color: var(--screen-color);
+  border: .5rem solid #252520;
   border-radius: .5rem;
   -webkit-border-radius: .5rem;
   -moz-border-radius: .5rem;
   -ms-border-radius: .5rem;
   -o-border-radius: .5rem;
 }
-#console{
+#console-code{
   font-family: "8801-DKnR";
   font-size: 1.2rem;
 }
 
 #code{
-  padding: .4rem;
-  margin: 90px auto;
-  max-width: 400px;
-  text-align: center;
-  font-family: "repet";
-  font-size: 1.2rem;
-  border: 2px solid #295B85;
-  border-radius: .4rem;
-  -webkit-border-radius: .4rem;
-  -moz-border-radius: .4rem;
-  -ms-border-radius: .4rem;
-  -o-border-radius: .4rem;
+color: #ffffff;
 }
 #game, #slogan{
   text-align: center;
   font-family: "8801-DKnR";
   color: #00C647;
-  /*background-color: #22313f;*/
- /* border: 2px solid #be9f14;*/
-}
+ }
 #game{
   font-size: 3rem;
 }
 .kod{
   font-size: 1rem;
   color:#00C647;
-  background-color: #22313f;
+  background-color: var(--window-color);
   border: 3px solid #295B85;
   border-radius: .6rem;
   -webkit-border-radius: .6rem;
@@ -114,41 +102,57 @@ html {
 .kod span:nth-child(2){
   padding-left: .6rem;
 }
-.click{
+/*.click{
   margin: .4rem;
   padding: .4rem;
   color: #000000;
-  background-color: #FFC107;
-  letter-spacing: 1px;
-  border: none;
-  outline:none;
+  background-color: var(--orange-color);
+   border: none;
+ 
    border-radius: .2rem;
   -webkit-border-radius: .2rem;
   -moz-border-radius: .2rem;
   -ms-border-radius: .2rem;
   -o-border-radius: .2rem;
-}
-.click:active{
+  transition: all .4s;
+  outline-offset: 4px;
+}*/
+.click-code {
+  background: hsl(9deg, 100%, 41%);
+  border-radius: 12px;
   border: none;
-  outline:none;
-  }
-.click i{
-  color: #ffffff;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+}
+.click-code-front {
+  display: block;
+  padding: 5px 22px;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: hsl(24deg, 100%, 41%);
+  color: white;
+  transform: translateY(-6px);
+}
+.click-code:active .click-code-front {
+  transform: translateY(-2px);
 }
 
 .time{
   color: #ffffff;
- /* margin: .4rem;
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  font-size: .8rem;*/
+ }
+ button i{
+  padding-left: .3rem;
  }
 .button-set{
   margin-top: .6rem;
   margin-bottom: .6rem;
 }
 .button-set a{
-  font-size: .9rem;
+  font-size: .8rem;
+}
+.button-set a i{
+  padding-left: .3rem;
 }
 
 #messages{
@@ -158,7 +162,7 @@ html {
   font-size: 1rem;
   letter-spacing: 1px;
   color: whitesmoke;
-  background-color:  #22313f;
+  background-color: var(--window-color);
   box-shadow: 5px 5px 5px #295B85;
   border: 2px solid #295B85;
   border-radius: .3rem;
@@ -167,7 +171,32 @@ html {
   -ms-border-radius: .3rem;
   -o-border-radius: .3rem;
 }
-i{
-  padding-left: .3rem;
 
+.modal-header, .modal-body, .modal-footer{
+  color: #ffffff;
+  background-color: var(--screen-color);
+}
+.modal-title{
+  font-size: 1.8rem;
+  color:var(--orange-color)
+}
+.modal-title i{
+  padding-left: .3rem;
+}
+.modal-subtitle{
+  font-size: 1.4rem;
+  color:var(--orange-color)
+}
+.modal-subtitle i{
+  padding-left: .3rem;
+}
+table th, td{
+  color: #ffffff;
+}
+
+.text{
+  font-size: 1.1rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color:#FFC107;
 }

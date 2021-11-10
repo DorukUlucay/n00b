@@ -139,11 +139,6 @@ $(function () {
           $("#messages").prepend(
             "<p><i class='fas fa-comment-dots' style='padding-right:0.3rem'></i>" + this.prettyTime() + ":>" + message + "</p><hr>"
           );
-       
-         /* message;
-          let mesaj = message;
-          document.getElementById('messages').innerHTML = mesaj;
-          document.getElementById('messages').innerHTML = this.prettyTime();*/
         }
       },
       prettyTime: function () {

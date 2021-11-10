@@ -175,7 +175,7 @@ const Messages_TR = {
     LoC1000: "1000 satır kod yazıldı",
     LoC1500: "1500 satır kod yazıldı",
     LoC5000: "5000 satır kod yazıldı",
-    YourReadList: "Okuma listeniz, okumak için tıklayın.",
+    YourReadList: "Okuma listesi",
     ReadBefore: "Okuduğunuz kitaplar",
     LeaveYourJobFirst: "Yeni bir işe girmek için mevcut işinizden ayrılmalısınız",
     MessageBoard: "Mesajlar",
@@ -191,7 +191,7 @@ const Messages_TR = {
     YoureFiredFailedAssignments: "Atanan maddeleri tamamlamadığın için işine son verildi.",
     MidLevelDeveloper: "Mid Level Developer",
     PartialSalaryWired: `{0} ${Options.Currency} (çalıştığın {1} günün karşılığı) hesabına yatırıldı.`,
-    ThanksForPlaying: `Code Clicker'ı oynadığın için teşekkürler. Şu anda ${Version} sürümündeyiz. Eğer ekrandaki her şeye tıkladıysan bundan sonra pek bir şey yok (şimdilik). Takipte kal.`,
+    ThanksForPlaying: `Code Clicker oynadığın için teşekkürler. Şu anda ${Version} sürümündeyiz. Eğer ekrandaki her şeye tıkladıysan bundan sonra pek bir şey yok (şimdilik). Takipte kal.`,
     SeniorDeveloper: `Senior Developer`,
     TeamLeader: `Team Leader`,
     YouAreNotHired_Days: `Reddedildin. Daha fazla deneyim kazandığında gel.`

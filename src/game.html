@@ -16,6 +16,26 @@
 </head>
 
 <body>
+  <!--### Navigation ###-->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="game.html">n00b</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contribute.html">Katkıda bulunanlar</a>
+          </li>
+        </ul>
+     </div>
+    </div>
+  </nav>
+  <!--### Navigation End ###-->
 
   <!--### Header Start ###-->
   <header>
@@ -30,17 +50,13 @@
     <section class="console">
       <div class="container">
         <div class="row">
-          <div class="col-lg-2">
+          <div class="col-md-2">
             <h1 id="game">n00b</h1>
           </div>
-          <div class="col-lg-8" id="screen">
-            <p id="console"></p>
-            <div id="code">
-              <span>{{LoC.toFixed(2)}}</span>
-              <span>{{M.LoC}}</span>
-            </div>
+          <div class="col-md-8" id="screen">
+            <p id="console-code"></p>
           </div>
-          <div class="col-lg-2">
+          <div class="col-md-2">
             <h2 id="slogan">clicker game where you are a programmer </h2>
           </div>
         </div>
@@ -54,13 +70,22 @@
         <div class="row">
         <div class="col-lg-8 offset-lg-2 text-center">
             <div class="kod">
+               <!-- yazılan kod satırı -->
+           <p id="code">
+            <span>{{LoC.toFixed(2)}}</span>
+            <span>{{M.LoC}}</span>
+           </p>
+          <!-- yazılan kod satırı -->
               <span class="time">{{ printTime }} </span>
-              <button class="click" v-on:keypress.enter.prevent v-on:click="writeCode">
-                {{ writeCodeLabel }}<i class="fas fa-mouse"></i>
+              <button class="click-code" v-on:keypress.enter.prevent v-on:click="writeCode">
+                <span class="click-code-front">
+                  {{ writeCodeLabel }}<i class="fas fa-mouse"></i>
+                </span>
               </button>
               <span class="time">{{M.Money}} : {{ money }} {{currency}}</span>
             </div>
           </div>
+          
        </div>
 
 
@@ -114,13 +139,13 @@
     <div class="modal fade" id="freelanceJobs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title text-center" id="exampleModalLabel">Freelance İşler</h5>
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
+          <div class="modal-header text-center">
+            <h5 class="modal-title w-100" id="exampleModalLabel">Freelance İşler<i class="fas fa-user-tag"></i></h5>
+            <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
                 class="fas fa-power-off"></i></button>
           </div>
           <div class="modal-body">
-            <h3 class="text-center">{{M.ActiveJobs}}</h3>
+            <p class="text-center modal-subtitle">{{M.ActiveJobs}}</p>
             <table class="table table-dark table-hover">
               <thead>
                 <tr>
@@ -131,7 +156,7 @@
                 </tr>
               </thead>
               <tbody v-if="activeFreelance.length ==0">
-                <tr class="alert alert-warning d-flex align-items-center">
+                <tr>
                   <td>{{M.NoActiveJobs}}<i class="fas fa-exclamation-triangle"></i></td>
                 </tr>
               </tbody>
@@ -144,7 +169,7 @@
                 </tr>
               </tbody>
             </table>
-            <h3 class="text-center">{{M.AvailableJobs}}</h3>
+            <p class="text-center modal-subtitle">{{M.AvailableJobs}}</p>
             <table class="table table-dark table-hover">
               <thead>
                 <tr>
@@ -183,14 +208,14 @@
     <div class="modal fade" id="store" tabindex="-1" aria-labelledby="store" aria-hidden="true">
       <div class="modal-dialog modal-xl">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="store">Mağaza<i class="fas fa-cart-arrow-down"></i></h5>
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
+          <div class="modal-header text-center">
+            <h5 class="modal-title w-100" id="store">Mağaza<i class="fas fa-cart-arrow-down"></i></h5>
+            <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
                 class="fas fa-power-off"></i></button>
           </div>
           <div class="modal-body">
             <p id="storeMsg"></p>
-              <table class="table">
+              <table class="table table-dark table-hover">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -204,7 +229,7 @@
                   <th scope="row">1</th>
                   <td>{{ item.name }}</td>
                   <td>{{ item.price }} {{currency}}</td>
-                  <td><button v-if="!item.bought" v-bind:id="item.id" v-on:click="buy">Satın al</button></td>
+                  <td><button v-if="!item.bought" v-bind:id="item.id" v-on:click="buy" class="btn btn-primary btn-sm">Satın al<i class="fas fa-lira-sign"></i></button></td>
               </tr>
             </tbody>
             </table>
@@ -223,19 +248,34 @@
     <div class="modal" tabindex="-1" id="career">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">{{M.CareersBoard}}</h5>
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
+          <div class="modal-header text-center">
+            <h5 class="modal-title w-100">{{M.CareersBoard}}<i class="fas fa-address-card"></i></h5>
+            <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
                 class="fas fa-power-off"></i></button>
           </div>
           <div class="modal-body">
             <p id="careerMsg"></p>
-            <p>{{M.AvailableCareers}}</p>
-            <p v-for="item in availableCareers">
-              <a class="link-primary" v-bind:id="item.id" v-on:click="interview">
-                {{ item.title }} - {{ item.annualSalary }} {{currency}} / {{M.Year}}
-              </a>
-            </p>
+            <p class="text-center modal-subtitle">{{M.AvailableCareers}}</p>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">iş</th>
+                          <th scope="col">Ücret</th>
+                          <th scope="col">Başvur</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="item in availableCareers">
+                          <th scope="row">1</th>
+                          <td>{{ item.title }}</td>
+                          <td>{{ item.annualSalary }} {{currency}} / {{M.Year}}</td>
+                          <td><a class="btn btn-primary btn-sm" v-bind:id="item.id" v-on:click="interview">
+                            <i class="fas fa-envelope fa-2x"></i>
+                          </a></td>
+                       </tr>
+                      </tbody>
+                    </table>
           </div>
         </div>
       </div>
@@ -246,9 +286,9 @@
     <div class="modal" tabindex="-1" id="reading-list">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">{{M.YourReadList}}</h5>
-            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i
+          <div class="modal-header text-center">
+            <h5 class="modal-title w-100">{{M.YourReadList}}<i class="fas fa-book"></i></h5>
+            <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
                 class="fas fa-power-off"></i></button>
           </div>
           <div class="modal-body">
@@ -273,17 +313,18 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-center">
-            <h5 class="modal-title">{{ M.Settings }}</h5>
+            <h5 class="modal-title w-100">{{ M.Settings }}<i
+              class="fas fa-cogs"></i></h5>
           </div>
           <div class="modal-body">
-            <h4>{{ M.Stats }}</h4>
+            <p class="modal-subtitle">{{ M.Stats }}<i class="fas fa-chart-bar"></i></p>
             <pre>{{ stats }}</pre>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-danger" id="reset" v-on:click="restart" data-bs-dismiss="modal">{{
+            <button type="button" class="btn btn-danger btn-sm" id="reset" v-on:click="restart" data-bs-dismiss="modal">{{
               M.Restart }}</button>
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal" aria-label="Close"><i
-                class="fas fa-power-off"></i>İptal</button>
+            <button type="button" class="btn btn-success btn-sm" data-bs-dismiss="modal" aria-label="Close">İptal<i
+              class="fas fa-power-off"></i></button>
           </div>
         </div>
       </div>
@@ -295,14 +336,20 @@
     <div class="modal" tabindex="-1" id="output">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-header bg-primary">
-            <h5 class="modal-title text-white">Tebrikler<i class="far fa-smile"></i></h5>
+          <div class="modal-header text-center">
+            <h5 class="modal-title w-100">Tebrikler<i class="far fa-smile"></i></h5>
           </div>
           <div class="modal-body">
-            <p>{{M.ThanksForPlaying}}</p>
+            <p class="text">{{M.ThanksForPlaying}}</p>
+            <hr>
+            <p class="modal-subtitle">{{ M.Stats }}<i class="fas fa-chart-bar"></i></p>
+            <hr>
+            <pre class="">{{ stats }}</pre>
           </div>
           <div class="modal-footer">
-            <button type="button" id="close" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Hoşçakal
+            <button type="button" id="close" class="btn btn-primary btn-sm" data-bs-dismiss="modal" aria-label="Close">Hoşçakal
+            </button>
+            <button type="button" id="close" class="btn btn-primary btn-sm" id="reset" v-on:click="restart" data-bs-dismiss="modal">Yeniden oyna
             </button>
           </div>
         </div>
