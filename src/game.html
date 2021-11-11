@@ -36,13 +36,7 @@
     </div>
   </nav>
   <!--### Navigation End ###-->
-
-  <!--### Header Start ###-->
-  <header>
-
-  </header>
-  <!--### Header End ###-->
-
+<header></header>
   <!--### Main Start ###-->
   <div id="app">
 
@@ -69,7 +63,7 @@
       <div class="container">
         <div class="row">
         <div class="col-lg-8 offset-lg-2 text-center">
-            <div class="kod">
+            <div class="game-pad">
                <!-- yazılan kod satırı -->
            <p id="code">
             <span>{{LoC.toFixed(2)}}</span>
@@ -85,11 +79,11 @@
               <span class="time">{{M.Money}} : {{ money }} {{currency}}</span>
             </div>
           </div>
-          
-       </div>
+        </div>
 
 
         <!--### Buttons ###-->
+        
         <div class="row">
           <div class="col-lg-8 offset-lg-2 text-center button-set">
 
@@ -115,7 +109,7 @@
 
             <a data-bs-toggle="modal" data-bs-target="#settings" class="btn btn-warning btn-sm">{{M.Settings}}<i
                 class="fas fa-cogs"></i></a>
-          </div>
+              </div>
         </div>
         <!--### Buttons End ###-->
       </div>
@@ -333,7 +327,7 @@
 
 
     <!--### Thanks Modal ###-->
-    <div class="modal" tabindex="-1" id="output">
+    <div class="modal" tabindex="-1" id="thanks">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header text-center">
@@ -347,7 +341,7 @@
             <pre class="">{{ stats }}</pre>
           </div>
           <div class="modal-footer">
-            <button type="button" id="close" class="btn btn-primary btn-sm" data-bs-dismiss="modal" aria-label="Close">Hoşçakal
+            <button type="button" id="close" class="btn btn-primary btn-sm" onclick="by()" data-bs-dismiss="modal" aria-label="Close">Hoşçakal
             </button>
             <button type="button" id="close" class="btn btn-primary btn-sm" id="reset" v-on:click="restart" data-bs-dismiss="modal">Yeniden oyna
             </button>
@@ -365,6 +359,11 @@
   <script src="scripts/vendor/jquery-3.6.0.min.js"></script>
   <script src="scripts/vendor/bootstrap.min.js"></script>
   <script src="scripts/main.js" type="module"></script>
+  <script>
+    function by(){
+  window.location.href ='index.html';
+}
+  </script>
  </body>
 
 </html>

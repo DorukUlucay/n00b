@@ -2,7 +2,8 @@
   --bg-color: #020713;
   --screen-color: #1B1F2A;
   --window-color: #22313f;
-  --orange-color: #ffd54f
+  --orange-color: #ffd54f;
+  --green-color: #00C647
 }
 
 @font-face {
@@ -17,10 +18,6 @@
   font-family: "PointedLaidSt";
   src: url("./fonts/PointedLaidSt-x5M8.ttf") format("truetype");
 }
-
-html {
-  height: 100%;
- }
 
  body {
   font-family: 'Open Sans', sans-serif;
@@ -63,9 +60,9 @@ html {
  #screen{
   padding: 1rem;
   height: 300px;
-  color: #00C647;
+  color: var(--green-color);
   background-color: var(--screen-color);
-  border: .5rem solid #252520;
+  border: 4px solid var(--window-color);
   border-radius: .5rem;
   -webkit-border-radius: .5rem;
   -moz-border-radius: .5rem;
@@ -77,48 +74,28 @@ html {
   font-size: 1.2rem;
 }
 
-#code{
-color: #ffffff;
-}
 #game, #slogan{
   text-align: center;
   font-family: "8801-DKnR";
-  color: #00C647;
+  color: var(--green-color);
  }
 #game{
   font-size: 3rem;
 }
-.kod{
+.game-pad{
   font-size: 1rem;
-  color:#00C647;
+  color: var(--green-color);
   background-color: var(--window-color);
-  border: 3px solid #295B85;
-  border-radius: .6rem;
-  -webkit-border-radius: .6rem;
-  -moz-border-radius: .6rem;
-  -ms-border-radius: .6rem;
-  -o-border-radius: .6rem;
+  border: 2px solid var(--screen-color);
+  border-radius: .3rem;
+  -webkit-border-radius: .3rem;
+  -moz-border-radius: .3rem;
+  -ms-border-radius: .3rem;
+  -o-border-radius: .3rem;
 }
-.kod span:nth-child(2){
-  padding-left: .6rem;
-}
-/*.click{
-  margin: .4rem;
-  padding: .4rem;
-  color: #000000;
-  background-color: var(--orange-color);
-   border: none;
- 
-   border-radius: .2rem;
-  -webkit-border-radius: .2rem;
-  -moz-border-radius: .2rem;
-  -ms-border-radius: .2rem;
-  -o-border-radius: .2rem;
-  transition: all .4s;
-  outline-offset: 4px;
-}*/
+
 .click-code {
-  background: hsl(9deg, 100%, 41%);
+  background: var(--orange-color);
   border-radius: 12px;
   border: none;
   padding: 0;
@@ -130,7 +107,7 @@ color: #ffffff;
   padding: 5px 22px;
   border-radius: 12px;
   font-size: 1rem;
-  background: hsl(24deg, 100%, 41%);
+  background: var(--green-color);
   color: white;
   transform: translateY(-6px);
 }
@@ -163,8 +140,8 @@ color: #ffffff;
   letter-spacing: 1px;
   color: whitesmoke;
   background-color: var(--window-color);
-  box-shadow: 5px 5px 5px #295B85;
-  border: 2px solid #295B85;
+  box-shadow: 5px 5px 5px var(--screen-color);
+  border: 2px solid var(--screen-color);
   border-radius: .3rem;
   -webkit-border-radius: .3rem;
   -moz-border-radius: .3rem;
@@ -193,10 +170,9 @@ color: #ffffff;
 table th, td{
   color: #ffffff;
 }
-
 .text{
   font-size: 1.1rem;
   font-weight: 300;
   letter-spacing: 1px;
-  color:#FFC107;
+  color: var(--orange-color);
 }
