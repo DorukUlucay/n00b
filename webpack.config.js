@@ -24,10 +24,29 @@ module.exports = {
       inject: true,
       chunks: ['main'],
       filename: 'index.html'
-    }),
+      }),
+      new HtmlWebpackPlugin({
+        template: './src/game.html',
+        inject: true,
+        //chunks: ['main'],
+        filename: 'game.html'
+      }),
+      new HtmlWebpackPlugin({
+        template: './src/contribute.html',
+        inject: true,
+       // chunks: ['main'],
+        filename: 'contribute.html'
+      }),
+      new HtmlWebpackPlugin({
+        template: './src/about.html',
+        inject: true,
+       // chunks: ['main'],
+        filename: 'about.html'
+      }),
     new CopyPlugin([
       { from: 'src/scripts/vendor', to: 'scripts/vendor' },
       { from: 'src/style', to: 'style' },
+      { from: 'src/img', to: 'img'},
       { from: 'src/kernel.txt', to: 'kernel.txt' }
 
     ])

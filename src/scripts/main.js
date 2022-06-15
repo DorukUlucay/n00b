@@ -133,16 +133,16 @@ $(function () {
       log: function (message, isVerbose = null) {
         if (isVerbose && this.verbose) {
           $("#messages").prepend(
-            "<p>" + this.prettyTime() + ": " + message + "</p>"
+            "<p>" + this.prettyTime() + ":/ " + message + "</p>" 
           );
         } else if (isVerbose == null) {
           $("#messages").prepend(
-            "<p>" + this.prettyTime() + ": " + message + "</p>"
+            "<p><i class='fas fa-comment-dots' style='padding-right:0.3rem'></i>" + this.prettyTime() + ":>" + message + "</p><hr>"
           );
         }
       },
       prettyTime: function () {
-        return this.M.PrettyTime.replace("[0]", this.day).replace("[1]", this.hour);
+        return this.M.PrettyTime.replace("[0]", this.day).replace("[0]", this.hour);
       },
       descendLoC: function () {
 
@@ -178,7 +178,7 @@ $(function () {
         this.stats.moneySpent += this.boardSubscriptionPrice;
       },
       buy: function () {
-        var elementId = event.toElement.id;
+        var elementId = event.currentTarget.id;
         var items = jQuery.grep(this.shop, function (a) {
           return a.id == elementId;
         });
@@ -204,7 +204,7 @@ $(function () {
         }
       },
       getJob: function () {
-        var elementId = event.toElement.id;
+        var elementId = event.currentTarget.id;
         var items = jQuery.grep(this.freelance, function (a) {
           return a.id == elementId;
         });
@@ -214,7 +214,7 @@ $(function () {
         this.freelance.splice(this.freelance.indexOf(item), 1);
       },
       interview: function () {
-        var elementId = event.toElement.id;
+        var elementId = event.currentTarget.id;
         var items = jQuery.grep(this.availableCareers, function (a) {
           return a.id == elementId;
         });
@@ -241,7 +241,7 @@ $(function () {
         $("#careerMsg").html(Messages.YouAreHired.format(this.career.monthlySalary()))
       },
       read: function () {
-        var elementId = event.toElement.id;
+        var elementId = event.currentTarget.id;
         var items = jQuery.grep(this.books.unread, function (a) {
           return a.id == elementId;
         });
@@ -371,7 +371,7 @@ $(function () {
           }
         }
       },
-      restart: function () {
+            restart: function () {
         var c = confirm(this.M.SureToRestart);
         debugger;
         if (c) {
@@ -380,7 +380,7 @@ $(function () {
           window.location.reload()
         }
       },
-      leaveCareer: function () {
+            leaveCareer: function () {
         if (this.career != null) {
           var partialSalary = ((this.career.annualSalary / 12) / 30) * this.workedDays;
           this.money += partialSalary;
@@ -419,4 +419,6 @@ $(function () {
       }
     }
   });
+
 });
+

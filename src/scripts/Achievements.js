@@ -146,14 +146,20 @@ var Achievements = {
             game.availableCareers.push(Careers.team_leader);
         }
     },
-    at_5000: {
+       at_5000: {
         Title: "5000 Lines Of Code",
         Description: Messages.LoC5000,
         done: false,
         LoC: 5000,
         Do: function(game) {
-            game.achievements.at_5000.done = true;
-            alert(Messages.ThanksForPlaying);
+            if( game.achievements.at_5000.done = true){
+                document.getElementById('thanks').style.display='block';
+                if(document.getElementById('close').addEventListener('click',closefunc)){}
+                function closefunc(){
+                    document.getElementById('thanks').style.display='none';
+                   };
+            }
+                       
         }
     }
 }

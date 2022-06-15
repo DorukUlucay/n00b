@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="game, click game" />
+  <meta name="description" content="click game" />
+  <meta name="robots" content="index,follow" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap">
+  <link rel="stylesheet" href="style/vendor/all.min.css">
+  <link rel="stylesheet" href="style/vendor/bootstrap.min.css">
+  <link rel="stylesheet" href="style/main.css">
+  <title>n00b click game</title>
+</head>
+
+<body>
+  <!--### Navigation ###-->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">n00b</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="game.html">n00b</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contribute.html">Katkıda bulunanlar</a>
+          </li>
+        </ul>
+     </div>
+    </div>
+  </nav>
+  <!--### Navigation End ###-->
+<header></header>
+  <!--### Main Start ###-->
+  <div id="app">
+
+    <!--### Console Start ###-->
+    <section class="console">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            <h1 id="game">n00b</h1>
+          </div>
+          <div class="col-md-8" id="screen">
+            <p id="console-code"></p>
+          </div>
+          <div class="col-md-2">
+            <h2 id="slogan">clicker game where you are a programmer </h2>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--### Console End ###-->
+
+    <!--### Game Control Start ###-->
+    <section class="game-control">
+      <div class="container">
+        <div class="row">
+        <div class="col-lg-8 offset-lg-2 text-center">
+            <div class="game-pad">
+               <!-- yazılan kod satırı -->
+           <p id="code">
+            <span>{{LoC.toFixed(2)}}</span>
+            <span>{{M.LoC}}</span>
+           </p>
+          <!-- yazılan kod satırı -->
+              <span class="time">{{ printTime }} </span>
+              <button class="click-code" v-on:keypress.enter.prevent v-on:click="writeCode">
+                <span class="click-code-front">
+                  {{ writeCodeLabel }}<i class="fas fa-mouse"></i>
+                </span>
+              </button>
+              <span class="time">{{M.Money}} : {{ money }} {{currency}}</span>
+            </div>
+          </div>
+        </div>
+
+
+        <!--### Buttons ###-->
+        
+        <div class="row">
+          <div class="col-lg-8 offset-lg-2 text-center button-set">
+
+            <a v-if="achievements.at_100.done" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#store">{{
+              M.BrowseOnlineStore }}<i class="fas fa-cart-arrow-down"></i></a>
+
+            <a v-if="achievements.at_500.done" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+              data-bs-target="#career">{{M.BrowseCareers}}<i class="fas fa-address-card"></i></a>
+
+            <!--<a v-if="achievements.at_600.done" href="#ex5" rel="modal:open"><button>GotCode.com</button></a> -->
+
+            <a v-if="achievements.at_400.done" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+              data-bs-target="#reading-list">{{M.Kindle}}<i class="fas fa-book"></i></a>
+
+            <a v-on:click="subscribe" v-if="!achievements.boughtFreelanceSubscr.done && achievements.at_200.done"
+              class="btn btn-warning btn-sm">{{boardSubscriptionPriceLabel}}</a>
+
+            <a v-if="achievements.boughtFreelanceSubscr.done" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+              data-bs-target="#freelanceJobs">{{M.ToggleFreelance}}<i class="fas fa-user-tag"></i></a>
+
+            <a onclick="$('#messages').toggle()" class="btn btn-warning btn-sm">{{M.MessageBoard}}<i
+                class="fas fa-comment-dots"></i></a>
+
+            <a data-bs-toggle="modal" data-bs-target="#settings" class="btn btn-warning btn-sm">{{M.Settings}}<i
+                class="fas fa-cogs"></i></a>
+              </div>
+        </div>
+        <!--### Buttons End ###-->
+      </div>
+    </section>
+    <!--### Game Control End ###-->
+  
+
+    <!--### Messages Start ###-->
+      <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 offset-lg-2">
+            <div class="font-monospace" id="messages"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--### Messages End ###-->
+
+    <!--### Freelance Modal ###-->
+    <div class="modal fade" id="freelanceJobs" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h5 class="modal-title w-100" id="exampleModalLabel">Freelance İşler<i class="fas fa-user-tag"></i></h5>
+            <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
+                class="fas fa-power-off"></i></button>
+          </div>
+          <div class="modal-body">
+            <p class="text-center modal-subtitle">{{M.ActiveJobs}}</p>
+            <table class="table table-dark table-hover">
+              <thead>
+                <tr>
+                  <th scope="col"> {{M.Job}}</th>
+                  <th scope="col">{{M.LoC}}</th>
+                  <th scope="col">{{M.DeadlineHours}}</th>
+                  <th scope="col">{{M.Pay}}</th>
+                </tr>
+              </thead>
+              <tbody v-if="activeFreelance.length ==0">
+                <tr>
+                  <td>{{M.NoActiveJobs}}<i class="fas fa-exclamation-triangle"></i></td>
+                </tr>
+              </tbody>
+              <tbody v-if="activeFreelance.length >=1">
+                <tr v-for="item in activeFreelance">
+                  <td>{{ item.title }}</td>
+                  <td>{{ item.LoC.toFixed(2) }}</td>
+                  <td>{{ item.deadline }}</td>
+                  <td>{{ item.price }} {{currency}}</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="text-center modal-subtitle">{{M.AvailableJobs}}</p>
+            <table class="table table-dark table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">{{M.Job}}</th>
+                  <th scope="col">{{M.LoC}}</th>
+                  <th scope="col">{{M.Pay}}</th>
+                  <th scope="col"> {{M.TakeJob}}</th>
+                </tr>
+              </thead>
+              <tbody v-if="freelance.length >= 1">
+                <tr v-for="item in freelance">
+                  <td>{{ item.title }}</td>
+                  <td>{{ item.LoC.toFixed(2) }}</td>
+                  <td>{{ item.price }} {{currency}}</td>
+                  <td>
+                    <button class="btn btn-success" v-bind:id="item.id" v-on:click="getJob">
+                      <i class="fas fa-hand-holding-usd fa-lg"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+              <tbody v-if="freelance.length ==0">
+                <tr>
+                  <td>{{M.NoAvailableJobs}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--### Freelance Modal End ###-->
+
+
+    <!--### Store Modal ###-->
+    <div class="modal fade" id="store" tabindex="-1" aria-labelledby="store" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h5 class="modal-title w-100" id="store">Mağaza<i class="fas fa-cart-arrow-down"></i></h5>
+            <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
+                class="fas fa-power-off"></i></button>
+          </div>
+          <div class="modal-body">
+            <p id="storeMsg"></p>
+              <table class="table table-dark table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Ürün</th>
+                  <th scope="col">Fiyat</th>
+                  <th scope="col">Satın Al</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="item in shop">
+                  <th scope="row">1</th>
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.price }} {{currency}}</td>
+                  <td><button v-if="!item.bought" v-bind:id="item.id" v-on:click="buy" class="btn btn-primary btn-sm">Satın al<i class="fas fa-lira-sign"></i></button></td>
+              </tr>
+            </tbody>
+            </table>
+           </div>
+          <div class="modal-footer">
+            <p>Alış veriş zamanı :)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--### Store Modal End ###-->
+
+    <!--<div id="ex2" class="modal"></div>-->
+
+    <!--### Careers Modal ###-->
+    <div class="modal" tabindex="-1" id="career">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h5 class="modal-title w-100">{{M.CareersBoard}}<i class="fas fa-address-card"></i></h5>
+            <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
+                class="fas fa-power-off"></i></button>
+          </div>
+          <div class="modal-body">
+            <p id="careerMsg"></p>
+            <p class="text-center modal-subtitle">{{M.AvailableCareers}}</p>
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">iş</th>
+                          <th scope="col">Ücret</th>
+                          <th scope="col">Başvur</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr v-for="item in availableCareers">
+                          <th scope="row">1</th>
+                          <td>{{ item.title }}</td>
+                          <td>{{ item.annualSalary }} {{currency}} / {{M.Year}}</td>
+                          <td><a class="btn btn-primary btn-sm" v-bind:id="item.id" v-on:click="interview">
+                            <i class="fas fa-envelope fa-2x"></i>
+                          </a></td>
+                       </tr>
+                      </tbody>
+                    </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--### Careers Modal End ###-->
+
+    <!--### Reading List Modal ###-->
+    <div class="modal" tabindex="-1" id="reading-list">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h5 class="modal-title w-100">{{M.YourReadList}}<i class="fas fa-book"></i></h5>
+            <button type="button" class="btn btn-warning" data-bs-dismiss="modal"><i
+                class="fas fa-power-off"></i></button>
+          </div>
+          <div class="modal-body">
+            <p v-for="item in books.unread">
+              <button type="button" class="" disabled v-bind:id="item.id" v-on:click="read">
+                {{ item.name }}
+              </button>
+            </p>
+            <p v-if="books.read.length == 0">(none)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--### Reading List Modal End ###-->
+
+    <!-- <div id="ex5" class="modal">
+      <h4>GotHub.com under construction...</h4>
+    </div>-->
+
+    <!--### Settings Modal ###-->
+    <div class="modal" tabindex="-1" id="settings">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h5 class="modal-title w-100">{{ M.Settings }}<i
+              class="fas fa-cogs"></i></h5>
+          </div>
+          <div class="modal-body">
+            <p class="modal-subtitle">{{ M.Stats }}<i class="fas fa-chart-bar"></i></p>
+            <pre>{{ stats }}</pre>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger btn-sm" id="reset" v-on:click="restart" data-bs-dismiss="modal">{{
+              M.Restart }}</button>
+            <button type="button" class="btn btn-success btn-sm" data-bs-dismiss="modal" aria-label="Close">İptal<i
+              class="fas fa-power-off"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--### Settings Modal End ###-->
+
+    <!--### Restart Modal Start ###-->
+    <div class="modal" tabindex="-1" id="">
+      <div class="modal-dialog">
+        <div class="modal-content">
+       
+          <div class="modal-body" id="surerestart">
+           
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger btn-sm" id="reset" v-on:click="restart" data-bs-dismiss="modal">{{
+              M.SureToRestart}}</button>
+            <button type="button" class="btn btn-success btn-sm" data-bs-dismiss="modal" aria-label="Close">İptal<i
+              class="fas fa-power-off"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--### Restart Modal End ###-->
+
+
+    <!--### Thanks Modal ###-->
+    <div class="modal" tabindex="-1" id="thanks">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h5 class="modal-title w-100">Tebrikler<i class="far fa-smile"></i></h5>
+          </div>
+          <div class="modal-body">
+            <p class="text">{{M.ThanksForPlaying}}</p>
+            <hr>
+            <p class="modal-subtitle">{{ M.Stats }}<i class="fas fa-chart-bar"></i></p>
+            <hr>
+            <pre class="">{{ stats }}</pre>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="close" class="btn btn-primary btn-sm" onclick="by()" data-bs-dismiss="modal" aria-label="Close">Hoşçakal
+            </button>
+            <button type="button" id="close" class="btn btn-primary btn-sm" id="reset" v-on:click="restart" data-bs-dismiss="modal">Yeniden oyna
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--### Thanks Modal End ###-->
+
+  </div>
+  <!--### Main End ###-->
+
+
+  <script src="scripts/vendor/vue.js"></script>
+  <script src="scripts/vendor/jquery-3.6.0.min.js"></script>
+  <script src="scripts/vendor/bootstrap.min.js"></script>
+  <script src="scripts/main.js" type="module"></script>
+  <script>
+    function by(){
+  window.location.href ='index.html';
+}
+  </script>
+ <script type="text/javascript" src="/scripts/scripts/main.js"></script></body>
+
+</html>

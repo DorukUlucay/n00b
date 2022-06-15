@@ -1,73 +1,178 @@
-th{
-text-align: left;
+:root{
+  --bg-color: #020713;
+  --screen-color: #1B1F2A;
+  --window-color: #22313f;
+  --orange-color: #ffd54f;
+  --green-color: #00C647
 }
 
-.container3borderless {
-  float: left;
-  width: 99%;
+@font-face {
+  font-family: "8801-DKnR";
+  src: url("./fonts/8801-DKnR.ttf") format("truetype");
  }
- 
- .container3 {
-  float: left;
-  width: 99%;
-  height: 150px;
-  border: 1px solid black;
- }
- 
- .container2 {
-  float: left;
-  width: 49%;
-  height: 150px;
-  border: 1px solid black;
- }
- 
- .container1 {
-  float: left;
-  width: 24%;
-  height: 150px;
-  border: 1px solid black;
- }
- 
+@font-face{
+  font-family: "repet";
+  src: url("./fonts/repet___.ttf") format("truetype");
+}
+@font-face{
+  font-family: "PointedLaidSt";
+  src: url("./fonts/PointedLaidSt-x5M8.ttf") format("truetype");
+}
+
  body {
-  font-family: "Courier New", Courier, monospace;
-  min-height: 100%;
-  padding: 15px;
-  margin: 15px;
-  position: relative;
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--bg-color)
+ }
+
+ header{
+   margin-top: 80px;
+   text-align: center;
+   color: #ffffff;
+ }
+ header h1{
+   font-family: "8801-DKnR";
+   font-weight: 600;
+ }
+ header h2{
+  margin-top: 20px;
+}
+ .box{
+   border: 2px solid #ffffff;
+   border-radius: 100px;
+   text-align: center;
+ }
+ .box-image{
+   padding: .6rem;
+   color: var(--orange-color)
+ }
+ .box-content{
+   margin-top: .6rem;
+   padding: .6rem;
+   font-size: 1.4rem;
+   color: #ffffff;
+   text-decoration: none;
+   transition: all .5s;
+ }
+ .box-content a:hover{
+   color:var(--orange-color)
  }
  
- .modal {
-  width: 800px !important;
-  max-width: 800px !important;
+ #screen{
+  padding: 1rem;
+  height: 300px;
+  color: var(--green-color);
+  background-color: var(--screen-color);
+  border: 4px solid var(--window-color);
+  border-radius: .5rem;
+  -webkit-border-radius: .5rem;
+  -moz-border-radius: .5rem;
+  -ms-border-radius: .5rem;
+  -o-border-radius: .5rem;
+}
+#console-code{
+  font-family: "8801-DKnR";
+  font-size: 1.2rem;
+}
+
+#game, #slogan{
+  text-align: center;
+  font-family: "8801-DKnR";
+  color: var(--green-color);
  }
- 
- .messages {
-  border: 1px solid black;
-  width: 100%;
- }
- 
- html {
-  height: 100%;
- }
- 
- body::after {
-  content: "";
+#game{
+  font-size: 3rem;
+}
+.game-pad{
+  font-size: 1rem;
+  color: var(--green-color);
+  background-color: var(--window-color);
+  border: 2px solid var(--screen-color);
+  border-radius: .3rem;
+  -webkit-border-radius: .3rem;
+  -moz-border-radius: .3rem;
+  -ms-border-radius: .3rem;
+  -o-border-radius: .3rem;
+}
+
+.click-code {
+  background: var(--orange-color);
+  border-radius: 12px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+}
+.click-code-front {
   display: block;
-  height: 100px;
+  padding: 5px 22px;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: var(--green-color);
+  color: white;
+  transform: translateY(-6px);
+}
+.click-code:active .click-code-front {
+  transform: translateY(-2px);
+}
+
+.time{
+  color: #ffffff;
  }
- 
- .footer {
-  /* position:absolute;
-  bottom:0;
-  width:100%;
-  height:200px; */
+ button i{
+  padding-left: .3rem;
  }
- 
- .container {
-  margin: 5px;
-  background-color: lightgray;
-  /* height: 150px; */
+.button-set{
+  margin-top: .6rem;
+  margin-bottom: .6rem;
+}
+.button-set a{
+  font-size: .8rem;
+}
+.button-set a i{
+  padding-left: .3rem;
+}
+
+#messages{
+  height: 300px;
+  padding: .6rem;
   overflow-y: scroll;
- }
- 
- 
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: whitesmoke;
+  background-color: var(--window-color);
+  box-shadow: 5px 5px 5px var(--screen-color);
+  border: 2px solid var(--screen-color);
+  border-radius: .3rem;
+  -webkit-border-radius: .3rem;
+  -moz-border-radius: .3rem;
+  -ms-border-radius: .3rem;
+  -o-border-radius: .3rem;
+}
+
+.modal-header, .modal-body, .modal-footer{
+  color: #ffffff;
+  background-color: var(--screen-color);
+}
+.modal-title{
+  font-size: 1.8rem;
+  color:var(--orange-color)
+}
+.modal-title i{
+  padding-left: .3rem;
+}
+.modal-subtitle{
+  font-size: 1.4rem;
+  color:var(--orange-color)
+}
+.modal-subtitle i{
+  padding-left: .3rem;
+}
+table th, td{
+  color: #ffffff;
+}
+.text{
+  font-size: 1.1rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: var(--orange-color);
+}

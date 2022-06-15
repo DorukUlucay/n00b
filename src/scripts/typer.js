@@ -16,7 +16,7 @@ var Typer = {
         });
     },
     addText: function() { //Main function to add the code
-        var console = $("#console")
+        var console = $("#console-code")
 
         if ((console)[0].getElementsByTagName("span").length == this.monitorHeight) {
             (console)[0].getElementsByTagName("span")[0].remove();
@@ -30,8 +30,8 @@ var Typer = {
             Typer.position = 0;
         }
 
-        $("#console").animate({
-            scrollTop: $("#console")[0].scrollHeight
+        $("#console-code").animate({
+            scrollTop: $("#console-code")[0].scrollHeight
         }, 1000);
     },
 }
